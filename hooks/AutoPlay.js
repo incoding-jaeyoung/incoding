@@ -8,14 +8,18 @@ const useVideoAutoPlay = () => {
         entries.forEach((entry) => {
           const video = entry.target;
           if (entry.isIntersecting) {
-            if (video.paused) {
-              video.setAttribute("preload", "auto");
+            video.setAttribute("playsinline", "true");
+            video.setAttribute("webkit-playsinline", "true");
+            video.setAttribute("autoplay", "true");
+            video.setAttribute("muted", "true");
+          
+            setTimeout(() => {
               video.play().catch((error) => {
                 if (error.name !== "AbortError") {
                   console.error("Video play error: ", error);
                 }
               });
-            }
+            }, 100);
           } else {
             if (!video.paused) {
               video.pause();
