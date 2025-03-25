@@ -177,7 +177,7 @@ export default function RootLayout({ children }) {
       resizeTimer = setTimeout(() => {
         window.dispatchEvent(new Event("resize"));
         ScrollTrigger.refresh(); // 💡 중요!
-      }, 500);
+      }, 2500);
     };
   
     window.addEventListener("scroll", triggerResize);

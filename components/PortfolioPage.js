@@ -244,9 +244,10 @@ const PortfolioPage = () => {
                     <video
                       loop
                       muted
+                      autoPlay
                       width="100%"
                       height="100%"
-                      preload="none"
+                      preload="auto"
                       playsInline=""
                       webkit-playsinline="true"
                     >
@@ -511,9 +512,10 @@ const PortfolioPage = () => {
                       <video
                         loop
                         muted
+                        autoPlay
                         width="100%"
                         height="100%"
-                        preload="none"
+                        preload="auto"
                         playsInline=""
                         webkit-playsinline="true"
                       >
@@ -946,9 +948,10 @@ const PortfolioPage = () => {
                     <video
                       loop
                       muted
+                      autoPlay
                       width="100%"
                       height="100%"
-                      preload="none"
+                      preload="auto"
                       playsInline=""
                       webkit-playsinline="true"
                     >
@@ -1044,9 +1047,10 @@ const PortfolioPage = () => {
                       <video
                         loop
                         muted
+                        autoPlay
                         width="100%"
                         height="100%"
-                        preload="none"
+                        preload="auto"
                         playsInline=""
                         webkit-playsinline="true"
                       >
@@ -1066,9 +1070,10 @@ const PortfolioPage = () => {
                     <video
                       loop
                       muted
+                      autoPlay
                       width="100%"
                       height="100%"
-                      preload="none"
+                      preload="auto"
                       playsInline=""
                       webkit-playsinline="true"
                     >
@@ -1272,9 +1277,10 @@ const PortfolioPage = () => {
                     <video
                       loop
                       muted
+                      autoPlay
                       width="100%"
                       height="100%"
-                      preload="none"
+                      preload="auto"
                       playsInline=""
                       webkit-playsinline="true"
                     >
@@ -1374,9 +1380,10 @@ const PortfolioPage = () => {
                     <video
                       loop
                       muted
+                      autoPlay
                       width="100%"
                       height="100%"
-                      preload="none"
+                      preload="auto"
                       playsInline=""
                       webkit-playsinline="true"
                     >
