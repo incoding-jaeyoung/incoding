@@ -27,7 +27,7 @@ const useVideoAutoPlay = () => {
 
       const observer = new IntersectionObserver(handleIntersect, {
         root: null,
-        threshold: 0,
+        threshold: 0.3,
       });
 
       videos.forEach((video) => observer.observe(video));
