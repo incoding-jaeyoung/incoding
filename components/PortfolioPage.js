@@ -244,6 +244,7 @@ const PortfolioPage = () => {
                     <video
                       loop
                       muted
+                      autoPlay
                       width="100%"
                       height="100%"
                       preload="auto"
@@ -947,6 +948,7 @@ const PortfolioPage = () => {
                     <video
                       loop
                       muted
+                      autoPlay
                       width="100%"
                       height="100%"
                       preload="auto"
@@ -1068,6 +1070,7 @@ const PortfolioPage = () => {
                     <video
                       loop
                       muted
+                      autoPlay
                       width="100%"
                       height="100%"
                       preload="auto"
@@ -1274,6 +1277,7 @@ const PortfolioPage = () => {
                     <video
                       loop
                       muted
+                      autoPlay
                       width="100%"
                       height="100%"
                       preload="auto"
@@ -1376,6 +1380,7 @@ const PortfolioPage = () => {
                     <video
                       loop
                       muted
+                      autoPlay
                       width="100%"
                       height="100%"
                       preload="auto"
