@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-// import useGsapAnimation from "../hooks/gsapTween";
+import useGsapAnimation from "../hooks/gsapTween";
 import SvgDraw from "./SvgDraw";
 import CubeAnimation from "./CubeAnimation";
 import PageTransition from "./PageTransition";
