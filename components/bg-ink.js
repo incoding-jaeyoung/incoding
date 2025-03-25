@@ -45,7 +45,7 @@ const BgInk = () => {
     // 무조건 setupScrollTrigger 실행 (로드 여부 상관 없이)
     const timeout = setTimeout(() => {
       setupScrollTrigger();
-    }, 1000); // 모바일 고려 충분한 딜레이
+    }, 700); // 모바일 고려 충분한 딜레이
 
     return () => {
       clearTimeout(timeout);
