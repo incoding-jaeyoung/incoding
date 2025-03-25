@@ -5,14 +5,15 @@ import { usePathname, useRouter } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useGsapAnimation from "../hooks/gsapTween";
-import SvgDraw from "./SvgDraw";
-import CubeAnimation from "./CubeAnimation";
 import PageTransition from "./PageTransition";
+import SvgDraw from "./SvgDraw";
+import BgInk from "./bg-ink";
 import SvgAnimation from "./SvgAnimation";
+import CubeAnimation from "./CubeAnimation";
 import NumberSlide from "./NumberSlide";
 import ScrollGrid from "./scrollGrid";
 import TextScrollAnimations from "./textScroll";
-import BgInk from "./bg-ink";
+
 
 
 const AboutPage = () => {
@@ -74,6 +75,7 @@ const AboutPage = () => {
     "/images/grid/48.jpg",
     "/images/grid/49.jpg",
   ];
+  
   // gsapTween 훅 사용
   useGsapAnimation({
     animations: undefined, // 기본 애니메이션 사용
@@ -81,14 +83,14 @@ const AboutPage = () => {
     isTransitionComplete: true, // 필요에 따라 변경
   });
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (typeof window !== "undefined") {
-        gsap.registerPlugin(ScrollTrigger);
-        ScrollTrigger.refresh(); // 🔥 모든 컴포넌트 로딩 후 한 번만 실행
-      }
-    }, 2000); // 살짝 여유 시간 줘야 레이아웃이 다 잡힘
-  
-    return () => clearTimeout(timeout);
+    const t1 = setTimeout(() => ScrollTrigger.refresh(), 1000);
+    const t2 = setTimeout(() => ScrollTrigger.refresh(), 2000);
+    const t3 = setTimeout(() => ScrollTrigger.refresh(), 3000);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
   }, []);
   return (
     <PageTransition
@@ -127,7 +129,7 @@ const AboutPage = () => {
           <SvgDraw />
         </div>
         <div className="bg-white section section-type-02">
-          <BgInk/>
+          
           <div className="section-con mix-blend-difference">
              <h2
                 className="text-white content-title section-title-sm"
@@ -156,6 +158,7 @@ const AboutPage = () => {
                   당신의 마음에 남을 경험을 완성해 갑니다.
                 </p>
           </div>
+          <BgInk/>
         </div>
         <div className="section section-type-03">
           <SvgAnimation />
@@ -282,7 +285,9 @@ const AboutPage = () => {
         ></div>
       </div>
     </PageTransition>
+    
   );
+  
 };
 
 export default AboutPage;

@@ -14,36 +14,45 @@ const BgInk = () => {
     }
 
     // 비디오 메타데이터가 로드된 후 1초 뒤에 애니메이션 설정
-    coolVideo.onloadedmetadata = function () {
-      const timeoutId = setTimeout(() => {
-        let tl = gsap.timeline({
-          ease: "power1.inOut",
-          scrollTrigger: {
-            trigger: coolVideo.parentNode.parentNode, // 부모의 부모 요소를 트리거로 설정
-            start: "top top",
-            end: "bottom+=500% bottom",
-            scrub: 1,
-            // anticipatePin: 1,
-            pin: true,
-            // markers: true,
-          }
-        });
-        tl.to(coolVideo, {
-          opacity: 1,
-          duration: 0.1, // 20% 동안 지속
-        }); // 첫 번째 애니메이션 끝나기 20% 전에 시작
-        tl.to(videoWrap, {
-          backgroundColor: "#07011c",
-          duration: 0, // 20% 동안 지속
-        }); // 첫 번째 애니메이션 끝나기 20% 전에 시작
-        tl.to(coolVideo, {
-          currentTime: coolVideo.duration,
-          duration: 0.9, // 전체 스크롤 구간을 1로 봤을 때
-        });
-      },700); 
-
-      // 컴포넌트 언마운트 시 타임아웃 정리
-      return () => clearTimeout(timeoutId);
+    const setupScrollTrigger = () => {
+      gsap.registerPlugin(ScrollTrigger);
+      const tl = gsap.timeline({
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: coolVideo.parentNode.parentNode,
+          start: "top top",
+          end: "bottom+=500% bottom",
+          scrub: 1,
+          pin: true,
+          markers: true,
+        },
+      });
+  
+      tl.to(coolVideo, {
+        opacity: 1,
+        duration: 0.1,
+      }).to(videoWrap, {
+        backgroundColor: "#07011c",
+        duration: 0,
+      }).to(coolVideo, {
+        currentTime: coolVideo.duration,
+        duration: 0.9,
+      });
+  
+      ScrollTrigger.refresh(); // 스크롤트리거 수동 리프레시
+    };
+  
+    if (coolVideo.readyState >= 1) {
+      // 이미 로드되어 있다면 바로 실행
+      setTimeout(setupScrollTrigger, 500);
+    } else {
+      coolVideo.onloadedmetadata = () => {
+        setTimeout(setupScrollTrigger, 500);
+      };
+    }
+  
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
 
   }, []);

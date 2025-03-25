@@ -146,14 +146,14 @@ export default function RootLayout({ children }) {
       setTimeout(() => {
         lenisRef.current.start();
         window.scrollTo(0,0);
-      }, 2000); // 시간을 줄임
+      }, 1000); // 시간을 줄임
     }
   }, [pathname]);
   useEffect(() => {
     setTimeout(() => {
       window.scrollTo(0, 0);
       handlePageChange();
-    }, 600);
+    }, 1600);
   }, [pathname]);
 
   const panelRef = useRef(null); // 현재 표시되는 panel만 참조
@@ -161,12 +161,12 @@ export default function RootLayout({ children }) {
     gsap.to(".back-panel .panel-con", {
       scale: 0.7,
       y: "-80dvh",
-      duration: 0.6,
+      duration: 1,
       ease: "power2.in",
     });
     gsap.to(".panel-con svg", {
       rotateZ: "-45",
-      duration: 0.6,
+      duration: 1,
       ease: "power2.in",
     });
   }, [pathname]);

@@ -162,7 +162,7 @@ const HomePage = () => {
                 cx="100"
                 cy="100"
                 r="100"
-                strokeWidth="0.5"
+                strokeWidth="1"
                 stroke="#ddd"
                 transform="rotate(-90 100 100)" 
               />
@@ -172,7 +172,7 @@ const HomePage = () => {
                 cx="100"
                 cy="100"
                 r="100"
-                strokeWidth="0.5"
+                strokeWidth="1"
                 stroke="#fff"
                 transform="rotate(-90 100 100)" 
               />
