@@ -1,0 +1,11 @@
+node_modules
+.vercel
+.env.local
+.next
+.DS_Store
+npm-debug.log
+out
+.vscode.env
+.env
+.next
+

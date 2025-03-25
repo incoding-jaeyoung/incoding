@@ -1,0 +1,80 @@
+.pov {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+}
+
+.die {
+  width: 400rem;
+  height: 80rem;
+  padding-bottom: 9rem;
+  perspective: 999rem;
+}
+
+.textcube {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.textface {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  /*   letter-spacing:-1px; */
+  backtextface-visibility: hidden;
+  /*   overflow:hidden; */
+}
+/* .textface.face-01{font-size: 45rem;}
+.textface.face-02{font-size: 50rem;}
+.textface.face-03{font-size: 47rem;} */
+
+.tray.tray1 {
+  z-index: 10;
+}
+.tray.tray1 .textface.face-01 {
+  font-size: 35rem;
+}
+.tray.tray1 .textface.face-02 {
+  font-size: 38rem;
+}
+.tray.tray1 .textface.face-03 {
+  font-size: 40rem;
+}
+.tray.tray1 .die {
+  transform: rotateZ(-20deg);
+  width: 200rem;
+  height: 45rem;
+  padding-bottom: 9rem;
+  perspective: 1999rem;
+}
+
+.tray.tray2 {
+  opacity: 1;
+  margin-right: 100rem;
+  opacity: 0.5;
+}
+.tray.tray2 .die {
+  height: 100rem;
+  width: 500rem;
+  transform: scale(2);
+}
+.tray.tray2 .textface.face-01 {
+  font-size: 50rem;
+}
+.tray.tray2 .textface.face-02 {
+  font-size: 50rem;
+}
+.tray.tray2 .textface.face-03 {
+  font-size: 50rem;
+}

@@ -1,0 +1,361 @@
+.menu-wrap {
+  position: fixed;
+  z-index: 99;
+}
+
+.menu.active {
+  opacity: 1;
+}
+.menu {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 101;
+  opacity: 0;
+}
+.menu button {
+  position: relative;
+  display: flex;
+  background-color: #fff;
+  font-size: 13px;
+  box-sizing: content-box;
+  border-radius: 40px;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.2);
+}
+.menu button .menu-text {
+  background-color: #fff;
+  border-radius: 20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+.svg-menu {
+  position: absolute;
+  z-index: 20;
+  pointer-events: none;
+  fill: none;
+  width: 100px;
+  height: 42px;
+  overflow: visible;
+  top: 8px;
+  left: 9px;
+}
+.svg-menu rect {
+}
+
+.menu button:hover .menu-text {
+  background: var(--inkwell);
+  color: #fff;
+}
+.menu button:hover .text-con {
+  transform: translateY(-16px);
+}
+
+.menu button.active-btn .menu-text {
+  background: var(--inkwell);
+  color: #fff;
+}
+.menu button.active-btn .text-con {
+  transform: translateY(-16px);
+}
+
+.menu button .menu-default {
+  line-height: 100%;
+}
+.menu button .menu-over {
+  line-height: 100%;
+}
+.menu button .text-wrap {
+  height: 16px;
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  overflow: hidden;
+  padding: 0 20px;
+}
+.menu button .text-con {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+.menu button .text-con > div {
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.eq {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 10;
+}
+.eq button {
+  position: relative;
+  display: flex;
+  background-color: #fff;
+  font-size: 13px;
+  box-sizing: content-box;
+  border-radius: 40px;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.2);
+}
+.eq button .eq-wrap {
+  background-color: #fff;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+.eq button:hover .eq-wrap {
+  background: var(--inkwell);
+  color: #fff;
+}
+.eq button:hover .bar {
+  background-color: #fff;
+}
+.bars {
+  overflow: hidden;
+  height: 12px;
+  width: 22px;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+}
+
+.bar {
+  height: 1px;
+  width: 3px;
+  display: inline-block;
+  background-color: #333;
+  bottom: 0;
+  position: absolute;
+  animation-duration: 500ms;
+  animation-play-state: running;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+/* 애니메이션이 활성화된 상태 */
+.animating .bar:nth-child(1) {
+  left: 0;
+  height: 0;
+  animation-name: danceHeight1;
+  animation-delay: 0ms;
+}
+.animating .bar:nth-child(2) {
+  left: 6px;
+  height: 0;
+  animation-name: danceHeight2;
+  animation-delay: 300ms;
+}
+.animating .bar:nth-child(3) {
+  left: 12px;
+  height: 0;
+  animation-name: danceHeight3;
+  animation-delay: 600ms;
+}
+.animating .bar:nth-child(4) {
+  left: 18px;
+  height: 0;
+  animation-name: danceHeight4;
+  animation-delay: 900ms;
+}
+
+/* 애니메이션이 중지된 상태에서 높이 1px로 설정 */
+.paused .bar {
+  height: 1px !important; /* 모든 bar 요소의 높이를 1px로 설정 */
+  animation-name: none; /* 애니메이션 중지 */
+  transition: height 2.5s linear;
+}
+
+/* 각 bar 요소의 고정된 위치 설정 (위치가 어긋나지 않도록) */
+.paused .bar:nth-child(1) {
+  left: 0;
+}
+.paused .bar:nth-child(2) {
+  left: 6px;
+}
+.paused .bar:nth-child(3) {
+  left: 12px;
+}
+.paused .bar:nth-child(4) {
+  left: 18px;
+}
+
+@keyframes danceHeight1 {
+  from {
+    height: 1px;
+  }
+  to {
+    height: 12px;
+  }
+}
+@keyframes danceHeight2 {
+  from {
+    height: 1px;
+  }
+  to {
+    height: 12px;
+  }
+}
+@keyframes danceHeight3 {
+  from {
+    height: 1px;
+  }
+  to {
+    height: 12px;
+  }
+}
+@keyframes danceHeight4 {
+  from {
+    height: 1px;
+  }
+  to {
+    height: 12px;
+  }
+}
+
+.menuBlock {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: translateY(-100%); /* 초기 상태 */
+  overflow: hidden;
+  background-color: var(--inkwell);
+  z-index: 90;
+}
+
+.menuBlock svg * {
+  transition: all 0.4s ease;
+}
+.menuBlock a {
+  transition: all 0.4s ease;
+}
+.menuBlock a text {
+  transition: all 0.4s ease;
+  font-size: 24px;
+}
+.menuBlock a:hover {
+}
+.menuBlock a:hover text {
+  fill: #000;
+}
+.navCon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navCon svg {
+  fill: #fff;
+  stroke: #000;
+}
+.navCon svg text {
+  stroke-width: 0;
+  transition: all 0.4s ease;
+}
+.navCon.navCon-01 {
+  width: 160rem; 
+  max-width: 160px;
+}
+.navCon.navCon-01 svg text {
+  transform: translateY(10px);
+}
+.navCon.navCon-02 {
+  width: 150rem;  
+  max-width: 150px;
+  height: 150rem;
+  max-height: 150px;
+}
+.navCon.navCon-03 {
+  width: 150rem;
+  max-width: 150px;
+  height: 150rem;
+  max-height: 150px;
+}
+.navCon.navCon-04 {
+  width: 160rem;
+  max-width: 160px;
+  height: 140rem;
+  max-height: 140px;
+} /* intro */
+.navCon.navCon-01 a:hover {
+}
+.navCon.navCon-01 a:hover svg text {
+}
+.navCon.navCon-02 a:hover svg path {
+}
+.navCon.navCon-03 a:hover svg path {
+}
+.navCon.navCon-04 a:hover svg path {
+} /* intro */
+.navCon.navCon-04 svg text {
+} /* intro */
+/* .navCon.navCon-04 a:hover svg text{fill:#fff;} */
+
+/* 링크 요소의 경계선 추가 */
+.navCon {
+  position: absolute; /* Matter.js와 연동 */
+  display: flex;
+  /* background-color: rgba(0,0,255,0.5); */
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  opacity: 0;
+}
+
+.menuBlock canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+
+@media (max-width: 768px) {
+  .menu {
+    right: 10px;
+    bottom: 10px;
+  }
+  .eq{
+    left: auto;
+    right: 10px;
+    bottom: 130px;
+  }
+
+  .navCon.navCon-01 {
+    width: 150px; 
+  }
+  .navCon.navCon-02 {
+    width: 150px;  
+    height: 150px;
+  }
+  .navCon.navCon-03 {
+    width: 150px;
+    height: 150px;
+  }
+  .navCon.navCon-04 {
+    width: 160px;
+    height: 160px;
+  } /* intro */
+}

@@ -1,0 +1,47 @@
+.splitting .word {
+  white-space: nowrap;
+}
+
+.section-title {
+  line-height: 100%;
+  text-align: center;
+	font-size: 50rem;
+	font-weight: 900; -webkit-font-smoothing: antialiased; 
+}
+.section-title-sm {
+  letter-spacing: -0.02em;
+	font-size: 36rem;
+	font-weight: 900;
+}
+.section-title {
+  span.char {
+    opacity: 0;
+  }
+}
+.sub-title {
+  font-weight:400;
+  font-size: 24rem;
+	text-align: center; -webkit-font-smoothing: antialiased; 
+}
+.text-content{
+  font-weight:400;
+  font-size: 16rem;
+  -webkit-font-smoothing: antialiased; 
+  
+}
+
+.splitting .font-sub .word {
+  display: grid;
+  grid-auto-flow: column;
+  will-change: transform, opacity; /* 애니메이션이 적용될 속성 추가 */
+  transform: translate3d(0, 0, 0);
+}
+
+.char-wrap {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  will-change: transform, opacity; /* 애니메이션이 적용될 속성 추가 */
+  transform: translate3d(0, 0, 0);
+}
+

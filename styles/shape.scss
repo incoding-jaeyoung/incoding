@@ -1,0 +1,78 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css");
+
+.shape {
+  margin: 0 auto;
+  position: relative;
+  opacity: 0.7;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.random-shape:after {
+  font-family: FontAwesome;
+  content: "\f04d";
+}
+
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+
+$primary-color: #8123ce;
+$secondary-color: #3a54c6;
+$third-color: #46a7dc;
+
+.shape {
+  margin: 0 auto;
+  position: relative;
+  opacity: 0.7;
+  width: 100%;
+  height: 100vh;
+}
+
+.random-shape:after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-family: FontAwesome;
+  content: "\f04d";
+}
+
+$circle-size: 100px;
+$colors: #45ffdc, #ffef96, #ff94a1, #cda1ff, #31b4ff, #4800c0, #9300c9;
+$shapes: "\f111", "\f10c", "\f068", "\f22d", "\f077", "\f04b", "\f067", "\f04d";
+$shape-count: 80; // <== 이 값을 변경하여 도형의 개수를 조정 (예: 50, 100 등)
+
+@for $i from 1 through $shape-count {
+  $shape-size: 1.7 +
+    random(
+      10
+    ); // <== 이 값을 변경하여 도형의 크기 범위를 조정 (예: random(5)로 하면 작아짐)
+
+  $rotation: random(360);
+  $speed: 40 +
+    random(
+      20
+    ); // <== 이 값을 변경하여 애니메이션 속도를 조정 (예: random(10)로 하면 더 빨라짐)
+  $color-key: random(length($colors));
+  $shape-color: nth($colors, $color-key);
+  $shape-key: random(length($shapes));
+  $shape-type: nth($shapes, $shape-key);
+  $text: random(10);
+
+  @keyframes shape-#{$i} {
+    0% {
+      transform: translate3d(0, 0, 0) rotate(#{$rotation + 0}deg);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) rotate(#{$rotation + 360}deg);
+    }
+  }
+
+  .shape-container--#{$i} {
+    animation: shape-#{$i} #{$speed}s linear infinite;
+
+    .random-shape:after {
+      margin: #{$shape-size}rem; // <== 도형의 마진(크기)을 설정
+      color: $shape-color;
+      font-size: #{$shape-size * 4}rem; // <== 도형의 크기를 설정
+      content: $shape-type;
+    }
+  }
+}
