@@ -2,10 +2,8 @@
 
 import dynamic from "next/dynamic";
 
-const AboutContent = dynamic(() => import("../../components/AboutPage"), {
-  ssr: false, // ← 여기서 SSR 막음
+const AboutPage = dynamic(() => import("../../components/AboutPage"), {
+  ssr: false,
 });
 
-export default function Page() {
-  return <AboutContent />;
-}
+export default AboutPage;

@@ -4,20 +4,20 @@ import React, { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import useGsapAnimation from "../../hooks/gsapTween"; // 경로 수정
 
-import SvgDraw from "../../components/SvgDraw";
-import AnimatedBackground from "../../components/AnimatedBackground";
-import CubeAnimation from "../../components/CubeAnimation";
-import PageTransition from "../../components/PageTransition";
-import SvgAnimation from "../../components/SvgAnimation";
-import TextAnimation from "../../components/TextAnimation";
-import SvgBackgroundColor from "../../components/SvgBackgroundColor";
-import NumberSlide from "../../components/NumberSlide";
-import WidjetAnimation from "../../components/widjetAnimation";
-import TextFlow from "../../components/TextFlow";
-import ScrollGrid from "../../components/scrollGrid";
-import TextScrollAnimations from "../../components/textScroll";
-import BgInk from "../../components/bg-ink";
-import TextZoom from "../../components/TextZoom";
+import SvgDraw from "./SvgDraw";
+import AnimatedBackground from "./AnimatedBackground";
+import CubeAnimation from "./CubeAnimation";
+import PageTransition from "./PageTransition";
+import SvgAnimation from "./SvgAnimation";
+import TextAnimation from "./TextAnimation";
+import SvgBackgroundColor from "./SvgBackgroundColor";
+import NumberSlide from "./NumberSlide";
+import WidjetAnimation from "./widjetAnimation";
+import TextFlow from "./TextFlow";
+import ScrollGrid from "./scrollGrid";
+import TextScrollAnimations from "./textScroll";
+import BgInk from "./bg-ink";
+import TextZoom from "./TextZoom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -79,7 +79,7 @@ const AboutPage = () => {
     "/images/grid/47.jpg",
     "/images/grid/48.jpg",
     "/images/grid/49.jpg",
-    ];
+  ];
   // gsapTween 훅 사용
   useGsapAnimation({
     animations: undefined, // 기본 애니메이션 사용
