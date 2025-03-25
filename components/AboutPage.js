@@ -75,7 +75,28 @@ const AboutPage = () => {
     "/images/grid/48.jpg",
     "/images/grid/49.jpg",
   ];
+  useEffect(() => {
+    const allImages = Array.from(document.querySelectorAll("img"));
+    let loaded = 0;
   
+    if (allImages.length === 0) {
+      setIsReady(true);
+      return;
+    }
+  
+    allImages.forEach((img) => {
+      if (img.complete) {
+        loaded++;
+        if (loaded === allImages.length) setIsReady(true);
+      } else {
+        img.onload = () => {
+          loaded++;
+          if (loaded === allImages.length) setIsReady(true);
+        };
+      }
+    });
+  }, []);
+  const [isReady, setIsReady] = useState(false);
   // gsapTween 훅 사용
   useGsapAnimation({
     animations: undefined, // 기본 애니메이션 사용
@@ -86,10 +107,12 @@ const AboutPage = () => {
     const t1 = setTimeout(() => ScrollTrigger.refresh(), 1000);
     const t2 = setTimeout(() => ScrollTrigger.refresh(), 2000);
     const t3 = setTimeout(() => ScrollTrigger.refresh(), 3000);
+    const t4 = setTimeout(() => ScrollTrigger.refresh(), 4000);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);
+      clearTimeout(t4);
     };
   }, []);
   return (
@@ -126,7 +149,7 @@ const AboutPage = () => {
               아름다운 디자인과 사람을 향한 기술이 만나, 사용자의 마음 깊숙이 자리 잡으며 디지털을 넘어 진정한 여운을 남기는 경험을 선물합니다.
             </p>
           </div>
-          <SvgDraw />
+          {isReady && <SvgDraw />}
         </div>
         <div className="bg-white section section-type-02">
           
@@ -158,10 +181,10 @@ const AboutPage = () => {
                   당신의 마음에 남을 경험을 완성해 갑니다.
                 </p>
           </div>
-          <BgInk/>
+          {isReady && <BgInk/>}
         </div>
         <div className="section section-type-03">
-          <SvgAnimation />
+          {isReady && <SvgAnimation />}
           <div className="section-con mix-blend-difference">
             <h2
                 className="text-white content-title section-title-sm"
@@ -191,7 +214,7 @@ const AboutPage = () => {
         </div>
         
         <div className="section section-black section-type-04" ref={parentDivRef}>
-          <CubeAnimation ref={parentDivRef} />
+          {isReady && <CubeAnimation ref={parentDivRef} />}
           <div className="section-con">
             <h2
                 className="content-title section-title-sm gradient-text"
@@ -221,7 +244,7 @@ const AboutPage = () => {
         </div>
         
         <div className="relative section section-black number-section section-type-05" >
-          <NumberSlide />
+          {isReady && <NumberSlide />}
           <div className="section-con sticky-block mt-100">
             <h2
                 className="text-white content-title section-title-sm "
@@ -249,10 +272,10 @@ const AboutPage = () => {
           </div>
         </div>
         <div className="section section-black section-type-06">
-          <ScrollGrid
+          {isReady && <ScrollGrid
             animationType="type3"
             images={imagesSet1}
-          />
+          />}
           <div className="section-con ">
             <h2
                 className="text-white content-title section-title-sm "
