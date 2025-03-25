@@ -19,7 +19,7 @@ const BgInk = () => {
       const tl = gsap.timeline({
         ease: "power1.inOut",
         scrollTrigger: {
-          trigger: coolVideo.parentNode.parentNode,
+          trigger: videoWrap.parentNode, // 더 안정적인 DOM
           start: "top top",
           end: "bottom+=500% bottom",
           scrub: 1,
@@ -27,7 +27,7 @@ const BgInk = () => {
           markers: true,
         },
       });
-  
+
       tl.to(coolVideo, {
         opacity: 1,
         duration: 0.1,
@@ -38,20 +38,17 @@ const BgInk = () => {
         currentTime: coolVideo.duration,
         duration: 0.9,
       });
-  
-      ScrollTrigger.refresh(); // 스크롤트리거 수동 리프레시
+
+      ScrollTrigger.refresh();
     };
-  
-    if (coolVideo.readyState >= 1) {
-      // 이미 로드되어 있다면 바로 실행
-      setTimeout(setupScrollTrigger, 500);
-    } else {
-      coolVideo.onloadedmetadata = () => {
-        setTimeout(setupScrollTrigger, 500);
-      };
-    }
-  
+
+    // 무조건 setupScrollTrigger 실행 (로드 여부 상관 없이)
+    const timeout = setTimeout(() => {
+      setupScrollTrigger();
+    }, 1000); // 모바일 고려 충분한 딜레이
+
     return () => {
+      clearTimeout(timeout);
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
 
