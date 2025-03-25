@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 const PageTransition = ({ children, onExitComplete, disableScroll }) => {
   const [triggerExit, setTriggerExit] = useState(false);
   const [isPageLoaded, setIsPageLoaded] = useState(true);
@@ -13,20 +14,15 @@ const PageTransition = ({ children, onExitComplete, disableScroll }) => {
   useEffect(() => {
     // 페이지가 마운트된 후에 ScrollTrigger 생성
     const createScrollTrigger = () => {
-      let hasScrolled = false;
-
-      window.addEventListener('scroll', () => {
-        hasScrolled = true;
-      }, { once: true });
-
       ScrollTrigger.create({
-        trigger: ".page-container",
-        start: "bottom bottom",
+        trigger:".page-container", // document.body 대신 documentElement 사용
+        start: "bottom bottom", // 문서 하단에서 10px 위
         end: "bottom bottom",
         onEnter: () => {
-          if (!triggerExit && hasScrolled) {
-            setTriggerExit(true);
-            setIsPageLoaded(false);
+          console.log("Trigger entered"); // 디버깅용
+          if (!triggerExit) {
+              setTriggerExit(true);
+              setIsPageLoaded(false);
           }
         },
       });

@@ -22,7 +22,6 @@ const AboutPage = () => {
   const textRef = useRef(null);
   const parentDivRef = useRef(null);
   const numberSlideRef = useRef(null);
-
   const imagesSet1 = [
     "/images/grid/1.jpg",
     "/images/grid/2.jpg",
@@ -90,16 +89,7 @@ const AboutPage = () => {
     triggerClass: ".about-svg", // 필요에 따라 변경
     isTransitionComplete: true, // 필요에 따라 변경
   });
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (typeof window !== "undefined") {
-        gsap.registerPlugin(ScrollTrigger);
-        ScrollTrigger.refresh(); // 🔥 모든 컴포넌트 로딩 후 한 번만 실행
-      }
-    }, 2000); // 살짝 여유 시간 줘야 레이아웃이 다 잡힘
-  
-    return () => clearTimeout(timeout);
-  }, []);
+
   return (
     <PageTransition
       onExitComplete={() => {

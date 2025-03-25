@@ -3,13 +3,14 @@
 import React, { useEffect, useRef, forwardRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
-  const CubeAnimation = forwardRef((props, parentRef) => {
+const CubeAnimation = forwardRef((props, parentRef) => {
   const cubeRef = useRef(null); // cubeRef 초기화
   const topCircleRefs = useRef([]); // face top의 써클 Ref 배열
   const bottomCircleRefs = useRef([]); // face bottom의 써클 Ref 배열
   const timeoutRef = useRef(null); // timeout을 저장할 ref
-
+  
   const generateCircles = (circleRefs) => {
     return Array.from({ length: 16 }).map((_, index) => (
       <div
@@ -51,12 +52,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
       .to(
         topCircleRefs.current, // face top의 써클 애니메이션
         {
-          // rotateX: "+=90",
-          // rotateY: "-=180",
           rotateZ: "+=90",
           duration: 1.8,
           ease: "power2.inOut",
-          markers: true,
         },
         "<",
       )

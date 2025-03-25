@@ -10,14 +10,12 @@ import Audio from "../components/Audio";
 import Menu from "../components/MenuBlock";
 import Chat from "../components/Chat";
 import "../styles/globals.css";
-import LenisProvider from "../components/LenisProvider"; // LenisProvider 컴포넌트 import
-gsap.registerPlugin(ScrollTrigger); // ScrollTrigger 플러그인 등록
+import LenisProvider from "../components/LenisProvider"; 
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
   const lenisRef = useRef(null); // LenisProvider의 ref
   const [panelContent, setPanelContent] = useState(""); // 패널 콘텐츠 상태
-
   const handlePageChange = () => {
     // 패널 콘텐츠 설정
     switch (pathname) {
@@ -170,26 +168,24 @@ export default function RootLayout({ children }) {
       ease: "power2.in",
     });
   }, [pathname]);
-  useEffect(() => {
-    let resizeTimer;
-    const triggerResize = () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        window.dispatchEvent(new Event("resize"));
-        ScrollTrigger.refresh(); // 💡 중요!
-      }, 2500);
-    };
   
-    window.addEventListener("scroll", triggerResize);
-    window.addEventListener("orientationchange", triggerResize); // 회전 대응
-  
-    return () => {
-      window.removeEventListener("scroll", triggerResize);
-      window.removeEventListener("orientationchange", triggerResize);
-    };
-  }, []);
   // Check if the current page is the contact page
   const isContactPage = pathname === "/contact";
+
+  useEffect(() => {
+    const handleResize = () => {
+      console.log("[ScrollTrigger] refreshing due to resize or mobile toolbar shift");
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("orientationchange", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("orientationchange", handleResize);
+    };
+  }, []);
 
   return (
     <html lang="ko">

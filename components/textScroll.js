@@ -5,9 +5,12 @@ import Splitting from "splitting";
 import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
 import "../styles/textWrite.css";
-gsap.registerPlugin(ScrollTrigger);
+
 
 const TextScrollAnimations = () => {
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+  }, []);
   const initGradientText = () => {
     // 'gradient-text' 클래스를 가진 모든 요소 선택
     const gradientTexts = document.querySelectorAll(".gradient-text");

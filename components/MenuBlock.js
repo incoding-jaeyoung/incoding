@@ -21,7 +21,7 @@ import {
 import styles from "../styles/Menu.module.css";
 import classNames from "classnames";
 import Link from "next/link";
-
+gsap.registerPlugin(ScrollTrigger);
 // 컴포넌트 최상단에 deviceSettings 정의
 const deviceSettings = {
   mobile: {
