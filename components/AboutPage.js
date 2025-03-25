@@ -5,15 +5,14 @@ import { usePathname, useRouter } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useGsapAnimation from "../hooks/gsapTween";
-import PageTransition from "./PageTransition";
 import SvgDraw from "./SvgDraw";
-import BgInk from "./bg-ink";
-import SvgAnimation from "./SvgAnimation";
 import CubeAnimation from "./CubeAnimation";
+import PageTransition from "./PageTransition";
+import SvgAnimation from "./SvgAnimation";
 import NumberSlide from "./NumberSlide";
 import ScrollGrid from "./scrollGrid";
 import TextScrollAnimations from "./textScroll";
-
+import BgInk from "./bg-ink";
 
 
 const AboutPage = () => {
@@ -76,27 +75,15 @@ const AboutPage = () => {
     "/images/grid/49.jpg",
   ];
   useEffect(() => {
-    const allImages = Array.from(document.querySelectorAll("img"));
-    let loaded = 0;
-  
-    if (allImages.length === 0) {
-      setIsReady(true);
-      return;
-    }
-  
-    allImages.forEach((img) => {
-      if (img.complete) {
-        loaded++;
-        if (loaded === allImages.length) setIsReady(true);
-      } else {
-        img.onload = () => {
-          loaded++;
-          if (loaded === allImages.length) setIsReady(true);
-        };
-      }
-    });
-  }, []);
-  const [isReady, setIsReady] = useState(false);
+  const t1 = setTimeout(() => ScrollTrigger.refresh(), 1000);
+  const t2 = setTimeout(() => ScrollTrigger.refresh(), 2000);
+  const t3 = setTimeout(() => ScrollTrigger.refresh(), 3000);
+  return () => {
+    clearTimeout(t1);
+    clearTimeout(t2);
+    clearTimeout(t3);
+  };
+}, []);
   // gsapTween 훅 사용
   useGsapAnimation({
     animations: undefined, // 기본 애니메이션 사용
@@ -104,16 +91,14 @@ const AboutPage = () => {
     isTransitionComplete: true, // 필요에 따라 변경
   });
   useEffect(() => {
-    const t1 = setTimeout(() => ScrollTrigger.refresh(), 1000);
-    const t2 = setTimeout(() => ScrollTrigger.refresh(), 2000);
-    const t3 = setTimeout(() => ScrollTrigger.refresh(), 3000);
-    const t4 = setTimeout(() => ScrollTrigger.refresh(), 4000);
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      clearTimeout(t3);
-      clearTimeout(t4);
-    };
+    const timeout = setTimeout(() => {
+      if (typeof window !== "undefined") {
+        gsap.registerPlugin(ScrollTrigger);
+        ScrollTrigger.refresh(); // 🔥 모든 컴포넌트 로딩 후 한 번만 실행
+      }
+    }, 2000); // 살짝 여유 시간 줘야 레이아웃이 다 잡힘
+  
+    return () => clearTimeout(timeout);
   }, []);
   return (
     <PageTransition
@@ -149,10 +134,10 @@ const AboutPage = () => {
               아름다운 디자인과 사람을 향한 기술이 만나, 사용자의 마음 깊숙이 자리 잡으며 디지털을 넘어 진정한 여운을 남기는 경험을 선물합니다.
             </p>
           </div>
-          {isReady && <SvgDraw />}
+          <SvgDraw />
         </div>
         <div className="bg-white section section-type-02">
-          
+          <BgInk/>
           <div className="section-con mix-blend-difference">
              <h2
                 className="text-white content-title section-title-sm"
@@ -181,10 +166,9 @@ const AboutPage = () => {
                   당신의 마음에 남을 경험을 완성해 갑니다.
                 </p>
           </div>
-          {isReady && <BgInk/>}
         </div>
         <div className="section section-type-03">
-          {isReady && <SvgAnimation />}
+          <SvgAnimation />
           <div className="section-con mix-blend-difference">
             <h2
                 className="text-white content-title section-title-sm"
@@ -214,7 +198,7 @@ const AboutPage = () => {
         </div>
         
         <div className="section section-black section-type-04" ref={parentDivRef}>
-          {isReady && <CubeAnimation ref={parentDivRef} />}
+          <CubeAnimation ref={parentDivRef} />
           <div className="section-con">
             <h2
                 className="content-title section-title-sm gradient-text"
@@ -244,7 +228,7 @@ const AboutPage = () => {
         </div>
         
         <div className="relative section section-black number-section section-type-05" >
-          {isReady && <NumberSlide />}
+          <NumberSlide />
           <div className="section-con sticky-block mt-100">
             <h2
                 className="text-white content-title section-title-sm "
@@ -272,10 +256,10 @@ const AboutPage = () => {
           </div>
         </div>
         <div className="section section-black section-type-06">
-          {isReady && <ScrollGrid
+          <ScrollGrid
             animationType="type3"
             images={imagesSet1}
-          />}
+          />
           <div className="section-con ">
             <h2
                 className="text-white content-title section-title-sm "
@@ -308,9 +292,7 @@ const AboutPage = () => {
         ></div>
       </div>
     </PageTransition>
-    
   );
-  
 };
 
 export default AboutPage;

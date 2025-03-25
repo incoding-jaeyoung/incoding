@@ -248,6 +248,7 @@ const PortfolioPage = () => {
                       height="100%"
                       preload="none"
                       playsInline=""
+                      webkit-playsinline="true"
                     >
                       <source
                         src="/images/portfolio/standard.mp4"
@@ -514,6 +515,7 @@ const PortfolioPage = () => {
                         height="100%"
                         preload="none"
                         playsInline=""
+                        webkit-playsinline="true"
                       >
                         <source
                           src="/images/portfolio/kgm.mp4"
@@ -948,6 +950,7 @@ const PortfolioPage = () => {
                       height="100%"
                       preload="none"
                       playsInline=""
+                      webkit-playsinline="true"
                     >
                       <source
                         src="/images/portfolio/nepa.mp4"
@@ -1045,6 +1048,7 @@ const PortfolioPage = () => {
                         height="100%"
                         preload="none"
                         playsInline=""
+                        webkit-playsinline="true"
                       >
                         <source
                           src="/images/portfolio/kgm.mp4"
@@ -1066,6 +1070,7 @@ const PortfolioPage = () => {
                       height="100%"
                       preload="none"
                       playsInline=""
+                      webkit-playsinline="true"
                     >
                       <source
                         src="/images/portfolio/hyundai.mp4"
@@ -1271,6 +1276,7 @@ const PortfolioPage = () => {
                       height="100%"
                       preload="none"
                       playsInline=""
+                      webkit-playsinline="true"
                     >
                       <source src="/images/portfolio/re.mp4" type="video/mp4" />
                     </video>
@@ -1372,6 +1378,7 @@ const PortfolioPage = () => {
                       height="100%"
                       preload="none"
                       playsInline=""
+                      webkit-playsinline="true"
                     >
                       <source
                         src="/images/portfolio/tree.mp4"

@@ -36,7 +36,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
         start: "top top",
         end: "bottom+=300% bottom",
         pin: true,
-        // markers: true,
+        markers: true,
+        pinSpacing: true,
+        invalidateOnRefresh: true,
       },
     });
 
