@@ -50,9 +50,3 @@
   background-position: 50% 50%;
   will-change: transform; transform: translate3d(0, 0, 0);
 }
-
-@media (max-width: 768px) {
-  .grid{
-    overflow: hidden;
-  }
-}
