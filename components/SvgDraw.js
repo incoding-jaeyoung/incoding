@@ -430,6 +430,8 @@ const SvgDraw = () => {
                       easing: "easeInOutSine",
                       direction,
                       toggleActions: "play none none none",
+                      invalidateOnRefresh: true
+
                     });
                   }
                 });

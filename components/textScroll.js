@@ -885,7 +885,9 @@ const TextScrollAnimations = () => {
                 //   trigger: word,
                 //   start: "top 0%",
                 //     end: "bottom top-=100%",
-                  scrub: true,
+                    scrub: true,
+                    invalidateOnRefresh: true
+
                   
                 },
               },

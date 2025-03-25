@@ -25,6 +25,8 @@ const BgInk = () => {
           scrub: 1,
           pin: true,
           markers: true,
+          invalidateOnRefresh: true
+
         },
       });
 

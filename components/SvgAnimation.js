@@ -21,6 +21,8 @@ const SvgBlock = () => {
               trigger: videoRef.current.parentNode.parentNode,
               start: "top+=50% bottom",
               end: "bottom-=100 top",
+              invalidateOnRefresh: true,
+
               onEnter: () => {
                 if (videoLayerRef.current) {
                   playPromise = videoLayerRef.current.play();
@@ -76,6 +78,8 @@ const SvgBlock = () => {
             end: "bottom+=300% bottom",
             scrub: 1,
             pin: true,
+            invalidateOnRefresh: true,
+
           },
           onStart: () => setupVideoScrollTrigger(),
         });

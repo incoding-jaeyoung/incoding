@@ -68,6 +68,8 @@ const applyAnimation = (grid, animationType) => {
       start: "top bottom",
       end: "bottom top",
       scrub: true,
+      invalidateOnRefresh: true
+
       // markers: true,
     },
     // scrollTrigger: {

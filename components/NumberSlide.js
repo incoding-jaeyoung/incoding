@@ -36,6 +36,8 @@ const NumberSlide = forwardRef((props, parentRef) => {
           start: "top bottom",
           end: "bottom bottom",
           scrub: 1,
+          invalidateOnRefresh: true
+
         },
       });
 
