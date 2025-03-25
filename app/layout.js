@@ -170,7 +170,24 @@ export default function RootLayout({ children }) {
       ease: "power2.in",
     });
   }, [pathname]);
-
+  useEffect(() => {
+    let resizeTimer;
+    const triggerResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        window.dispatchEvent(new Event("resize"));
+        ScrollTrigger.refresh(); // 💡 중요!
+      }, 500);
+    };
+  
+    window.addEventListener("scroll", triggerResize);
+    window.addEventListener("orientationchange", triggerResize); // 회전 대응
+  
+    return () => {
+      window.removeEventListener("scroll", triggerResize);
+      window.removeEventListener("orientationchange", triggerResize);
+    };
+  }, []);
   // Check if the current page is the contact page
   const isContactPage = pathname === "/contact";
 

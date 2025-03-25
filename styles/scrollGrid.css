@@ -27,7 +27,7 @@
   gap: var(--grid-gap);
   transform-style: preserve-3d;
   will-change: transform; transform: translate3d(0, 0, 0);
-  height: 100dvh;
+  height: 100lvh;
 }
 
 .grid__item {
