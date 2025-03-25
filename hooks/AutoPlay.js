@@ -8,9 +8,9 @@ const useVideoAutoPlay = () => {
         entries.forEach((entry) => {
           const video = entry.target;
           if (entry.isIntersecting) {
+            video.setAttribute("autoplay", "true");
             video.setAttribute("playsinline", "true");
             video.setAttribute("webkit-playsinline", "true");
-            video.setAttribute("autoplay", "true");
             video.setAttribute("muted", "true");
           
             setTimeout(() => {
@@ -19,7 +19,7 @@ const useVideoAutoPlay = () => {
                   console.error("Video play error: ", error);
                 }
               });
-            }, 100);
+            }, 100); // 확실한 렌더 이후 실행
           } else {
             if (!video.paused) {
               video.pause();
@@ -40,7 +40,11 @@ const useVideoAutoPlay = () => {
     };
 
     let videos = document.querySelectorAll("video");
-    handleVideos(videos);
+
+    setTimeout(() => {
+      videos = document.querySelectorAll("video"); // 다시 한 번 잡기
+      handleVideos(videos);
+    }, 500);
 
     const mutationObserver = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {

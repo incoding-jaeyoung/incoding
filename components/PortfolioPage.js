@@ -158,12 +158,12 @@ const PortfolioPage = () => {
             <div className="scenePortfolio">
               <div className="carousel" ref={carouselRef}>
                 <div className="carousel-item">
-                  <button className="image">
+                  <div className="image">
                     {/* <video loop muted width="100%" height="100%" preload="none" playsInline="">
                         <source src="/images/portfolio/real.mp4" type="video/mp4" />
                     </video>   */}
                     <img src="/images/portfolio/real.jpg" alt="" />
-                  </button>
+                  </div>
                   <div className="image-m">
                     <img src="/images/portfolio/real-m.jpg" alt="" />
                   </div>
@@ -240,7 +240,7 @@ const PortfolioPage = () => {
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <button className="image">
+                  <div className="image">
                     <video
                       loop
                       muted
@@ -257,7 +257,7 @@ const PortfolioPage = () => {
                       />
                     </video>
                     {/* <img src="/images/portfolio/standard1.jpg" alt="" /> */}
-                  </button>
+                  </div>
                   <div className="image-m">
                     <img src="/images/portfolio/standard-m.jpg" alt="" />
                   </div>
@@ -332,12 +332,12 @@ const PortfolioPage = () => {
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <button className="image">
+                  <div className="image">
                     {/* <video loop muted width="100%" height="100%" preload="none" playsInline="">
                         <source src="/images/portfolio/graphite.mp4" type="video/mp4" />
                     </video>   */}
                     <img src="/images/portfolio/img-graphite.jpeg" alt="" />
-                  </button>
+                  </div>
                   <div className="image-m">
                     <img src="/images/portfolio/img-graphite-m.jpg" alt="" />
                   </div>
@@ -423,9 +423,9 @@ const PortfolioPage = () => {
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <button className="image">
+                  <div className="image">
                     <img src="/images/portfolio/kgm1.jpeg" alt="" />
-                  </button>
+                  </div>
                   <div className="image-m">
                     <img src="/images/portfolio/kgm-m.jpeg" alt="" />
                   </div>
@@ -531,9 +531,9 @@ const PortfolioPage = () => {
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <button className="image">
+                  <div className="image">
                     <img src="/images/portfolio/m4.jpeg" alt="" />
-                  </button>
+                  </div>
                   <div className="image-m">
                     <img src="/images/portfolio/m4-m.jpg" alt="" />
                   </div>
@@ -621,9 +621,9 @@ const PortfolioPage = () => {
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <button className="image">
+                  <div className="image">
                     <img src="/images/portfolio/mmpx.jpg" alt="" />
-                  </button>
+                  </div>
                   <div className="image-m">
                     <img src="/images/portfolio/mmpx-m.jpg" alt="" />
                   </div>
@@ -706,9 +706,9 @@ const PortfolioPage = () => {
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <button className="image">
+                  <div className="image">
                     <img src="/images/portfolio/deep.jpeg" alt="" />
-                  </button>
+                  </div>
                   <div className="image-m">
                     <img src="/images/portfolio/deep-m.jpg" alt="" />
                   </div>
@@ -788,9 +788,9 @@ const PortfolioPage = () => {
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <button className="image">
+                  <div className="image">
                     <img src="/images/portfolio/quadro.jpeg" alt="" />
-                  </button>
+                  </div>
                   <div className="image-m">
                     <img src="/images/portfolio/quadro-m.jpg" alt="" />
                   </div>
@@ -874,9 +874,9 @@ const PortfolioPage = () => {
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <button className="image">
+                  <div className="image">
                     <img src="/images/portfolio/me2on.jpg" alt="" />
-                  </button>
+                  </div>
                   <div className="image-m">
                     <img src="/images/portfolio/me2on-m.jpg" alt="" />
                   </div>
@@ -944,7 +944,7 @@ const PortfolioPage = () => {
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <button className="image">
+                  <div className="image">
                     <video
                       loop
                       muted
@@ -960,7 +960,7 @@ const PortfolioPage = () => {
                         type="video/mp4"
                       />
                     </video>
-                  </button>
+                  </div>
                   {/* <div className="image-m">
                     <img src="/images/portfolio/kgm-m.jpeg" alt="" />
                   </div>   */}
@@ -1066,7 +1066,7 @@ const PortfolioPage = () => {
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <button className="image">
+                  <div className="image">
                     <video
                       loop
                       muted
@@ -1082,7 +1082,7 @@ const PortfolioPage = () => {
                         type="video/mp4"
                       />
                     </video>
-                  </button>
+                  </div>
                   <div className="image-m">
                     <img src="/images/portfolio/hyundai-m.jpg" alt="" />
                   </div>
@@ -1169,9 +1169,9 @@ const PortfolioPage = () => {
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <button className="image">
+                  <div className="image">
                     <img src="/images/portfolio/raise.jpeg" alt="" />
-                  </button>
+                  </div>
                   <div className="image-m">
                     <img src="/images/portfolio/raise-m.jpeg" alt="" />
                   </div>
@@ -1273,7 +1273,7 @@ const PortfolioPage = () => {
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <button className="image">
+                  <div className="image">
                     <video
                       loop
                       muted
@@ -1286,7 +1286,7 @@ const PortfolioPage = () => {
                     >
                       <source src="/images/portfolio/re.mp4" type="video/mp4" />
                     </video>
-                  </button>
+                  </div>
                   <div className="image-m">
                     <img src="/images/portfolio/re-m.jpeg" alt="" />
                   </div>
@@ -1376,7 +1376,7 @@ const PortfolioPage = () => {
                   </div>
                 </div>
                 <div className="carousel-item">
-                  <button className="image">
+                  <div className="image">
                     <video
                       loop
                       muted
@@ -1392,7 +1392,7 @@ const PortfolioPage = () => {
                         type="video/mp4"
                       />
                     </video>
-                  </button>
+                  </div>
                   <div className="image-m">
                     <img src="/images/portfolio/tree-m.jpeg" alt="" />
                   </div>
