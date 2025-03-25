@@ -1179,7 +1179,6 @@ transform: translateX(100%);
 	grid-template-rows: 100%;
 	align-items: center;
 	justify-items: center;
-	height: fit-content;
 	width:100%;
   z-index: 100;
   
