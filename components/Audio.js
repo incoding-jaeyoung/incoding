@@ -5,9 +5,16 @@ import { gsap } from "gsap";
 import styles from "../styles/Menu.module.css";
 
 const AudioEQ = () => {
-  const [isAnimating, setIsAnimating] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
+
+  const isMobile = () => {
+    if (typeof window !== 'undefined') {
+      return /iPhone|iPad|iPod|Android/i.test(window.navigator.userAgent);
+    }
+    return false;
+  };
 
   const fadeOutVolume = (audioRef, duration, onComplete) => {
     const step = 0.05;
@@ -63,15 +70,20 @@ const AudioEQ = () => {
     if (audioRef.current) {
       audioRef.current.volume = 0;
 
-      audioRef.current
-        .play()
-        .then(() => {
-          fadeInVolume(audioRef, 10000);
-          setIsAnimating(true);
-        })
-        .catch(() => {
-          setIsAnimating(false);
-        });
+      if (!isMobile()) {
+        audioRef.current
+          .play()
+          .then(() => {
+            fadeInVolume(audioRef, 10000);
+            setIsAnimating(true);
+          })
+          .catch(() => {
+            setIsAnimating(false);
+          });
+      } else {
+        setIsAnimating(false);
+        setIsPlaying(false);
+      }
     }
   }, []);
 
