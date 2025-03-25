@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import useGsapAnimation from "../hooks/gsapTween"; // 경로 수정
+import useGsapAnimation from "../hooks/gsapTween";
 
 import SvgDraw from "./SvgDraw";
 import AnimatedBackground from "./AnimatedBackground";
