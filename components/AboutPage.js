@@ -2,24 +2,18 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useGsapAnimation from "../hooks/gsapTween";
-
 import SvgDraw from "./SvgDraw";
-import AnimatedBackground from "./AnimatedBackground";
 import CubeAnimation from "./CubeAnimation";
 import PageTransition from "./PageTransition";
 import SvgAnimation from "./SvgAnimation";
-import TextAnimation from "./TextAnimation";
-import SvgBackgroundColor from "./SvgBackgroundColor";
 import NumberSlide from "./NumberSlide";
-import WidjetAnimation from "./widjetAnimation";
-import TextFlow from "./TextFlow";
 import ScrollGrid from "./scrollGrid";
 import TextScrollAnimations from "./textScroll";
 import BgInk from "./bg-ink";
-import TextZoom from "./TextZoom";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 
 const AboutPage = () => {
   const router = useRouter();
