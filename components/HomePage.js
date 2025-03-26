@@ -91,12 +91,18 @@ const HomePage = () => {
           {
             opacity: 0,
             duration: 0,
-          },
-          // "time-=0.1"
+            onComplete: () => {
+              gsap.to(".logo-white", {
+                opacity: 0,
+              });
+            },
+        },
+         "time1-=0.1" 
       )
       .to(".logo-mask", {
         opacity: 1,
         duration: 1,
+        
       }, "time1")
       .to(
         ".gradientBg",
@@ -206,27 +212,6 @@ const HomePage = () => {
           </svg>
         </div>
         <div className="svg-logo logo-mask" ref={svgRef}>
-          <svg
-            width="150"
-            height="150"
-            viewBox="0 0 150 150"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <mask id="svgMask" maskUnits="userSpaceOnUse" x="0" y="0">
-              <rect width="35" height="150" fill="white" className="logo-01" />
-              <path
-                d="M35 0L150 0V115L35 0Z"
-                fill="white"
-                className="logo-02"
-              />
-              <path
-                d="M130 150L70 150L70 90L130 150Z"
-                fill="white"
-                className="logo-03"
-              />
-            </mask>
-          </svg>
           <video
             className="background-video"
             src="/images/bg-01.mp4"
@@ -235,8 +220,8 @@ const HomePage = () => {
             muted
             playsInline
             style={{
-              mask: "url(#svgMask)",
-              WebkitMask: "url(#svgMask)",
+              mask: "url(/images/img-logo.svg)",
+              WebkitMask: "url(/images/img-logo.svg)",
               width: "150px",
               height: "150px",
             }}

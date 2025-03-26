@@ -1,69 +1,86 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const BgInk = () => {
-  useEffect(() => {
-    const coolVideo = document.querySelector(".video-play");
-    const videoWrap = document.querySelector(".video-wrap");
+  const containerRef = useRef(null);
+  const imageRef = useRef(null);
+  const frameCount = 260;
 
-    if (!coolVideo) {
+  useEffect(() => {
+    
+
+    if (!imageRef) {
       return;
     }
+    gsap.registerPlugin(ScrollTrigger);
 
-    // 비디오 메타데이터가 로드된 후 1초 뒤에 애니메이션 설정
-    const setupScrollTrigger = () => {
-      gsap.registerPlugin(ScrollTrigger);
-            
-      const trigger = ScrollTrigger.create({
-        trigger: videoWrap.parentNode,
+    const updateImage = (index) => {
+      const frameNumber = index.toString().padStart(5, '0');
+      if (imageRef.current) {
+        imageRef.current.src = `/images/frames/${frameNumber}.jpg`;
+      }
+    };
+
+    updateImage(1); // 최초 프레임
+
+    let trigger;
+    const timer = setTimeout(() => {
+      trigger = ScrollTrigger.create({
+        trigger: containerRef.current,
         start: "top top",
-        end: "bottom+=500% bottom",
+        end: "bottom bottom",
         scrub: 1,
-        pin: true,
-        markers: true,
+        // markers: true,
         invalidateOnRefresh: true,
+        
         onUpdate: (self) => {
-          if (coolVideo.readyState >= 2 && coolVideo.duration) {
-            const targetTime = coolVideo.duration * self.progress;
-            coolVideo.currentTime = targetTime;
-          }
+          const frameIndex = Math.floor(self.progress * (frameCount - 1)) + 1;
+          updateImage(frameIndex);
         },
       });
-
-            
-      gsap.to(coolVideo, {
-        opacity: 1,
-        duration: 0.1,
-      });
       
-      gsap.to(videoWrap, {
-        backgroundColor: "#07011c",
-        duration: 0,
-      })
-
+      
+      
+      // gsap.to(containerRef.current, {
+      //   backgroundColor: "#07011c",
+      //   duration: 0,
+      //   scrollTrigger: {
+      //     trigger: containerRef.current,
+      //     start: "top bottom",
+      //     end: "top+=500 top",
+      //     scrub: 1,
+      //     // markers: true,
+      //     invalidateOnRefresh: true,
+      //   }
+      // })
+      gsap.to(containerRef.current, {
+        opacity:1,
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 50%",
+          end: "top+=100 top",
+          scrub: 1,
+          // markers: true,
+          invalidateOnRefresh: true,
+        }
+      });
       ScrollTrigger.refresh();
-    };
-
-    // 무조건 setupScrollTrigger 실행 (로드 여부 상관 없이)
-    const timeout = setTimeout(() => {
-      setupScrollTrigger();
-    }, 700); // 모바일 고려 충분한 딜레이
+    }, 700);
 
     return () => {
-      clearTimeout(timeout);
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      clearTimeout(timer);
+      if (trigger) {
+        trigger.kill();
+      }
     };
-
   }, []);
 
   return (
-    <div className="video-wrap">
-      <video className="video-play" playsInline webkit-playsinline="true" preload="auto" muted>
-        <source src="/media/ink-bg-01.mp4" type="video/mp4" />
-      </video>
+    <div className="video-wrap" ref={containerRef}>
+      <img className="video-play" ref={imageRef} alt="Frame" />
     </div>
   );
 };

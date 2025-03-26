@@ -197,13 +197,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <head>
-        {/* <meta charSet="UTF-8" /> */}
-        <meta
-          name="google-site-verification"
-          content="9F-qVlEe-BBt5G4487MmbgQ4vKer_JIyD-yZ1RGY_08"
-        />
-        {/* <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=yes" /> */}
-        {/* <meta httpEquiv="X-UA-Compatible" content="IE=edge" /> */}
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="Author" content="인코딩" />
         <meta
           name="description"
@@ -212,10 +208,6 @@ export default function RootLayout({ children }) {
         <meta
           name="keywords"
           content="GSAP,Three.js, 모션스크립트, 마이크로사이트, 웹사이트 제작, 웹디자인, 웹개발, 커스텀 웹사이트, 디지털 마케팅 에이전시, 온라인 프레젠테이션, 창의적인 웹디자인, 전문적인 웹개발 서비스"
-        />
-        <meta
-          name="naver-site-verification"
-          content="9acc92bdb6ce864da9bfc1320dc639592e26ed32"
         />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="인코딩" />

@@ -127,8 +127,7 @@ const AboutPage = () => {
           <SvgDraw />
         </div>
         <div className="bg-white section section-type-02">
-          <BgInk/>
-          <div className="section-con mix-blend-difference">
+        <div className="section-con mix-blend-difference sticky-block">
              <h2
                 className="text-white content-title section-title-sm"
                 data-splitting
@@ -156,7 +155,10 @@ const AboutPage = () => {
                   당신의 마음에 남을 경험을 완성해 갑니다.
                 </p>
           </div>
+          <BgInk/>
+          
         </div>
+        
         <div className="section section-type-03">
           <SvgAnimation />
           <div className="section-con mix-blend-difference">

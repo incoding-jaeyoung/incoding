@@ -10,7 +10,7 @@ const ContactPage = () => {
   return (
     <PageTransition disableScroll={true}>
       <div id="contents" className="contact-section">
-        <div className="relative flex flex-col items-center justify-center section ">
+        <div className="relative flex items-end section ">
           <div className="section-con">
             <div className="logo-bg">
               <BgContact />
