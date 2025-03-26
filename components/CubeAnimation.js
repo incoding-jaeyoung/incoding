@@ -37,7 +37,6 @@ const CubeAnimation = forwardRef((props, parentRef) => {
         start: "top top",
         end: "bottom+=300% bottom",
         pin: true,
-        markers: true,
         pinSpacing: true,
         invalidateOnRefresh: true,
       },
