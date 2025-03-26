@@ -1,11 +1,14 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import dynamic from 'next/dynamic';
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AnimatePresence, motion } from "framer-motion";
-import CustomCursor from "../components/CustomCursor";
+const CustomCursor = dynamic(() => import('../components/CustomCursor'), {
+  ssr: false,
+});
 import Audio from "../components/Audio";
 import Menu from "../components/MenuBlock";
 import Chat from "../components/Chat";
@@ -141,10 +144,14 @@ export default function RootLayout({ children }) {
   useEffect(() => {
     if (lenisRef.current) {
       lenisRef.current.stop();
-      setTimeout(() => {
-        lenisRef.current.start();
-        window.scrollTo(0,0);
-      }, 1000); // 시간을 줄임
+
+      // 메인 페이지와 contact 페이지가 아닐 때만 start 호출
+      if (pathname !== '/' && pathname !== '/contact') {
+        setTimeout(() => {
+          lenisRef.current.start();
+          window.scrollTo(0, 0);
+        }, 1000); // 시간을 줄임
+      }
     }
   }, [pathname]);
   useEffect(() => {
@@ -230,13 +237,11 @@ export default function RootLayout({ children }) {
       </head>
       <body suppressHydrationWarning={true}>
         <AnimatePresence mode="wait" initial={false}>
-          {isContactPage ? (
-            // Render children without LenisProvider on the contact page
+          {/* {isContactPage ? (
             <>{children}</>
-          ) : (
-            // Wrap children with LenisProvider on other pages
+          ) : ( */}
             <LenisProvider ref={lenisRef}>{children}</LenisProvider>
-          )}
+          {/* )} */}
         </AnimatePresence>
         <CustomCursor />
         {pathname !== "/" && <Audio />}

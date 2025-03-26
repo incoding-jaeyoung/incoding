@@ -153,13 +153,13 @@ const PortfolioPage = () => {
       }}
     >
       <div id="contents">
-        <div className="flex flex-col items-center justify-center section section-black">
+        <div className="z-50 flex flex-col items-center justify-center section section-black">
           <div className="relative z-10 flex flex-col items-center justify-center section-con ">
             <div className="scenePortfolio">
               <div className="carousel" ref={carouselRef}>
                 <div className="carousel-item">
                   <div className="image">
-                    {/* <video loop muted width="100%" height="100%" preload="none" playsInline="">
+                    {/* <video loop muted width="100%" height="100%" preload="true"="none" playsInline="">
                         <source src="/images/portfolio/real.mp4" type="video/mp4" />
                     </video>   */}
                     <img src="/images/portfolio/real.jpg" alt="" />
@@ -247,8 +247,8 @@ const PortfolioPage = () => {
                       autoPlay
                       width="100%"
                       height="100%"
-                      preload="auto"
-                      playsInline=""
+                      preload="auto" // 문자열로 설정
+                      playsInline
                       webkit-playsinline="true"
                     >
                       <source
@@ -319,7 +319,7 @@ const PortfolioPage = () => {
                     </div>
                     <h3>Some stills</h3>
                     <div className="detail-image">
-                      {/* <video loop autoplay="" muted width="100%" height="100%" preload="none" playsInline="">
+                      {/* <video loop ="" muted width="100%" height="100%" preload="true"="none" playsInline="">
                         <source src="/images/portfolio/standard.mp4" type="video/mp4" />
                     </video> */}
                       {/* <CustomImage src="/images/portfolio/standard1.jpg" alt="" /> */}
@@ -333,7 +333,7 @@ const PortfolioPage = () => {
                 </div>
                 <div className="carousel-item">
                   <div className="image">
-                    {/* <video loop muted width="100%" height="100%" preload="none" playsInline="">
+                    {/* <video loop muted width="100%" height="100%" preload="true"="none" playsInline="">
                         <source src="/images/portfolio/graphite.mp4" type="video/mp4" />
                     </video>   */}
                     <img src="/images/portfolio/img-graphite.jpeg" alt="" />
@@ -400,7 +400,7 @@ const PortfolioPage = () => {
                     </div>
                     <h3>Some stills</h3>
                     <div className="detail-image">
-                      {/* <video loop muted width="100%" height="100%" preload="none" playsInline="">
+                      {/* <video loop muted width="100%" height="100%" preload="true"="none" playsInline="">
                         <source src="/images/portfolio/graphite.mp4" type="video/mp4" />
                     </video> */}
                       <CustomImage
@@ -515,8 +515,8 @@ const PortfolioPage = () => {
                         autoPlay
                         width="100%"
                         height="100%"
-                        preload="auto"
-                        playsInline=""
+                        preload="auto" // 문자열로 설정
+                        playsInline
                         webkit-playsinline="true"
                       >
                         <source
@@ -951,8 +951,8 @@ const PortfolioPage = () => {
                       autoPlay
                       width="100%"
                       height="100%"
-                      preload="auto"
-                      playsInline=""
+                      preload="auto" // 문자열로 설정
+                      playsInline
                       webkit-playsinline="true"
                     >
                       <source
@@ -1050,8 +1050,8 @@ const PortfolioPage = () => {
                         autoPlay
                         width="100%"
                         height="100%"
-                        preload="auto"
-                        playsInline=""
+                        preload="auto" // 문자열로 설정
+                        playsInline
                         webkit-playsinline="true"
                       >
                         <source
@@ -1073,8 +1073,8 @@ const PortfolioPage = () => {
                       autoPlay
                       width="100%"
                       height="100%"
-                      preload="auto"
-                      playsInline=""
+                      preload="auto" // 문자열로 설정
+                      playsInline
                       webkit-playsinline="true"
                     >
                       <source
@@ -1280,8 +1280,8 @@ const PortfolioPage = () => {
                       autoPlay
                       width="100%"
                       height="100%"
-                      preload="auto"
-                      playsInline=""
+                      preload="auto" // 문자열로 설정
+                      playsInline
                       webkit-playsinline="true"
                     >
                       <source src="/images/portfolio/re.mp4" type="video/mp4" />
@@ -1383,8 +1383,8 @@ const PortfolioPage = () => {
                       autoPlay
                       width="100%"
                       height="100%"
-                      preload="auto"
-                      playsInline=""
+                      preload="auto" // 문자열로 설정
+                      playsInline
                       webkit-playsinline="true"
                     >
                       <source

@@ -12,7 +12,7 @@ const useVideoAutoPlay = () => {
             video.setAttribute("playsinline", "true");
             video.setAttribute("webkit-playsinline", "true");
             video.setAttribute("muted", "true");
-          
+            video.setAttribute("preload", "auto");
             setTimeout(() => {
               video.play().catch((error) => {
                 if (error.name !== "AbortError") {

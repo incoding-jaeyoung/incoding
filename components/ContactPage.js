@@ -9,7 +9,7 @@ import BgContact from "./BgContact";
 const ContactPage = () => {
   return (
     <PageTransition disableScroll={true}>
-      <div id="contents">
+      <div id="contents" className="contact-section">
         <div className="relative flex flex-col items-center justify-center section ">
           <div className="section-con">
             <div className="logo-bg">

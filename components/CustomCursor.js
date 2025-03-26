@@ -9,12 +9,18 @@ const CustomCursor = () => {
 
   // 터치 디바이스 체크 함수 추가
   const isTouchDevice = () => {
+    if (typeof window === 'undefined') return false;
     return (
-      "ontouchstart" in window ||
+      'ontouchstart' in window ||
       navigator.maxTouchPoints > 0 ||
       navigator.msMaxTouchPoints > 0
     );
   };
+  
+  // if (typeof window !== 'undefined' && isTouchDevice()) {
+  if (isTouchDevice()) {
+    return null;
+  }
 
   useEffect(() => {
     // 터치 디바이스면 커서 숨기고 실행하지 않음

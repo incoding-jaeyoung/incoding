@@ -16,30 +16,33 @@ const BgInk = () => {
     // 비디오 메타데이터가 로드된 후 1초 뒤에 애니메이션 설정
     const setupScrollTrigger = () => {
       gsap.registerPlugin(ScrollTrigger);
-      const tl = gsap.timeline({
-        ease: "power1.inOut",
-        scrollTrigger: {
-          trigger: videoWrap.parentNode, // 더 안정적인 DOM
-          start: "top top",
-          end: "bottom+=500% bottom",
-          scrub: 1,
-          pin: true,
-          markers: true,
-          invalidateOnRefresh: true
-
+            
+      const trigger = ScrollTrigger.create({
+        trigger: videoWrap.parentNode,
+        start: "top top",
+        end: "bottom+=500% bottom",
+        scrub: 1,
+        pin: true,
+        markers: true,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          if (coolVideo.readyState >= 2 && coolVideo.duration) {
+            const targetTime = coolVideo.duration * self.progress;
+            coolVideo.currentTime = targetTime;
+          }
         },
       });
 
-      tl.to(coolVideo, {
+            
+      gsap.to(coolVideo, {
         opacity: 1,
         duration: 0.1,
-      }).to(videoWrap, {
+      });
+      
+      gsap.to(videoWrap, {
         backgroundColor: "#07011c",
         duration: 0,
-      }).to(coolVideo, {
-        currentTime: coolVideo.duration,
-        duration: 0.9,
-      });
+      })
 
       ScrollTrigger.refresh();
     };
