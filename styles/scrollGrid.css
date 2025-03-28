@@ -8,7 +8,7 @@
   --grid-inner-scale: 1;
 }
 
-
+.grid-section .grid{position:absolute; top:100dvh; border: 10px solid #ff0;}
 
 .grid {
   display: grid;

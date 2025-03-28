@@ -59,6 +59,13 @@ const TextScrollAnimations = () => {
     Splitting();
     initGradientText();
     setTimeout(() => {
+      const titleMain = [...document.querySelectorAll('.content-title[data-splitting][data-title-main]')];
+      const titleMainSub = [...document.querySelectorAll('.content-title[data-splitting][data-title-main-sub]')];
+      const titleMainContent = [...document.querySelectorAll('.content-title[data-splitting][data-title-main-content]')];
+      const section02 = [...document.querySelectorAll('.content-title[data-splitting][data-section02]')];
+      const section02Sub = [...document.querySelectorAll('.content-title[data-splitting][data-section02-sub]')];
+      const section02Con = [...document.querySelectorAll('.content-title[data-splitting][data-section02-con]')];
+
       const fx16Titles = [
         ...document.querySelectorAll(
           ".content-title[data-splitting][data-effect16]",
@@ -79,11 +86,7 @@ const TextScrollAnimations = () => {
           ".content-title[data-splitting][data-effect188]",
         ),
       ];
-      const fx1888Titles = [
-        ...document.querySelectorAll(
-          ".content-title[data-splitting][data-effect1888]",
-        ),
-      ];
+      
       const fx19Titles = [
         ...document.querySelectorAll(
           ".content-title[data-splitting][data-effect19]",
@@ -152,6 +155,181 @@ const TextScrollAnimations = () => {
 
 
       const scroll = () => {
+        titleMain.forEach(title => {
+        
+          const chars = title.querySelectorAll('.char');
+  
+          gsap.fromTo(chars, { 
+              'will-change': 'opacity, transform', 
+              opacity: 0, 
+              xPercent: () => gsap.utils.random(-300,300), 
+              yPercent: () => gsap.utils.random(-250,250) 
+          },
+          {
+              ease: 'power4.inOut',
+              opacity: 1,
+              xPercent: 0,
+              yPercent: 0,
+              delay:0.5,
+              duration: 2,
+              stagger: { each: 0.05, grid: 'auto', from: 'random'},
+              scrollTrigger: {
+                  trigger: title,
+                  start: 'center bottom+=10%',
+                  end: 'bottom center',
+                  // scrub: 0.9,
+                  // markers: true,
+              }
+          });
+  
+        });
+        titleMainSub.forEach(title => {
+        
+          const chars = title.querySelectorAll('.char');
+  
+          gsap.fromTo(chars, { 
+              'will-change': 'opacity, transform', 
+              opacity: 0, 
+              xPercent: () => gsap.utils.random(-200,200), 
+              yPercent: () => gsap.utils.random(-150,150) 
+          },
+          {
+              ease: 'power1.inOut',
+              opacity: 1,
+              xPercent: 0,
+              yPercent: 0,
+              stagger: { each: 0.05, grid: 'auto', from: 'random'},
+              scrollTrigger: {
+                  trigger: title.parentNode,
+                  start: 'top top',
+                  end: 'top+=50% top',
+                  scrub: 0.9,
+                  // markers: true,
+              }
+          });
+  
+        });
+        titleMainContent.forEach((title) => {
+          const chars = title.querySelectorAll(".char");
+          chars.forEach((char, index) => {
+            gsap.set(char.parentNode, { perspective: 1000 });
+          });
+          // 기존 애니메이션 효과
+          gsap.fromTo(
+            chars,
+            {
+              "will-change": "opacity, transform",
+              opacity: 0,
+              z: -800,
+            },
+            {
+              ease: "back.out(1.2)",
+              opacity: 1,
+              z: 0,
+              stagger: 0.06,
+              scrollTrigger: {
+                trigger: title.parentNode,
+                start: "top+=50% top",
+                end: "top+=200% top",
+                scrub: true,
+                markers: true,
+              },
+            },
+          );
+        });
+        section02.forEach((title) => {
+          const chars = title.querySelectorAll(".char");
+          chars.forEach((char, index) => {
+            gsap.set(char.parentNode, { perspective: 1000 });
+          });
+          // 기존 애니메이션 효과
+          gsap.fromTo(
+            chars,
+            {
+              "will-change": "opacity, transform",
+              opacity: 0,
+              z: -800,
+            },
+            {
+              ease: "back.out(1.2)",
+              opacity: 1,
+              z: 0,
+              stagger: 0.06,
+              scrollTrigger: {
+                trigger: title.parentNode,
+                start: "top top+=50%",
+                end: "top+=135% top",
+                scrub: true,
+                // markers: true,
+                
+              },
+            },
+          );
+        });
+
+        section02Sub.forEach((title) => {
+          const chars = title.querySelectorAll(".char");
+          chars.forEach((char, index) => {
+            gsap.set(char.parentNode, { perspective: 1000 });
+          });
+          // 기존 애니메이션 효과
+          gsap.fromTo(
+            chars,
+            {
+              "will-change": "opacity, transform",
+              opacity: 0,
+              z: -800,
+            },
+            {
+              ease: "back.out(1.2)",
+              opacity: 1,
+              z: 0,
+              stagger: 0.06,
+              scrollTrigger: {
+                trigger: title.parentNode,
+                start: "top+=160% top",
+                end: "top+=300% top",
+                scrub: true,
+                // markers: true,
+                
+              },
+            },
+          );
+        });
+
+        section02Con.forEach((title) => {
+          const chars = title.querySelectorAll(".char");
+          chars.forEach((char, index) => {
+            gsap.set(char.parentNode, { perspective: 1000 });
+          });
+          // 기존 애니메이션 효과
+          gsap.fromTo(
+            chars,
+            {
+              "will-change": "opacity, transform",
+              opacity: 0,
+              z: -800,
+            },
+            {
+              ease: "back.out(1.2)",
+              opacity: 1,
+              z: 0,
+              stagger: 0.06,
+              scrollTrigger: {
+                trigger: title.parentNode,
+                start: "top+=350% top",
+                end: "top+=480% top",
+                scrub: true,
+                // markers: true,
+                
+              },
+            },
+          );
+        });
+
+
+
+
         fx16Titles.forEach((title) => {
           gsap.fromTo(
             title,
@@ -221,95 +399,7 @@ const TextScrollAnimations = () => {
           );
         });
 
-        fx18Titles.forEach((title) => {
-          const chars = title.querySelectorAll(".char");
-          chars.forEach((char, index) => {
-            gsap.set(char.parentNode, { perspective: 1000 });
-          });
-          // 기존 애니메이션 효과
-          gsap.fromTo(
-            chars,
-            {
-              "will-change": "opacity, transform",
-              opacity: 0,
-              z: -800,
-            },
-            {
-              ease: "back.out(1.2)",
-              opacity: 1,
-              z: 0,
-              stagger: 0.06,
-              scrollTrigger: {
-                trigger: title.parentNode,
-                start: "top top+=50%",
-                end: "top+=135% top",
-                scrub: true,
-                // markers: true,
-                
-              },
-            },
-          );
-        });
-
-        fx188Titles.forEach((title) => {
-          const chars = title.querySelectorAll(".char");
-          chars.forEach((char, index) => {
-            gsap.set(char.parentNode, { perspective: 1000 });
-          });
-          // 기존 애니메이션 효과
-          gsap.fromTo(
-            chars,
-            {
-              "will-change": "opacity, transform",
-              opacity: 0,
-              z: -800,
-            },
-            {
-              ease: "back.out(1.2)",
-              opacity: 1,
-              z: 0,
-              stagger: 0.06,
-              scrollTrigger: {
-                trigger: title.parentNode,
-                start: "top+=135% top",
-                end: "top+=250% top",
-                scrub: true,
-                // markers: true,
-                
-              },
-            },
-          );
-        });
-
-        fx1888Titles.forEach((title) => {
-          const chars = title.querySelectorAll(".char");
-          chars.forEach((char, index) => {
-            gsap.set(char.parentNode, { perspective: 1000 });
-          });
-          // 기존 애니메이션 효과
-          gsap.fromTo(
-            chars,
-            {
-              "will-change": "opacity, transform",
-              opacity: 0,
-              z: -800,
-            },
-            {
-              ease: "back.out(1.2)",
-              opacity: 1,
-              z: 0,
-              stagger: 0.06,
-              scrollTrigger: {
-                trigger: title.parentNode,
-                start: "top+=250% top",
-                end: "top+=480% top",
-                scrub: true,
-                // markers: true,
-                
-              },
-            },
-          );
-        });
+        
 
         fx19Titles.forEach((title) => {
           const chars = title.querySelectorAll(".char");

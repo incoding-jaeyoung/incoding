@@ -108,7 +108,8 @@ const SvgBlock = () => {
           .to(
             ".svg-bg-back",
             {
-              margin:"0",
+              margin: "0 27vh",
+              rotateZ: "15",
               opacity: 1,
               position: "static",
             },
@@ -144,7 +145,6 @@ const SvgBlock = () => {
             ".svg-bg-back",
             {
               opacity: 0,
-              duration: 0.5,
               ease: "none",
             },
             "rotate"

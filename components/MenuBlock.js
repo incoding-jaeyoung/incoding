@@ -98,7 +98,7 @@ const Menu = () => {
 
       // Refresh ScrollTrigger after setting
       ScrollTrigger.refresh();
-    }, 1200); // 1초 지연
+    }, 1500); // 1초 지연
 
     return () => {
       clearTimeout(timeoutId); // 타이머 정리

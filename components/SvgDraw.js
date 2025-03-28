@@ -20,20 +20,20 @@ const SvgDraw = () => {
     
     // 여러 그라데이션 생성
     const gradients = [
-      { id: 'grad1', color1: '#7928CA', color2: '#FF0080', opacity1: '0.4', opacity2: '0.1' },
-      { id: 'grad2', color1: '#FF0080', color2: '#7928CA', opacity1: '0.3', opacity2: '0.2' },
-      { id: 'grad3', color1: '#00DFD8', color2: '#7928CA', opacity1: '0.4', opacity2: '0.2' }
+      { id: 'grad1', color1: '#090979', color2: '#00d4ff', opacity1: '0.4', opacity2: '0.1' },
+      { id: 'grad2', color1: '#00d4ff', color2: '#B721FF', opacity1: '0.3', opacity2: '0.2' },
+      { id: 'grad3', color1: '#80D0C7', color2: '#0093E9', opacity1: '0.4', opacity2: '0.2' }
     ];
 
-    gradients.forEach(({ id, color1, color2, opacity1, opacity2 }) => {
-      const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
-      gradient.setAttribute("id", id);
-      gradient.innerHTML = `
-        <stop offset="0%" stop-color="${color1}" stop-opacity="${opacity1}"/>
-        <stop offset="100%" stop-color="${color2}" stop-opacity="${opacity2}"/>
-      `;
-      defs.appendChild(gradient);
-    });
+    // gradients.forEach(({ id, color1, color2, opacity1, opacity2 }) => {
+    //   const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+    //   gradient.setAttribute("id", id);
+    //   gradient.innerHTML = `
+    //     <stop offset="0%" stop-color="${color1}" stop-opacity="${opacity1}"/>
+    //     <stop offset="100%" stop-color="${color2}" stop-opacity="${opacity2}"/>
+    //   `;
+    //   defs.appendChild(gradient);
+    // });
 
     svg.appendChild(defs);
     document.body.appendChild(svg);

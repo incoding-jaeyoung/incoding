@@ -99,25 +99,26 @@ const AboutPage = () => {
       <TextScrollAnimations />
       <div id="contents" suppressHydrationWarning={true}>
         <div className="section bg-left-pupple section-type-01">
+          {/*  gradient-text */}
           <div className="section-con sticky-block">
             <h2
-                className="content-title section-title gradient-text" 
+                className="content-title section-title" 
                 data-splitting
-                data-effect222
+                data-title-main
             >
-                Stories that <br /> move your heart
+                Stories <span className="sub">that</span> <br /> Move Your Heart
             </h2>
             <p
-              className="content-title sub-title gradient-text"
+              className="content-title sub-title "
               data-splitting
-              data-effect22
+              data-title-main-sub
             >
                 작은 감동으로 당신의 마음을 움직이는 이야기
             </p>
             <p
               className="text-center content-title text-content"
               data-splitting
-              data-effect22
+              data-title-main-content
             >
               차가운 디지털 세상에서도 따뜻한 감성과 진심이 전해질 수 있다고 믿습니다. <br />
               소소한 순간의 작은 감동들이 모여 당신의 마음을 움직이는 특별한 이야기를 만들어 갑니다. <br />
@@ -126,26 +127,26 @@ const AboutPage = () => {
           </div>
           <SvgDraw />
         </div>
-        <div className="bg-white section section-type-02">
+        <div className="section section-type-02">
           <div className="section-con mix-blend-difference sticky-block">
              <h2
                 className="text-white content-title section-title-sm"
                 data-splitting
-                data-effect18
+                data-section02
               >
               Every Movement <br /> Tells a Story<span className="font-thin">...</span>
             </h2>
             <p
               className="text-white content-title sub-title "
               data-splitting
-              data-effect188
+              data-section02-sub
             >
                 움직임에는 이야기가 담겨 있습니다
             </p>
               <p
                 className="text-white content-title text-content"
                 data-splitting
-                data-effect1888
+                data-section02-con
               >
                   디자인과 인터랙션은 한 편의 이야기처럼 자연스럽게 흐릅니다.<br />
                   사용자의 사소한 시선과 머무는 순간에도 의미를 담아, <br />
@@ -165,7 +166,7 @@ const AboutPage = () => {
             <h2
                 className="text-white content-title section-title-sm"
                 data-splitting
-                data-effect18
+                data-effect19
             >
                 Designing <span className="sub">the</span> Future <span className="sub">with</span> <br /> Technology <span className="sub">and</span> Creativity
                 
@@ -173,14 +174,14 @@ const AboutPage = () => {
             <p
               className="text-white content-title sub-title"
               data-splitting
-              data-effect188
+              data-effect19
             >
               기술과 창의성이 조화를 이루어 미래를 설계합니다.
             </p>
             <p
               className="text-center text-white content-title text-content"
               data-splitting
-              data-effect188
+              data-effect19
             >
               창의적인 사고와 혁신적인 기술이 완벽한 조화를 이루어 사용자와 함께 더 나은 미래를 설계합니다. <br />
               끊임없는 창의적 탐구와 기술적 혁신을 통해 사용자가 경험해 보지 못한 가치를 선사합니다.<br />
@@ -203,7 +204,7 @@ const AboutPage = () => {
             <p
               className="content-title sub-title gradient-text"
               data-splitting
-              data-effect17
+              data-effect19
             >
               무한한 가능성을 탐구하다
             </p>
@@ -252,25 +253,25 @@ const AboutPage = () => {
             animationType="type3"
             images={imagesSet1}
           />
-          <div className="section-con ">
+          <div className="section-con sticky-block">
             <h2
                 className="text-white content-title section-title-sm "
                 data-splitting
-                data-effect16
+                data-effect18
             >
               Turning Ideas <span className="sub">into</span> Reality
             </h2>
             <p
               className="content-title sub-title gradient-text"
               data-splitting
-              data-effect16
+              data-effect18
             >
               한계를 넘어 새로운 가능성을 열어보세요.
             </p>
             <p
               className="text-center content-title text-content"
               data-splitting
-              data-effect25
+              data-effect18
             >
               당신이 꿈꾸는 아이디어와 비전을 현실로 구현하기 위해 창의성과 기술력을 아낌없이 발휘합니다.  <br />
               긴밀한 소통과 깊이 있는 이해를 바탕으로, 당신의 상상을 뛰어넘는 놀라운 결과물을 선사합니다.  <br />

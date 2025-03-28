@@ -64,13 +64,11 @@ const applyAnimation = (grid, animationType) => {
   const timeline = gsap.timeline({
     defaults: { ease: "none" },
     scrollTrigger: {
-      trigger: gridWrap.parentNode.parentNode,
+      trigger: gridWrap.parentNode,
       start: "top bottom",
       end: "bottom top",
       scrub: true,
-      invalidateOnRefresh: true
 
-      // markers: true,
     },
     // scrollTrigger: {
     //   trigger: document.querySelector(".grid-section").parentNode,
@@ -379,7 +377,7 @@ const ScrollGrid = ({ animationType, images, titleClass, className }) => {
   }, []);
 
   return (
-    <section className={`fixed-block grid-section ${className}`}>
+    <section className={`grid-section ${className}`}>
       <div
         className={`grid grid--${animationType}`}
         data-animation-type={animationType}
