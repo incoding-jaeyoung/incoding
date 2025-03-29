@@ -35,10 +35,11 @@ const CubeAnimation = forwardRef((props, parentRef) => {
       scrollTrigger: {
         trigger: parentRef.current, // 부모 요소를 트리거로 설정
         start: "top top",
-        end: "bottom+=300% bottom",
+        end: "bottom+=100% bottom",
         pin: true,
         pinSpacing: true,
         invalidateOnRefresh: true,
+        markers: true,
       },
     });
 

@@ -65,7 +65,19 @@ const TextScrollAnimations = () => {
       const section02 = [...document.querySelectorAll('.content-title[data-splitting][data-section02]')];
       const section02Sub = [...document.querySelectorAll('.content-title[data-splitting][data-section02-sub]')];
       const section02Con = [...document.querySelectorAll('.content-title[data-splitting][data-section02-con]')];
-
+      const section05 = [...document.querySelectorAll('.content-title[data-splitting][data-section05]')];
+      const section05Sub = [...document.querySelectorAll('.content-title[data-splitting][data-section05-sub]')];
+      const section05Con = [...document.querySelectorAll('.content-title[data-splitting][data-section05-con]')];
+      const fx23Titles = [
+        ...document.querySelectorAll(
+          ".content-title[data-splitting][data-effect23]",
+        ),
+      ];
+      const fx233Titles = [
+        ...document.querySelectorAll(
+          ".content-title[data-splitting][data-effect233]",
+        ),
+      ];
       const fx16Titles = [
         ...document.querySelectorAll(
           ".content-title[data-splitting][data-effect16]",
@@ -112,16 +124,7 @@ const TextScrollAnimations = () => {
           ".content-title[data-splitting][data-effect222]",
         ),
       ];
-      const fx23Titles = [
-        ...document.querySelectorAll(
-          ".content-title[data-splitting][data-effect23]",
-        ),
-      ];
-      const fx233Titles = [
-        ...document.querySelectorAll(
-          ".content-title[data-splitting][data-effect233]",
-        ),
-      ];
+      
       const fx24Titles = [
         ...document.querySelectorAll(
           ".content-title[data-splitting][data-effect24]",
@@ -232,7 +235,7 @@ const TextScrollAnimations = () => {
                 start: "top+=50% top",
                 end: "top+=200% top",
                 scrub: true,
-                markers: true,
+                // markers: true,
               },
             },
           );
@@ -327,7 +330,118 @@ const TextScrollAnimations = () => {
           );
         });
 
+        
 
+        section05.forEach((title) => {
+          const words = [...title.querySelectorAll(".word")];
+
+          for (const [wordPosition, word] of words.entries()) {
+            gsap.fromTo(
+              word.querySelectorAll(".char"),
+              {
+                "will-change": "transform",
+                scale: 1.05,
+                opacity: 0,
+                x: (pos, _, arr) => {
+                  // return wordPosition % 2
+                  return wordPosition % 2
+                  // ? pos * 100
+                  // : (arr.length - pos - 1) * 10
+                  ? pos * 100
+                  : pos * 50
+                  
+                },
+              },
+              {
+                ease: "linear",
+                scale: 1,
+                opacity: 1,
+                x: 0,
+                scrollTrigger: {
+                  trigger: title.parentNode,
+                  start: "top top",
+                  end: "top+=70% top",
+                  scrub: true,
+                  markers: true,
+                },
+              },
+            );
+          }
+        });
+
+        section05Sub.forEach((title) => {
+          const words = [...title.querySelectorAll(".word")];
+
+          for (const [wordPosition, word] of words.entries()) {
+            gsap.fromTo(
+              word.querySelectorAll(".char"),
+              {
+                "will-change": "transform",
+                scale: 1.05,
+                opacity: 0,
+                x: (pos, _, arr) => {
+                  // return wordPosition % 2
+                  return wordPosition % 2
+                  // ? pos * 100
+                  // : (arr.length - pos - 1) * 10
+                  ? pos * 100
+                  : pos * 50
+                  
+                },
+              },
+              {
+                ease: "linear",
+                scale: 1,
+                opacity: 1,
+                x: 0,
+                scrollTrigger: {
+                  trigger: title.parentNode,
+                  start: "top+=50% top",
+                  end: "top+=120% top",
+                  scrub: true,
+                  markers: true,
+                },
+              },
+            );
+          }
+        });
+
+        section05Con.forEach((title) => {
+          const words = [...title.querySelectorAll(".word")];
+
+          for (const [wordPosition, word] of words.entries()) {
+            gsap.fromTo(
+              word.querySelectorAll(".char"),
+              {
+                "will-change": "transform",
+                scale: 1.05,
+                opacity: 0,
+                x: (pos, _, arr) => {
+                  // return wordPosition % 2
+                  return wordPosition % 2
+                  // ? pos * 100
+                  // : (arr.length - pos - 1) * 10
+                  ? pos * 100
+                  : pos * 50
+                  
+                },
+              },
+              {
+                ease: "linear",
+                scale: 1,
+                opacity: 1,
+                x: 0,
+                scrollTrigger: {
+                  trigger: title.parentNode,
+                  start: "top+=100% top",
+                  end: "top+=180% top",
+                  scrub: true,
+                  markers: true,
+                },
+              },
+            );
+          }
+        });
 
 
         fx16Titles.forEach((title) => {
@@ -653,79 +767,7 @@ const TextScrollAnimations = () => {
           }
         });
 
-        fx23Titles.forEach((title) => {
-          const words = [...title.querySelectorAll(".word")];
-
-          for (const [wordPosition, word] of words.entries()) {
-            gsap.fromTo(
-              word.querySelectorAll(".char"),
-              {
-                "will-change": "transform",
-                scale: 1.05,
-                opacity: 0,
-                x: (pos, _, arr) => {
-                  // return wordPosition % 2
-                  return wordPosition % 2
-                  // ? pos * 100
-                  // : (arr.length - pos - 1) * 10
-                  ? pos * 100
-                  : pos * 50
-                  
-                },
-              },
-              {
-                ease: "linear",
-                scale: 1,
-                opacity: 1,
-                x: 0,
-                scrollTrigger: {
-                  trigger: title.parentNode.parentNode,
-                  start: "top top",
-                  end: "top+=50% bottom",
-                  scrub: true,
-                  // markers: true,
-                },
-              },
-            );
-          }
-        });
-
-        fx233Titles.forEach((title) => {
-          const words = [...title.querySelectorAll(".word")];
-
-          for (const [wordPosition, word] of words.entries()) {
-            gsap.fromTo(
-              word.querySelectorAll(".char"),
-              {
-                "will-change": "transform",
-                scale: 1.05,
-                opacity: 0,
-                x: (pos, _, arr) => {
-                  // return wordPosition % 2
-                  return wordPosition % 2
-                  // ? pos * 100
-                  // : (arr.length - pos - 1) * 10
-                  ? pos * 100
-                  : pos * 50
-                  
-                },
-              },
-              {
-                ease: "linear",
-                scale: 1,
-                opacity: 1,
-                x: 0,
-                scrollTrigger: {
-                  trigger: title.parentNode.parentNode,
-                  start: "top+=30% top",
-                  end: "top+=80% bottom",
-                  scrub: true,
-                  // markers: true,
-                },
-              },
-            );
-          }
-        });
+        
 
         fx24Titles.forEach((title) => {
           const chars = title.querySelectorAll(".char");

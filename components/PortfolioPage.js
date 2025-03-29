@@ -1485,9 +1485,9 @@ const PortfolioPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex section-black section-con">
-          {/* <GridPortfolio /> */}
-        </div>
+        {/* <div className="flex section-black">
+          <GridPortfolio />
+        </div> */}
         <div
           className="flex flex-col items-center justify-center h-dvh section-bottom"
           ref={lastSectionRef}

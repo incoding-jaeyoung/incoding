@@ -107,15 +107,17 @@ const useGsapAnimation = ({
   useEffect(() => {
     setTimeout(() => {
       gsap.utils.toArray(".sticky-text").forEach((element) => {
-        gsap.to(element, {
-          y: "-100%", // 위로 이동
+        gsap.to(element,{ // fromto로 변경
+          marginTop: "0", // 위로 이동
+          scale:1,
           scrollTrigger: {
-            ease: "power4.out",
+            ease: "linear",
             trigger: element.closest(".section-con"), // 각 요소의 부모를 트리거로 설정
-            start: "0 0%",
-            end: "bottom 0%",
+            start: "0 top",
+            end: "bottom top",
             scrub: 1,
             toggleActions: "play none play reverse",
+            markers: true,
           },
         });
       });

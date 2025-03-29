@@ -353,7 +353,7 @@ const SvgDraw = () => {
       // SVG 애니메이션 초기화
       const svg = initializeAnimations();
       // 파티클 시스템 초기화
-      particleCleanup = initParticleSystem();
+      // particleCleanup = initParticleSystem();
     }, 600);
 
     return () => {

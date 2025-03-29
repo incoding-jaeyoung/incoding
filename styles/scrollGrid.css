@@ -8,7 +8,7 @@
   --grid-inner-scale: 1;
 }
 
-.grid-section .grid{position:absolute; top:100dvh; border: 10px solid #ff0;}
+.grid-section .grid{position:absolute; top:100dvh;}
 
 .grid {
   display: grid;
@@ -29,7 +29,12 @@
   will-change: transform; transform: translate3d(0, 0, 0);
   height: 100lvh;
 }
-
+@media (max-width: 768px) {
+  .grid-section .grid{overflow:hidden; height: 200dvh;}
+  .grid-wrap {
+    width: 250% !important;
+  }
+}
 .grid__item {
   aspect-ratio: var(--grid-item-ratio);
   width: 100%;

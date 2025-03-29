@@ -17,11 +17,15 @@ import BgInk from "./bg-ink";
 
 const AboutPage = () => {
   const router = useRouter();
+  const [isMounted, setIsMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(true); // 기본값을 true로 설정
   const lastSectionRef = useRef(null); // 마지막 섹션
   const pathname = usePathname();
   const textRef = useRef(null);
   const parentDivRef = useRef(null);
   const numberSlideRef = useRef(null);
+  const [viewBoxSize, setViewBoxSize] = useState({ width: 1200, height: 200 });
+  
   const imagesSet1 = [
     "/images/grid/1.jpg",
     "/images/grid/2.jpg",
@@ -73,6 +77,16 @@ const AboutPage = () => {
     "/images/grid/48.jpg",
     "/images/grid/49.jpg",
   ];
+
+  useEffect(() => {
+    if (textRef.current) {
+      const bbox = textRef.current.getBBox(); // ← 텍스트의 실제 크기
+      setViewBoxSize({
+        width: bbox.width + 100, // 여백 조금 추가
+        height: bbox.height + 100,
+      });
+    }
+  }, []);
   useEffect(() => {
   const t1 = setTimeout(() => ScrollTrigger.refresh(), 1000);
   const t2 = setTimeout(() => ScrollTrigger.refresh(), 2000);
@@ -90,33 +104,115 @@ const AboutPage = () => {
     isTransitionComplete: true, // 필요에 따라 변경
   });
 
+  // 컴포넌트 마운트 체크
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // 모바일 체크 useEffect
+  useEffect(() => {
+    if (!isMounted) return;
+
+    const checkMobile = () => {
+      const userAgent = window.navigator.userAgent.toLowerCase();
+      const isMobileDevice = /iphone|ipad|ipod|android/.test(userAgent);
+      const isSmallScreen = window.innerWidth <= 768;
+      setIsMobile(isMobileDevice || isSmallScreen);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, [isMounted]);
+
+  // 클라이언트 사이드에서만 렌더링
+  if (!isMounted) {
+    return null; // 또는 로딩 상태를 표시할 수 있습니다
+  }
+ 
   return (
     <PageTransition
       onExitComplete={() => {
         router.push("/portfolio");
       }}
     >
-      <TextScrollAnimations />
+      {!isMobile && <TextScrollAnimations />}
       <div id="contents" suppressHydrationWarning={true}>
         <div className="section bg-left-pupple section-type-01">
-          {/*  gradient-text */}
-          <div className="section-con sticky-block">
-            <h2
+          <div className="z-50 section-con sticky-block">
+            {!isMobile ? (
+              <div className="h-full svg-mask-wrapper">
+                <svg viewBox={`0 0 ${viewBoxSize.width} ${viewBoxSize.height}`} height="auto" preserveAspectRatio="none" className="sticky-text">
+                  <defs>
+                    <filter id="text-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                      <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="black" floodOpacity="0.2" />
+                    </filter>
+                    <mask id="text-mask">
+                      <text
+                        ref={textRef}
+                        x="50%"
+                        y="50px"
+                        dominantBaseline="middle"
+                        fill="#ffffff"
+                        className="text-mask"
+                      >
+                        <tspan className="line-1" dy="10px">Stories </tspan>
+                        <tspan className="line-1-sub" dy="10px">that</tspan>
+                        <tspan x="50%" dy="80px" className="line-2">Move Your Heart</tspan>
+                      </text>
+                    </mask>
+                  </defs>
+                  <text
+                    x="50%"
+                    y="50px"
+                    dominantBaseline="middle"
+                    fill="#000000"
+                    className="text-mask"
+                    filter="url(#text-shadow)"
+                  >
+                    <tspan className="line-1" dy="10px">Stories </tspan>
+                    <tspan className="line-1-sub" dy="10px">that</tspan>
+                    <tspan x="50%" dy="80px" className="line-2">Move Your Heart</tspan>
+                  </text>
+                  <foreignObject
+                    x="0"
+                    y="0"
+                    width="100%"
+                    height="100%"
+                    mask="url(#text-mask)"
+                    className="video-mask"
+                  >
+                    <video
+                      src="/images/bg-01.mp4"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
+                  </foreignObject>
+                </svg>
+              </div>
+            ) : (
+              <h2
                 className="content-title section-title" 
                 data-splitting
                 data-title-main
-            >
+              >
                 Stories <span className="sub">that</span> <br /> Move Your Heart
-            </h2>
+              </h2>
+            )}
             <p
               className="content-title sub-title "
               data-splitting
               data-title-main-sub
             >
-                작은 감동으로 당신의 마음을 움직이는 이야기
+              작은 감동으로 당신의 마음을 움직이는 이야기
             </p>
             <p
-              className="text-center content-title text-content"
+              className="content-title text-content"
               data-splitting
               data-title-main-content
             >
@@ -168,7 +264,7 @@ const AboutPage = () => {
                 data-splitting
                 data-effect19
             >
-                Designing <span className="sub">the</span> Future <span className="sub">with</span> <br /> Technology <span className="sub">and</span> Creativity
+                Designing <span className="sub">the</span>  Future <span className="sub">with</span> <br /> Technology <span className="sub">and</span> Creativity
                 
             </h2>
             <p
@@ -190,7 +286,7 @@ const AboutPage = () => {
           </div>
         </div>
         
-        <div className="section section-black section-type-04" ref={parentDivRef}>
+        <div className="overflow-hidden section section-black section-type-04" ref={parentDivRef}>
           <CubeAnimation ref={parentDivRef} />
           <div className="section-con">
             <h2
@@ -226,21 +322,21 @@ const AboutPage = () => {
             <h2
                 className="text-white content-title section-title-sm "
                 data-splitting
-                data-effect23
+                data-section05
             >
               Design <span className="sub">that</span> Defines Value
             </h2>
             <p
               className="content-title sub-title"
               data-splitting
-              data-effect233
+              data-section05-sub
             >
                 디자인으로 차별화된 가치를 만듭니다 
             </p>
             <p
               className="text-center content-title text-content"
               data-splitting
-              data-effect233
+              data-section05-con
             >
               아름답고 세련된 디자인은 사용자와의 첫 만남부터 깊은 인상을 남기며 차별화된 가치를 전달합니다.  <br />
               섬세하게 설계된 디자인을 통해 보는 즐거움과 탁월한 사용성을 동시에 제공합니다.  <br />
@@ -257,21 +353,21 @@ const AboutPage = () => {
             <h2
                 className="text-white content-title section-title-sm "
                 data-splitting
-                data-effect18
+                data-effect19
             >
               Turning Ideas <span className="sub">into</span> Reality
             </h2>
             <p
               className="content-title sub-title gradient-text"
               data-splitting
-              data-effect18
+              data-effect19
             >
               한계를 넘어 새로운 가능성을 열어보세요.
             </p>
             <p
               className="text-center content-title text-content"
               data-splitting
-              data-effect18
+              data-effect25
             >
               당신이 꿈꾸는 아이디어와 비전을 현실로 구현하기 위해 창의성과 기술력을 아낌없이 발휘합니다.  <br />
               긴밀한 소통과 깊이 있는 이해를 바탕으로, 당신의 상상을 뛰어넘는 놀라운 결과물을 선사합니다.  <br />
