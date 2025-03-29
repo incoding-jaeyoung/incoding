@@ -1338,7 +1338,7 @@ transform: translateX(100%);
   .svg-box svg circle {stroke-width: 2px;}
 }
 
-.contact-section .section-con{min-height: 110dvh; height: 110dvh; overflow: hidden; }
+.contact-section .section-con{min-height: 100lvh; height: 100lvh; overflow: hidden; }
 
 
 
