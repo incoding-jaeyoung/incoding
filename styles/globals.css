@@ -235,13 +235,13 @@ svg path{will-change: stroke-dashoffset; transform: translate3d(0, 0, 0);}
 .svg-box svg rect,
 .svg-box svg circle {
   /* filter: drop-shadow(12px 12px 13px rgba(0,0,0,0.3)); */
-  fill:none;
+  /* fill:none; */
  
 }
-.svg-box.svg-round{border-radius: 50%; backdrop-filter: blur(8px)}
-.svg-box.svg-round-square{border-radius:20%; backdrop-filter: blur(8px);height: 100%; width: 100%;}
-.svg-box.svg-round-1{border-radius:10% 50% 50% 50%; backdrop-filter: blur(8px); }
-.svg-box.svg-round-4{width: 350%; backdrop-filter: blur(8px); border-radius:200rem; z-index: 50 !important;}
+.svg-box.svg-round{border-radius: 50%; backdrop-filter: blur(8px); aspect-ratio: 1/1 !important;}
+.svg-box.svg-round-square{border-radius:30rem; backdrop-filter: blur(8px);height: 100%; width: 100%;aspect-ratio: 1/1.2 !important;}
+.svg-box.svg-round-1{border-radius:10% 50% 50% 50%; backdrop-filter: blur(8px); aspect-ratio: 1/1 !important;}
+.svg-box.svg-round-4{width: 370%; backdrop-filter: blur(8px); border-radius:500rem; z-index: 50 !important;}
 
 .svg-box.svg-xs{ z-index: 20;}
 .svg-box.svg-sm{ z-index: 30;}
@@ -1101,6 +1101,7 @@ transform: translateX(100%);
   
   
 }
+.sticky-text{}
 .svg-mask-wrapper {
     
   position: relative;
@@ -1109,8 +1110,10 @@ transform: translateX(100%);
   padding: 0 5%;
   .video-mask{width: 100%; height: 100%; object-fit: cover; overflow: hidden; display: flex; align-items: center; justify-content: center;}
   .video-mask video{width: 100%; height: 100%; object-fit: cover; overflow: hidden; display: flex; align-items: center; justify-content: center;}
+  
   svg {
-    margin-top: 10%; 
+    margin-top: 15%; 
+    
   }
   .text-mask{font-weight: 900; text-anchor:middle;}
   .text-mask .line-1 {

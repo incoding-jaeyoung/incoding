@@ -117,7 +117,6 @@ const useGsapAnimation = ({
             end: "bottom top",
             scrub: 1,
             toggleActions: "play none play reverse",
-            markers: true,
           },
         });
       });

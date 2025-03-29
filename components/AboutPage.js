@@ -290,7 +290,7 @@ const AboutPage = () => {
           <CubeAnimation ref={parentDivRef} />
           <div className="section-con">
             <h2
-                className="content-title section-title-sm gradient-text"
+                className="content-title section-title-sm"
                 data-splitting
                 data-effect19
             >
@@ -298,7 +298,7 @@ const AboutPage = () => {
               
             </h2>
             <p
-              className="content-title sub-title gradient-text"
+              className="content-title sub-title gradient-text-01"
               data-splitting
               data-effect19
             >
@@ -327,7 +327,7 @@ const AboutPage = () => {
               Design <span className="sub">that</span> Defines Value
             </h2>
             <p
-              className="content-title sub-title"
+              className="content-title sub-title gradient-text"
               data-splitting
               data-section05-sub
             >

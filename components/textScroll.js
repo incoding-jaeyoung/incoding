@@ -362,7 +362,6 @@ const TextScrollAnimations = () => {
                   start: "top top",
                   end: "top+=70% top",
                   scrub: true,
-                  markers: true,
                 },
               },
             );
@@ -399,7 +398,6 @@ const TextScrollAnimations = () => {
                   start: "top+=50% top",
                   end: "top+=120% top",
                   scrub: true,
-                  markers: true,
                 },
               },
             );
@@ -436,7 +434,6 @@ const TextScrollAnimations = () => {
                   start: "top+=100% top",
                   end: "top+=180% top",
                   scrub: true,
-                  markers: true,
                 },
               },
             );

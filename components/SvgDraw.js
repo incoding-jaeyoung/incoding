@@ -25,15 +25,15 @@ const SvgDraw = () => {
       { id: 'grad3', color1: '#80D0C7', color2: '#0093E9', opacity1: '0.4', opacity2: '0.2' }
     ];
 
-    // gradients.forEach(({ id, color1, color2, opacity1, opacity2 }) => {
-    //   const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
-    //   gradient.setAttribute("id", id);
-    //   gradient.innerHTML = `
-    //     <stop offset="0%" stop-color="${color1}" stop-opacity="${opacity1}"/>
-    //     <stop offset="100%" stop-color="${color2}" stop-opacity="${opacity2}"/>
-    //   `;
-    //   defs.appendChild(gradient);
-    // });
+    gradients.forEach(({ id, color1, color2, opacity1, opacity2 }) => {
+      const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+      gradient.setAttribute("id", id);
+      gradient.innerHTML = `
+        <stop offset="0%" stop-color="${color1}" stop-opacity="${opacity1}"/>
+        <stop offset="100%" stop-color="${color2}" stop-opacity="${opacity2}"/>
+      `;
+      defs.appendChild(gradient);
+    });
 
     svg.appendChild(defs);
     document.body.appendChild(svg);
@@ -55,9 +55,9 @@ const SvgDraw = () => {
 
       let scaleRange;
       if (isLarge) {
-        scaleRange = [0.8, 1.2];
+        scaleRange = [0.7, 0.9];
       } else if (isNormal) {
-        scaleRange = [0.5, 0.8];
+        scaleRange = [0.5, 0.7];
       } else if (isSmall) {
         scaleRange = [0.3, 0.5];
       } else if (isXsmall) {
@@ -353,7 +353,7 @@ const SvgDraw = () => {
       // SVG 애니메이션 초기화
       const svg = initializeAnimations();
       // 파티클 시스템 초기화
-      // particleCleanup = initParticleSystem();
+      particleCleanup = initParticleSystem();
     }, 600);
 
     return () => {
@@ -386,7 +386,7 @@ const SvgDraw = () => {
         {
           selector: ".svg-ani-1",
           duration:1000,
-          delay: 0,
+          delay:1,
           direction: "easeInOut",
         },
       ];
@@ -418,7 +418,7 @@ const SvgDraw = () => {
           if (target instanceof SVGGeometryElement) { // 요소가 렌더링되었는지 확인
             const trigger = ScrollTrigger.create({
               trigger: target,
-              start: "top 100%",
+              start: "top 80%",
               onEnter: () => {
                 requestAnimationFrame(() => { // requestAnimationFrame으로 애니메이션 시작
                   if (target.getBBox().width > 0 && target.getBBox().height > 0) {
@@ -593,7 +593,7 @@ const SvgDraw = () => {
           <path
             d="M199.96 6.95C196.81 58.69 153.13 99.69 100 99.69C46.87 99.69 3.19 58.69 0.04 6.95C-0.14 4.03 2.69 1.6 6.12 1.6H193.88C197.31 1.6 200.14 4.03 199.96 6.95Z"
             strokeWidth="1"
-            className="svg-ani-25"
+            className="svg-ani-1"
             stroke="url(#gradient-01)"
           />
         </svg>
@@ -607,7 +607,7 @@ const SvgDraw = () => {
           <path
             d="M0.55 15.42L0.55 100C0.55 154.92 45.09 199.45 100 199.45C154.92 199.45 199.45 154.92 199.45 100C199.45 45.09 154.92 0.55 100 0.55L15.42 0.55C7.24 0.55 0.55 7.24 0.55 15.42Z"
             strokeWidth="1"
-            className="svg-ani-25"
+            className="svg-ani-1"
             stroke="url(#gradient-01)"
           ></path>
         </svg>
@@ -617,7 +617,7 @@ const SvgDraw = () => {
           <path
             d="M14.19 0.69L14.18 0.69C8.8 -0.87 3.48 3.81 3.33 10.25L0.52 129.34C0.39 135.48 4.27 140.78 10.37 140.94L193.41 147.5C199.51 147.67 204.01 142.65 204.15 136.51L206.04 64.93C206.18 60.3 203.12 56.03 198.84 54.85L198.84 54.85L106.56 27.8L14.19 0.69Z"
             strokeWidth="1"
-            className="svg-ani-25"
+            className="svg-ani-1"
             stroke="url(#gradient-01)"
           />
         </svg>
@@ -629,7 +629,7 @@ const SvgDraw = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <circle
-            className="svg-ani-15"
+            className="svg-ani-1"
             cx="100"
             cy="100"
             r="98.62"
@@ -645,7 +645,7 @@ const SvgDraw = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <circle
-            className="svg-ani-15"
+            className="svg-ani-1"
             cx="100"
             cy="100"
             r="98.62"
@@ -663,7 +663,7 @@ const SvgDraw = () => {
           <path
             d="M199.96 6.95C196.81 58.69 153.13 99.69 100 99.69C46.87 99.69 3.19 58.69 0.04 6.95C-0.14 4.03 2.69 1.6 6.12 1.6H193.88C197.31 1.6 200.14 4.03 199.96 6.95Z"
             strokeWidth="1"
-            className="svg-ani-25"
+            className="svg-ani-1"
             stroke="url(#gradient-02)"
           />
         </svg>
@@ -675,7 +675,7 @@ const SvgDraw = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <circle
-            className="svg-ani-15"
+            className="svg-ani-1"
             cx="100"
             cy="100"
             r="98.62"
@@ -697,7 +697,7 @@ const SvgDraw = () => {
             height="100"
             rx="50"
             strokeWidth="1"
-            className="svg-ani-15"
+            className="svg-ani-1"
             stroke="url(#gradient-01)"
           />
         </svg>
@@ -711,7 +711,7 @@ const SvgDraw = () => {
           <path
             d="M191.13 199.58H8.47C4.02 199.58 1 196.56 1 192.19V8.59C1 1.42 9.08 -2.17 14.18 2.91L197.09 185.82C202.17 190.91 198.58 199.58 191.13 199.58Z"
             strokeWidth="1"
-            className="svg-ani-25"
+            className="svg-ani-1"
           />
         </svg>
       </div>
@@ -723,7 +723,7 @@ const SvgDraw = () => {
           className="svg-200"
         >
           <rect
-            className="svg-ani-15"
+            className="svg-ani-1"
             x="1"
             y="1"
             width="198"
@@ -741,7 +741,7 @@ const SvgDraw = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <circle
-            className="svg-ani-15"
+            className="svg-ani-1"
             cx="100"
             cy="100"
             r="98.62"
@@ -756,7 +756,7 @@ const SvgDraw = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <circle
-            className="svg-ani-15"
+            className="svg-ani-1"
             cx="100"
             cy="100"
             r="98.62"
@@ -772,7 +772,7 @@ const SvgDraw = () => {
           className=""
         >
           <rect
-            className="svg-ani-15"
+            className="svg-ani-1"
             x="1"
             y="1"
             width="198"
@@ -790,7 +790,7 @@ const SvgDraw = () => {
           className=""
         >
           <rect
-            className="svg-ani-15"
+            className="svg-ani-1"
             x="1"
             y="1"
             width="198"
@@ -805,7 +805,7 @@ const SvgDraw = () => {
           <path
             d="M14.19 0.69L14.18 0.69C8.8 -0.87 3.48 3.81 3.33 10.25L0.52 129.34C0.39 135.48 4.27 140.78 10.37 140.94L193.41 147.5C199.51 147.67 204.01 142.65 204.15 136.51L206.04 64.93C206.18 60.3 203.12 56.03 198.84 54.85L198.84 54.85L106.56 27.8L14.19 0.69Z"
             strokeWidth="1"
-            className="svg-ani-25"
+            className="svg-ani-1"
             stroke="url(#gradient-01)"
           />
         </svg>
@@ -818,7 +818,7 @@ const SvgDraw = () => {
           className="svg-200"
         >
           <rect
-            className="svg-ani-15"
+            className="svg-ani-1"
             x="1"
             y="1"
             width="198"
@@ -829,7 +829,7 @@ const SvgDraw = () => {
           />
         </svg>
       </div>
-      <div className="svg-box svg-md about-svg-01">
+      {/* <div className="svg-box svg-md about-svg-01">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 200 200"
@@ -940,7 +940,7 @@ const SvgDraw = () => {
             stroke="url(#gradient-01)"
           />
         </svg>
-      </div>
+      </div> */}
       {/* <div className="svg-box el-33 about-svg">
         <svg
           viewBox="0 0 200 200"
