@@ -55,7 +55,7 @@ body{
   background-color: var(--dark-purple);
   color: #fff;
   @apply relative flex flex-col flex-grow px-10 overflow-hidden md:px-50;
-  min-height: 100dvh; max-height: 100dvh; perspective: 1000px;transform-style: preserve-3d;
+  min-height: 100lvh; max-height: 100lvh; perspective: 1000px;transform-style: preserve-3d;
 }
 .main .contents{position: relative; z-index: 10; width: 100%;
   @apply flex flex-col flex-grow relative z-10 items-center justify-center
