@@ -951,16 +951,15 @@ top: 0;
 .chat-btn:hover span {background: var(--inkwell);  color: #fff;}
 .chat-btn:hover span svg path{fill: #fff;}
 .chat {
-  
   margin: 0 auto;
   border: 1px solid #ddd;
   border-radius: 8px 0 0 8px;
   overflow: hidden;
   position: fixed;
   top:0;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
-  bottom: 0;
   right: 0;
   width: 500px;
   z-index: 1000;
@@ -979,14 +978,17 @@ transform: translateX(100%);
     button svg{width: 100%; height: 100%;}
   }
   .messages {
+    flex: 1 1 auto;
     padding: 10px;
+    min-height: 0;
     /* height: 300px; */
     flex-grow: 1;
-    overflow-y: auto;
+    overflow-y: scroll;
     background-color:rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
 
     .message {
+      position: relative;
       display: flex;
       align-items: flex-start;
       margin-bottom: 10px;
@@ -1028,7 +1030,7 @@ transform: translateX(100%);
     }
   }
 
-  form {
+  .chat-form {
     display: flex;
     padding: 10px;
     border-top: 1px solid #ddd;
@@ -1040,6 +1042,8 @@ transform: translateX(100%);
       border: 1px solid #ccc;
       border-radius: 4px;
       margin-right: 10px;
+      flex-grow: 1;
+      width: 100%;
       &:focus{outline: none;}
     }
 
@@ -1222,8 +1226,12 @@ transform: translateX(100%);
 .m-view{display: none;}
 @media (max-width: 768px) {
   .m-view{display: block;}
+  .chat input[type="text"],
+.chat textarea {
+  font-size: 16px !important;
+}
   .chat {
-    width: 100%;
+    width:100%;
   }
   .chat-btn{
     right: 10px;

@@ -267,7 +267,7 @@ const Chat = () => {
             <FontAwesomeIcon icon={faXmark} />
           </button>
         </div>
-        <div className="messages">
+        <div className="messages" data-lenis-prevent>
           {messages.map((msg, index) => (
             <div key={index} className={`message ${msg.role}`}>
               {msg.role === "assistant" && (
@@ -283,7 +283,7 @@ const Chat = () => {
           ))}
           <div ref={messagesEndRef} />
         </div>
-        <form onSubmit={handleSubmit}>
+        <form className="chat-form" onSubmit={handleSubmit}>
           <input
             type="text"
             value={input}
