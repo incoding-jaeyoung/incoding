@@ -16,14 +16,24 @@ const BgInk = () => {
       return;
     }
     gsap.registerPlugin(ScrollTrigger);
-
+    
+    const preloadImages = () => {
+      for (let i = 1; i <= frameCount; i++) {
+        const img = new Image();
+        const frameNumber = i.toString().padStart(5, "0");
+        img.src = `/images/frames/${frameNumber}.webp`;
+      }
+    };
+    
+    preloadImages(); // ✅ 프리로드 실행
+    
     const updateImage = (index) => {
       const frameNumber = index.toString().padStart(5, '0');
       if (imageRef.current) {
-        imageRef.current.src = `/images/frames/${frameNumber}.jpg`;
+        imageRef.current.src = `/images/frames/${frameNumber}.webp`;
       }
     };
-
+    
     updateImage(1); // 최초 프레임
 
     let trigger;
