@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 const CustomCursor = dynamic(() => import('../components/CustomCursor'), {
   ssr: false,
 });
+import Head from "../components/Head";
 import Audio from "../components/Audio";
 import Menu from "../components/MenuBlock";
 import Chat from "../components/Chat";
@@ -181,7 +182,6 @@ export default function RootLayout({ children }) {
 
   useEffect(() => {
     const handleResize = () => {
-      console.log("[ScrollTrigger] refreshing due to resize or mobile toolbar shift");
       ScrollTrigger.refresh();
     };
 
@@ -197,43 +197,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" user-scalable="no" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="Author" content="인코딩" />
-        <meta
-          name="description"
-          content="인코딩은 전문적인 애니메이션 및 모션 그래픽 서비스를 제공하는 리더입니다. 우리는 창의적인 시각효과와 혁신적인 디자인으로 고객의 웹사이트를 돋보이게 합니다. 최신 기술을 활용하여 브랜드의 메시지를 시각적으로 전달하고 사용자의 관심을 끌어낼 수 있습니다."
-        />
-        <meta
-          name="keywords"
-          content="GSAP,Three.js, 모션스크립트, 마이크로사이트, 웹사이트 제작, 웹디자인, 웹개발, 커스텀 웹사이트, 디지털 마케팅 에이전시, 온라인 프레젠테이션, 창의적인 웹디자인, 전문적인 웹개발 서비스"
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="인코딩" />
-        <meta property="og:url" content="http://incoding.co.kr" />
-        <meta property="og:image" content="" />
-        <meta
-          property="og:description"
-          content="인코딩은 전문적인 애니메이션 및 모션 그래픽 서비스를 제공하는 리더입니다. 우리는 창의적인 시각효과와 혁신적인 디자인으로 고객의 웹사이트를 돋보이게 합니다. 최신 기술을 활용하여 브랜드의 메시지를 시각적으로 전달하고 사용자의 관심을 끌어낼 수 있습니다."
-        />
-        <link rel="canonical" href="http://incoding.co.kr" />
-        {/* <link rel="shortcut icon" href="" /> */}
-        <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true"></link>
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet"></link>
-        <script
-          src="https://cdnjs.cloudflare.com/ajax/libs/packery/2.1.2/packery.pkgd.min.js"
-          defer
-        ></script>
+        <Head />
       </head>
       <body suppressHydrationWarning={true}>
         <AnimatePresence mode="wait" initial={false}>
-          {/* {isContactPage ? (
-            <>{children}</>
-          ) : ( */}
             <LenisProvider ref={lenisRef}>{children}</LenisProvider>
-          {/* )} */}
         </AnimatePresence>
         <CustomCursor />
         {pathname !== "/" && <Audio />}

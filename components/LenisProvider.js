@@ -28,13 +28,11 @@ const LenisProvider = forwardRef(({ children }, ref) => {
 
   useImperativeHandle(ref, () => ({
     stop: () => {
-      console.log("Lenis scroll stopped");
       if (lenisRef.current) {
         lenisRef.current.stop();
       }
     },
     start: () => {
-      console.log("Lenis scroll started");
       if (lenisRef.current) {
         lenisRef.current.start();
         
