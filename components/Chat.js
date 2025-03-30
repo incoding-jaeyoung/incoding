@@ -4,6 +4,8 @@ import gsap from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faFaceSmile } from "@fortawesome/free-regular-svg-icons";
+require('dotenv').config();
+
 const Chat = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [input, setInput] = useState("");
@@ -105,86 +107,92 @@ const Chat = () => {
     setMessages([...messages, userMessage]);
 
     try {
-      const response = await fetch(
-        "https://api.openai.com/v1/chat/completions",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, // 여기에 OpenAI API 키를 입력하세요.
-          },
-          body: JSON.stringify({
-            model: "gpt-4o",
-            messages: [
-              ...messages,
-              userMessage,
-              {
-                role: "system",
-                content: `
-                우리의 업체명은 인코딩(Incoding) 입니다.
-            
-                회사 정보 및 서비스에 대해 전문적인 답변을 제공해야 합니다.
-            
-                회사 소개
-                저희는 주로 중대기업의 오피셜 사이트, 랜딩 페이지, 마이크로사이트 등을 전문적으로 제작해 왔습니다.  
-                고객이 원하는 맞춤형 웹사이트를 제작하며, UI/UX 디자인과 최신 기술을 활용한 인터랙티브한 웹 경험을 제공합니다.
-            
-                주요 고객사
-                일반 대기업: 현대백화점, LG전자, 삼성SDS, SK텔레콤, 기아자동차, 이마트, 엔비디아, 오클리, 골프존, 리바이스, 교보문고, 아모레퍼시픽, 네파 등  
-                공공기관 및 정부기관: 국무조정실, 나눔로또, 대한무역투자진흥공사, 한국보건산업진흥원, 한국전력공사, 예금보험공사, 서대문구청, 은평구청 등  
-                그 외: 다양한 중소기업 및 스타트업 사이트 제작
-            
-                제작 방식 및 강점
-                - 사용자 친화적인 인터페이스: 직관적인 UI/UX 설계를 통해 방문자가 쉽게 원하는 정보를 찾을 수 있도록 구성  
-                - 애니메이션과 인터랙션 활용: GSAP, Three.js 등을 활용하여 동적인 웹 경험을 제공합니다.  
-                - 기획 및 디자인 컨펌 가능: 프로젝트 진행 전에 메인 페이지, 사이트 레이아웃, 주요 페이지 디자인을 컨펌할 수 있습니다.  
-                - 맞춤형 개발: Vue.js, React, PHP 백엔드 개발 등 최신 기술을 사용하여 고객 요구사항을 반영한 커스텀 웹사이트를 제작합니다.  
-                - 차별화된 웹사이트 제작: 단순한 웹사이트가 아닌, 인터랙티브하고 독창적인 웹사이트 제작에 강점을 가지고 있습니다.  
-                - 프로젝트 맞춤형 솔루션: 고객의 니즈에 맞춘 벤치마킹 및 창의적 해결책을 제공합니다.  
-            
-                포트폴리오
-                저희가 제작한 웹사이트들은 기업의 브랜드 가치를 극대화하며, 세련된 디자인과 최적의 사용자 경험을 제공합니다.  
-                아래는 저희가 직접 제작하고 현재 운영 중인 대표적인 웹사이트입니다.
-            
-                Standard Energy - https://stndenergy.com/ko/battery/ (반응형) 기업 오피셜 사이트  
-                Graph-ite - https://graph-ite.com/ (적응형) 기업 오피셜 사이트  
-                MMPX - https://mmpx.pdosoft.com/ (적응형) 기업 오피셜 사이트  
-                Design M4 - http://www.designm4.com/ (반응형) 기업 오피셜 사이트  
-                Deep Bio - https://deepbio.co.kr/ (반응형) 기업 오피셜 사이트  
-                Quadro Center - https://quadro.center/ (반응형) 기업 오피셜 사이트  
-                Luritech - http://www.luritech.com/ (반응형) 기업 오피셜 사이트  
-            
-                추가 포트폴리오 사이트:
-                RealSecu - http://www.realsecu.co.kr/kr/index/index (반응형) 보안 솔루션 사이트  
-                Standard Energy - https://stndenergy.com/ (반응형) 에너지 솔루션 사이트  
-                Graphite - https://graph-ite.com/ (적응형) 모션 그래픽 스튜디오 사이트  
-                KGM Motors Online Store - https://buy.kg-mobility.com/ (반응형) 자동차 온라인 스토어  
-                ME2ON - https://www.me2on.com/ (반응형) 모바일 게임 및 엔터테인먼트 사이트  
-            
-                중요한 응답 가이드라인
-                - 사용자의 질문이 웹사이트 제작과 관련된 경우에만 답변하세요.
-                - 실제 개발 방법, 코드 작성법에 대한 질문에는 답변하지 마세요. 대신, 우리가 제공하는 서비스를 설명해주세요.
-                - 그림을 그리거나 코드를 작성하는 것은 제공하지 않습니다.
-                - 사용자가 연락처를 요청하면, 아래의 정보를 제공하세요.
-                  이메일: contact@incoding.co.kr  
-                  전화번호: 010-8584-2855  
-                - 답변은 한국어로 하며, 답변은 최대한 간결하게 200자 이내로 해주세요.
-                - 연락처는 꼭! 연락처를 물어볼때만 알려주세요.
-                - 포트폴리오를 제공할때 사이트 주소가 있다면 링크를 함께 제공해 주세요 그리고 링크가 두번씩 나오지 않도록해주세요 바로가기는 제공하지 않습니다.
-                - 사이트의 주소는 한줄씩 줄바꿈해서 적어주세요.
-                - 답변을 할때는 로봇이 아닌 인간이 말하는 것처럼 딱딱하지 않고 친근하지만 예의있게 말해주세요.
-                - 대답하는 사용자가 읽기 쉽도록 줄바꿈을 해주세요.
-                - 연락처를 물어보면 이메일 주소를 알려주고 전화번호가 필요하다고 하면 그때 알려주도록 해.
-                `,
-              },
-            ],
-          }),
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({
+          messages: [
+            ...messages,
+            userMessage,
+            {
+              role: "system",
+              content: `
+              우리의 업체명은 인코딩(Incoding) 입니다.
+          
+              회사 정보 및 서비스에 대해 전문적인 답변을 제공해야 합니다.
+          
+              회사 소개
+              저희는 주로 중대기업의 오피셜 사이트, 랜딩 페이지, 마이크로사이트 등을 전문적으로 제작해 왔습니다.  
+              고객이 원하는 맞춤형 웹사이트를 제작하며, UI/UX 디자인과 최신 기술을 활용한 인터랙티브한 웹 경험을 제공합니다.
+          
+              주요 고객사
+              일반 대기업: 현대백화점, LG전자, 삼성SDS, SK텔레콤, 기아자동차, 이마트, 엔비디아, 오클리, 골프존, 리바이스, 교보문고, 아모레퍼시픽, 네파 등  
+              공공기관 및 정부기관: 국무조정실, 나눔로또, 대한무역투자진흥공사, 한국보건산업진흥원, 한국전력공사, 예금보험공사, 서대문구청, 은평구청 등  
+              그 외: 다양한 중소기업 및 스타트업 사이트 제작
+          
+              제작 방식 및 강점
+              - 사용자 친화적인 인터페이스: 직관적인 UI/UX 설계를 통해 방문자가 쉽게 원하는 정보를 찾을 수 있도록 구성  
+              - 애니메이션과 인터랙션 활용: GSAP, Three.js 등을 활용하여 동적인 웹 경험을 제공합니다.  
+              - 기획 및 디자인 컨펌 가능: 프로젝트 진행 전에 메인 페이지, 사이트 레이아웃, 주요 페이지 디자인을 컨펌할 수 있습니다.  
+              - 맞춤형 개발: Vue.js, React, PHP 백엔드 개발 등 최신 기술을 사용하여 고객 요구사항을 반영한 커스텀 웹사이트를 제작합니다.  
+              - 차별화된 웹사이트 제작: 단순한 웹사이트가 아닌, 인터랙티브하고 독창적인 웹사이트 제작에 강점을 가지고 있습니다.  
+              - 프로젝트 맞춤형 솔루션: 고객의 니즈에 맞춘 벤치마킹 및 창의적 해결책을 제공합니다.  
+          
+              포트폴리오
+              저희가 제작한 웹사이트들은 기업의 브랜드 가치를 극대화하며, 세련된 디자인과 최적의 사용자 경험을 제공합니다.  
+              아래는 저희가 직접 제작하고 현재 운영 중인 대표적인 웹사이트입니다.
+          
+              Standard Energy - https://stndenergy.com/ko/battery/ (반응형) 기업 오피셜 사이트  
+              Graph-ite - https://graph-ite.com/ (적응형) 기업 오피셜 사이트  
+              MMPX - https://mmpx.pdosoft.com/ (적응형) 기업 오피셜 사이트  
+              Design M4 - http://www.designm4.com/ (반응형) 기업 오피셜 사이트  
+              Deep Bio - https://deepbio.co.kr/ (반응형) 기업 오피셜 사이트  
+              Quadro Center - https://quadro.center/ (반응형) 기업 오피셜 사이트  
+              Luritech - http://www.luritech.com/ (반응형) 기업 오피셜 사이트  
+          
+              추가 포트폴리오 사이트:
+              RealSecu - http://www.realsecu.co.kr/kr/index/index (반응형) 보안 솔루션 사이트  
+              Standard Energy - https://stndenergy.com/ (반응형) 에너지 솔루션 사이트  
+              Graphite - https://graph-ite.com/ (적응형) 모션 그래픽 스튜디오 사이트  
+              KGM Motors Online Store - https://buy.kg-mobility.com/ (반응형) 자동차 온라인 스토어  
+              ME2ON - https://www.me2on.com/ (반응형) 모바일 게임 및 엔터테인먼트 사이트  
+          
+              중요한 응답 가이드라인
+              - 사용자의 질문이 웹사이트 제작과 관련된 경우에만 답변하세요.
+              - 실제 개발 방법, 코드 작성법에 대한 질문에는 답변하지 마세요. 대신, 우리가 제공하는 서비스를 설명해주세요.
+              - 그림을 그리거나 코드를 작성하는 것은 제공하지 않습니다.
+              - 사용자가 연락처를 요청하면, 아래의 정보를 제공하세요.
+                이메일: contact@incoding.co.kr  
+                전화번호: 010-8584-2855  
+              - 답변은 한국어로 하며, 답변은 최대한 간결하게 200자 이내로 해주세요.
+              - 연락처는 꼭! 연락처를 물어볼때만 알려주세요.
+              - 포트폴리오를 제공할때 사이트 주소가 있다면 링크를 함께 제공해 주세요 그리고 링크가 두번씩 나오지 않도록해주세요 바로가기는 제공하지 않습니다.
+              - 사이트의 주소는 한줄씩 줄바꿈해서 적어주세요.
+              - 답변을 할때는 로봇이 아닌 인간이 말하는 것처럼 딱딱하지 않고 친근하지만 예의있게 말해주세요.
+              - 대답하는 사용자가 읽기 쉽도록 줄바꿈을 해주세요.
+              - 연락처를 물어보면 이메일 주소를 알려주고 전화번호가 필요하다고 하면 그때 알려주도록 해.
+              `,
+            },
+          ],
+        }),
+      });
+
+      console.log(`Response status: ${response.status}`);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
       const data = await response.json();
-      const botMessage = data.choices[0].message;
-      setMessages([...messages, userMessage, botMessage]);
+
+      if (data.choices && data.choices.length > 0) {
+        const botMessage = data.choices[0].message;
+        setMessages([...messages, userMessage, botMessage]);
+      } else {
+        console.error("No choices available in the response");
+      }
     } catch (error) {
       console.error("Error fetching GPT response:", error);
     }

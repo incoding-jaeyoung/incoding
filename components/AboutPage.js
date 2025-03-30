@@ -139,7 +139,8 @@ const AboutPage = () => {
         router.push("/portfolio");
       }}
     >
-      {!isMobile && <TextScrollAnimations />}
+      {/* {!isMobile && <TextScrollAnimations />} */}
+      <TextScrollAnimations />
       <div id="contents" suppressHydrationWarning={true}>
         <div className="section bg-left-pupple section-type-01">
           <div className="z-50 section-con sticky-block">

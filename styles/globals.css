@@ -54,8 +54,8 @@ body{
   touch-action: pan-y pinch-zoom;
   background-color: var(--dark-purple);
   color: #fff;
-  @apply relative flex flex-col flex-grow px-10 overflow-hidden md:px-50;
-  min-height: 100lvh; max-height: 100lvh; perspective: 1000px;transform-style: preserve-3d;
+  @apply relative flex flex-col flex-grow px-10 md:px-50;
+  min-height: 100dvh; max-height: 100dvh; perspective: 1000px;transform-style: preserve-3d;
 }
 .main .contents{position: relative; z-index: 10; width: 100%;
   @apply flex flex-col flex-grow relative z-10 items-center justify-center
@@ -423,10 +423,10 @@ svg path{will-change: stroke-dashoffset; transform: translate3d(0, 0, 0);}
 .carousel-item.clone .infoBlock h2{color: #333; font-size: 36rem; padding-top: 20rem; font-weight: 600; padding-left: 30rem; padding-right: 30rem;}
 .carousel-item.clone .detail{display:flex; flex-direction: column; padding: 20rem 50rem; padding-top: 30rem;}
 .carousel-item.clone .detail .detail-image{display:grid; grid-template-columns: 1fr 1fr; gap: 10rem;}
-.carousel-item.clone .detail h3{ color: #000; margin-top: 100rem; font-size: 30rem; font-weight: 500; -webkit-font-smoothing: antialiased;}
+.carousel-item.clone .detail h3{ color: #000; font-size: 30rem; font-weight: 500; -webkit-font-smoothing: antialiased;}
 .carousel-item.clone .detail img{border-radius: 10rem; width: 100%;}
 .carousel-item.clone .detail video{border-radius: 10rem; width: 100%;}
-.carousel-item.clone .detail .text{color: #130032; display:grid; grid-template-columns: 1fr 1fr; gap: 10rem; -webkit-font-smoothing: antialiased;}
+.carousel-item.clone .detail .text{color: #130032; display:grid; grid-template-columns: 1fr 1fr; gap: 10rem; -webkit-font-smoothing: antialiased; margin-bottom: 100rem;}
 .carousel-item.clone .detail .text .summery{display: flex; flex-direction: column; gap: 30rem;}
 .carousel-item.clone .detail .text .info{font-size: 14rem; display: flex; flex-direction: column; gap: 30rem; width: 80%;}
 .carousel-item.clone .detail .text dl{}
@@ -1250,8 +1250,8 @@ transform: translateX(100%);
     transform: rotateY(270deg) translateZ(45vw);
   }
   .section-con{gap: 20px; }
-  .section-con .section-title{font-size:clamp(34px, 100rem, 100rem); line-height:110%; font-weight:700;}
-  .section-con .section-title-sm{font-size:clamp(28px, 80rem, 80rem); line-height:120%; font-weight: 300;  text-align: left;}
+  .section-con .section-title{font-size:clamp(40px, 100rem, 100rem); line-height:110%; font-weight:900;}
+  .section-con .section-title-sm{font-size:clamp(34px, 80rem, 80rem); line-height:120%; font-weight: 300;  text-align: left;}
   .section-con .section-title-sm span.sub{font-size:clamp(20px, 30rem, 30rem);}
   .section-con .sub-title{margin-top: 20rem; font-size:clamp(18px, 30rem, 30rem); text-align: left;}
   .section-con .text-content{font-size:clamp(15px, 20rem, 20rem); text-align: left;}
@@ -1336,6 +1336,14 @@ transform: translateX(100%);
   .svg-box svg path,
   .svg-box svg rect,
   .svg-box svg circle {stroke-width: 2px;}
+  
+  .back-panel .panel-con{height: 20dvh; flex-grow: 1; display: flex; align-items: center; justify-content: center; gap: 20px; opacity: 1; overflow: hidden; width: 100%;}
+  .back-panel .panel-con svg{transform: rotateZ(-180deg);}
+  .back-panel .panel-con.center{margin-top: 0dvh; opacity:1;}
+  .panel-svg{width: 50px;  margin-left: 0rem; }
+  .panel-svg path{stroke-width: 5px;}
+  .panel-svg .svg-back-panel{stroke-width: 10px; stroke-dashoffset:0; stroke-dasharray:0;}
+  .back-panel .panel-con .text{font-size: 50px; font-weight: 700;}
 }
 
 .contact-section .section-con{min-height: 100lvh; height: 100lvh; overflow: hidden; }
@@ -1346,14 +1354,15 @@ transform: translateX(100%);
 @media (max-width: 768px) {
   .carousel-item.clone{padding: 10px; background-color: rgba(255,255,255,0.95);}
   .carousel-item.clone .image{max-height: calc(70dvh); flex: none; margin: 0rem;}
+  /* .carousel-item .image img,.carousel-item .image video{height: auto;} */
   .carousel-item.clone .infoBlock{padding: 0;}
-  .carousel-item.clone .infoBlock h2{color: #000; font-size:20px; padding-top: 0; font-weight: 600; padding-left: 0; padding-right: 0; margin-top: 20px;}
+  .carousel-item.clone .infoBlock h2{color: #000; font-size:20px; padding-top: 0; font-weight: 900; padding-left: 0; padding-right: 0; margin-top: 30px;}
   .carousel-item.clone .detail{display:flex; flex-direction: column; padding:0;}
   .carousel-item.clone .detail .detail-image{display:grid; grid-template-columns: 1fr; gap: 10px;}
-  .carousel-item.clone .detail h3{ color: #000; margin-top: 100rem; font-size:20px; font-weight: 600; -webkit-font-smoothing: antialiased; margin-bottom: 5px;}
+  .carousel-item.clone .detail h3{ color: #000; font-size:20px; font-weight: 600; -webkit-font-smoothing: antialiased; margin-bottom: 5px;}
   .carousel-item.clone .detail img{border-radius: 10rem; width: 100%;}
   .carousel-item.clone .detail video{border-radius: 10rem; width: 100%;}
-  .carousel-item.clone .detail .text{grid-template-columns: 1fr; gap: 10rem;}
+  .carousel-item.clone .detail .text{grid-template-columns: 1fr; gap: 10rem; margin-bottom: 20px;}
   .carousel-item.clone .detail .text .summery{margin-top: 20px; gap: 10px;}
   .carousel-item.clone .detail .text .info{font-size: 14px; margin-top: 20px; width: 100%;}
   .carousel-item.clone .detail .text dl{display: flex; justify-content: space-between; align-items: center;}

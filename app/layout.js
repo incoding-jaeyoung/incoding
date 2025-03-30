@@ -198,7 +198,7 @@ export default function RootLayout({ children }) {
     <html lang="ko">
       <head>
         <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" user-scalable="no" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="Author" content="인코딩" />
         <meta
