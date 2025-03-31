@@ -1164,7 +1164,7 @@ transform: translateX(100%);
   
   .sub-title{  font-weight: 500; margin-top: 20rem;}
 }
-.section-title-sm span.sub{font-size: 30rem; line-height: 100%; letter-spacing: normal;}
+.section-title-sm span.sub{font-size: 40rem; line-height: 100%; letter-spacing: normal;}
 .grid-bg{position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; pointer-events: none; mix-blend-mode:screen; opacity: 0; will-change: transform opacity;}
 .grid-bg video{width: 100%; height: 100%; object-fit: cover;}
 
