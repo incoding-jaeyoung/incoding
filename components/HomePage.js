@@ -14,33 +14,7 @@ const HomePage = () => {
   const logoTextRef = useRef(null);
   const circleTopRef = useRef(null);
   const circleBottomRef = useRef(null);
-  const [showNotice, setShowNotice] = useState(false);
-  const [fadeOut, setFadeOut] = useState(false);
 
-  useEffect(() => {
-    // 모바일 화면 감지
-    const isMobile = window.innerWidth <= 768;
-
-    if (isMobile) {
-      setShowNotice(true);
-
-      // 5초 후에 서서히 사라지도록 설정
-      const timer = setTimeout(() => {
-        setFadeOut(true);
-      }, 4000);
-
-      // 6초 후에 완전히 숨김
-      const hideTimer = setTimeout(() => {
-        setShowNotice(false);
-      }, 5000);
-
-      return () => {
-        clearTimeout(timer);
-        clearTimeout(hideTimer);
-      };
-    }
-  }, []);
-  
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -153,6 +127,8 @@ const HomePage = () => {
     };
   }, [isMounted]);
 
+  
+
   const handlePageTransition = () => {
     if (!isMounted) return;
     
@@ -264,21 +240,7 @@ const HomePage = () => {
             </div>
           </h1>
         </div>
-        <ExploreBtn  onTransitionComplete={handlePageTransition} />
-      </div>
-      <div>
-        {showNotice && (
-          <div
-            className="notice"
-            style={{
-              transition: 'opacity 1s ease-in-out',
-              opacity: fadeOut ? 0 : 1,
-            }}
-          >
-            본 웹사이트는 PC에 최적화 되어있습니다. <br />
-            모바일 화면에서는 퍼포먼스가 저하될 수 있습니다.
-          </div>
-        )}
+        <ExploreBtn onTransitionComplete={handlePageTransition} />
       </div>
     </PageTransition>
   );
