@@ -15,6 +15,7 @@ import Menu from "../components/MenuBlock";
 import Chat from "../components/Chat";
 import "../styles/globals.css";
 import LenisProvider from "../components/LenisProvider"; 
+import { Analytics } from "@vercel/analytics/react"
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
@@ -262,6 +263,7 @@ export default function RootLayout({ children }) {
           </defs>
         </svg>
         {pathname !== "/" && <Chat />}
+        <Analytics />
       </body>
     </html>
   );
