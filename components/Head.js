@@ -11,14 +11,15 @@ const Head = () => (
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#000000" /> 
     <meta name="format-detection" content="telephone=no" /> 
-    
+    <meta name="naver-site-verification" content="a16479f192e48a919ef9e5585873219813618f65" />
+
     <meta
       name="description"
-      content="인코딩은 전문적인 애니메이션 및 모션 그래픽 서비스를 제공하는 리더입니다. 우리는 창의적인 시각효과와 혁신적인 디자인으로 고객의 웹사이트를 돋보이게 합니다. 최신 기술을 활용하여 브랜드의 메시지를 시각적으로 전달하고 사용자의 관심을 끌어낼 수 있습니다."
+      content="인코딩은 웹퍼블리싱, 인터랙티브 웹사이트 제작, 프론트엔드 개발, 모션 그래픽에 특화된 디지털 에이전시입니다. GSAP과 Three.js를 활용한 생동감 있는 인터랙션과 반응형 웹 구현으로 브랜드 가치를 극대화합니다."
     />
     <meta
       name="keywords"
-      content="GSAP,Three.js, SVG 애니메이션, 모션스크립트, 마이크로사이트, 웹사이트 제작, 웹디자인, 웹개발, 커스텀 웹사이트, 디지털 마케팅 에이전시, 온라인 프레젠테이션, 창의적인 웹디자인, 전문적인 웹개발 서비스"
+      content="웹퍼블리싱, 프론트엔드, 인터랙티브 웹, 반응형 웹, GSAP, Three.js, SVG 애니메이션, 모션스크립트, 마이크로사이트, 웹사이트 제작, 웹디자인, 웹개발, 커스텀 웹사이트, 디지털 마케팅 에이전시, 온라인 프레젠테이션, 창의적인 웹디자인, 전문적인 웹개발 서비스"
     />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="인코딩" />
@@ -28,7 +29,7 @@ const Head = () => (
     <meta property="og:image:height" content="630" />
     <meta
       property="og:description"
-      content="인코딩은 전문적인 애니메이션 및 모션 그래픽 서비스를 제공하는 리더입니다. 우리는 창의적인 시각효과와 혁신적인 디자인으로 고객의 웹사이트를 돋보이게 합니다. 최신 기술을 활용하여 브랜드의 메시지를 시각적으로 전달하고 사용자의 관심을 끌어낼 수 있습니다."
+      content="인코딩은 웹퍼블리싱, 인터랙티브 웹사이트 제작, 프론트엔드 개발, 모션 그래픽에 특화된 디지털 에이전시입니다. GSAP과 Three.js를 활용한 생동감 있는 인터랙션과 반응형 웹 구현으로 브랜드 가치를 극대화합니다."
     />
     <meta property="og:site_name" content="인코딩" />
     <meta property="og:locale" content="ko_KR" />

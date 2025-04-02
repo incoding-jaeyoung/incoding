@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://incoding.co.kr
+
+# Sitemaps
+Sitemap: https://incoding.co.kr/sitemap.xml
