@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useImperativeHandle, forwardRef } from "react";
+import React, { useState, useEffect, useImperativeHandle, forwardRef, useMemo } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Lenis from "@studio-freight/lenis";
@@ -14,10 +14,10 @@ const PageTransitionWithLenis = forwardRef(({ children, onExitComplete, disableS
   const [isPageLoaded, setIsPageLoaded] = useState(true);
   const pathname = usePathname();
 
-  const lenis = new Lenis({
+  const lenis = useMemo(() => new Lenis({
     duration: 1.5,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  });
+  }), []);
 
   useImperativeHandle(ref, () => lenis);
 
@@ -108,5 +108,7 @@ const PageTransitionWithLenis = forwardRef(({ children, onExitComplete, disableS
     </motion.div>
   );
 });
+
+PageTransitionWithLenis.displayName = "PageTransitionWithLenis";
 
 export default PageTransitionWithLenis;

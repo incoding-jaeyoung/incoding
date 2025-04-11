@@ -48,4 +48,6 @@ const LenisProvider = forwardRef(({ children }, ref) => {
   return <div>{children}</div>;
 });
 
+LenisProvider.displayName = "LenisProvider";
+
 export default LenisProvider;

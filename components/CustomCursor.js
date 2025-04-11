@@ -16,14 +16,8 @@ const CustomCursor = () => {
       navigator.msMaxTouchPoints > 0
     );
   };
-  
-  // if (typeof window !== 'undefined' && isTouchDevice()) {
-  if (isTouchDevice()) {
-    return null;
-  }
 
   useEffect(() => {
-    // 터치 디바이스면 커서 숨기고 실행하지 않음
     if (isTouchDevice()) {
       const cursor = document.getElementById("custom-cursor");
       if (cursor) {
@@ -51,7 +45,6 @@ const CustomCursor = () => {
     };
 
     const activateCursor = () => {
-      // if (pathname !== '/') return; // 경로가 '/'인 경우 활성화하지 않음
       cursor.classList.remove("active");
       isCursorActive = true;
       document.body.style.cursor = "none"; // 기본 커서를 숨김
@@ -86,7 +79,6 @@ const CustomCursor = () => {
     } else {
       activateCursor(); // 경로가 '/'가 아니면 커서를 활성화
     }
-    // cursor.classList.add('active');
 
     registerEvents();
 

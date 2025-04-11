@@ -2,13 +2,14 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from 'next/image';
 
 const GassMorp = () => {
   return (
     <div className="area">
       <ul className="circles">
         <li>
-          <img src="/images/img-logo.svg" alt="" />
+          <Image src="/images/img-logo.svg" alt="Logo" width={100} height={100} />
         </li>
         <li></li>
         <li></li>
