@@ -3,7 +3,7 @@ import React, { use } from "react"
 import "../../../styles/lab-page.css";
 import LabWrapper from "../../../components/LabWrapper"
 import Image from "next/image"
-
+import Header from "../../../components/Header"
 const posts = [
   {
     slug: "how-to-create-distortion-shaders",
@@ -51,13 +51,16 @@ export default function LabDetailPage(props) {
 
   return (
     <LabWrapper>
-      <div className="lab-page">
-        <h1 className="mb-4 text-3xl font-bold">{post.title}</h1>
-        <Image src={post.thumbnail} alt={post.title} width={800} height={400} className="mb-6 rounded" />
-        <div
-          className="prose prose-lg text-gray-700 max-w-none"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
+      <div id="contents" className="lab-container">
+        <Header />
+        <div className="lab-page-content">
+          <h1 className="mb-4 text-3xl font-bold">{post.title}</h1>
+          <Image src={post.thumbnail} alt={post.title} width={800} height={400} className="mb-6 rounded" />
+          <div
+            className="prose prose-lg text-gray-700 max-w-none"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+        </div>
       </div>
     </LabWrapper>
   )

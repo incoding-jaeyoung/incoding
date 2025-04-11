@@ -1,1 +1,2 @@
-.lab-page{display: flex; flex-direction: column; min-height: 100dvh; background-color: #fff;}
+.lab-container{min-height: 100dvh; background-color: #f7f7f7;}
+.lab-page-list{max-width: 1420px; margin: 0 auto; padding: 0 10px;}

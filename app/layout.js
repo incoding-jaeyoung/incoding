@@ -15,7 +15,16 @@ import Menu from "../components/MenuBlock";
 import Chat from "../components/Chat";
 import "../styles/globals.css";
 import LenisProvider from "../components/LenisProvider"; 
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
+import { Lato } from 'next/font/google';
+
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '700', '900'],
+  style: ['normal', 'italic'],
+  variable: '--font-lato', 
+  display: 'swap',
+});
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
@@ -240,7 +249,7 @@ export default function RootLayout({ children }) {
     }
   }, []);
   return (
-    <html lang="ko">
+    <html lang="ko" className={`${lato.variable}`}>
       <head>
         <Head />
       </head>
@@ -249,7 +258,7 @@ export default function RootLayout({ children }) {
             <LenisProvider ref={lenisRef}>{children}</LenisProvider>
         </AnimatePresence>
         <CustomCursor />
-        {pathname !== "/" && <Audio />}
+        {pathname !== "/" && !pathname.startsWith("/lab") && <Audio />}
         <Menu />
         <div className="frontPanel">
           {pathname === "/" && (

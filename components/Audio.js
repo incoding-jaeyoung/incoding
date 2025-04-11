@@ -19,35 +19,43 @@ const AudioEQ = () => {
   };
 
   const fadeOutVolume = (audioRef, duration, onComplete) => {
-    const step = 0.05;
-    const interval = duration / (1 / step);
-    let currentVolume = audioRef.current.volume;
-
-    const fadeOut = setInterval(() => {
-      currentVolume = Math.max(0, currentVolume - step);
-      audioRef.current.volume = currentVolume;
-
-      if (currentVolume <= 0) {
-        clearInterval(fadeOut);
-        if (onComplete) onComplete();
-      }
-    }, interval);
+  const step = 0.05;
+  const interval = duration / (1 / step);
+  let currentVolume = audioRef.current?.volume || 0;
+ 
+  const fadeOut = setInterval(() => {
+    if (!audioRef.current) {
+      clearInterval(fadeOut);
+      return;
+    }
+    currentVolume = Math.max(0, currentVolume - step);
+    audioRef.current.volume = currentVolume;
+ 
+    if (currentVolume <= 0) {
+      clearInterval(fadeOut);
+      if (onComplete) onComplete();
+    }
+  }, interval);
   };
 
   const fadeInVolume = (audioRef, duration, onComplete) => {
-    const step = 0.05;
-    const interval = duration / (1 / step);
-    let currentVolume = audioRef.current.volume;
-
-    const fadeIn = setInterval(() => {
-      currentVolume = Math.min(1, currentVolume + step);
-      audioRef.current.volume = currentVolume;
-
-      if (currentVolume >= 0.4) {
-        clearInterval(fadeIn);
-        if (onComplete) onComplete();
-      }
-    }, interval);
+  const step = 0.05;
+  const interval = duration / (1 / step);
+  let currentVolume = audioRef.current?.volume || 0;
+ 
+  const fadeIn = setInterval(() => {
+    if (!audioRef.current) {
+      clearInterval(fadeIn);
+      return;
+    }
+    currentVolume = Math.min(1, currentVolume + step);
+    audioRef.current.volume = currentVolume;
+ 
+    if (currentVolume >= 0.4) {
+      clearInterval(fadeIn);
+      if (onComplete) onComplete();
+    }
+  }, interval);
   };
 
   const handleToggleAnimation = () => {
@@ -55,13 +63,13 @@ const AudioEQ = () => {
 
     if (audioRef.current) {
       if (!audioRef.current.paused) {
-        fadeOutVolume(audioRef, 1000, () => {
+        fadeOutVolume(audioRef, 3000, () => {
           audioRef.current.pause();
           setIsPlaying(false);
         });
       } else {
         audioRef.current.play();
-        fadeInVolume(audioRef, 1000, () => {
+        fadeInVolume(audioRef, 3000, () => {
           setIsPlaying(true);
         });
       }
@@ -90,10 +98,33 @@ const AudioEQ = () => {
   }, []);
 
   useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     if (audioRef.current && pathname.startsWith("/lab")) {
       audioRef.current.pause();
       setIsAnimating(false);
       setIsPlaying(false);
+    } else {
+      // lab이 아닐 경우 자동 재생
+      if (audioRef.current.paused) {
+        audioRef.current
+          .play()
+          .then(() => {
+            fadeInVolume(audioRef, 1000);
+            setIsAnimating(true);
+            setIsPlaying(true);
+          })
+          .catch(() => {
+            // 유저 인터랙션 없으면 재생 실패 가능성 있음
+          });
+      }
     }
   }, [pathname]);
 
