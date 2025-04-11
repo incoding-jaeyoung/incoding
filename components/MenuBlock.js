@@ -120,22 +120,26 @@ const Menu = () => {
 
   useEffect(() => {
     if (pathname) {
-      switch (pathname) {
-        case "/":
-          setMenuText("Intro");
-          break;
-        case "/about":
-          setMenuText("About Us");
-          break;
-        case "/portfolio":
-          setMenuText("Our Projects");
-          break;
-        case "/contact":
-          setMenuText("Contact Us");
-          break;
-        default:
-          setMenuText("");
-          break;
+      if (pathname.startsWith("/lab")) {
+        setMenuText("Lab");
+      } else {
+        switch (pathname) {
+          case "/":
+            setMenuText("Intro");
+            break;
+          case "/about":
+            setMenuText("About Us");
+            break;
+          case "/portfolio":
+            setMenuText("Our Projects");
+            break;
+          case "/contact":
+            setMenuText("Contact Us");
+            break;
+          default:
+            setMenuText("incoding");
+            break;
+        }
       }
     }
   }, [pathname]);

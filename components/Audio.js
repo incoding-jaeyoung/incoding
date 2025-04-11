@@ -2,12 +2,14 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
+import { usePathname } from "next/navigation";
 import styles from "../styles/Menu.module.css";
 
 const AudioEQ = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
+  const pathname = usePathname();
 
   const isMobile = () => {
     if (typeof window !== 'undefined') {
@@ -86,6 +88,14 @@ const AudioEQ = () => {
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (audioRef.current && pathname.startsWith("/lab")) {
+      audioRef.current.pause();
+      setIsAnimating(false);
+      setIsPlaying(false);
+    }
+  }, [pathname]);
 
   return (
     <div className={styles["eq"]}>

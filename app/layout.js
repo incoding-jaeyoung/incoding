@@ -23,10 +23,17 @@ export default function RootLayout({ children }) {
   const [panelContent, setPanelContent] = useState(""); // 패널 콘텐츠 상태
   const handlePageChange = () => {
     // 패널 콘텐츠 설정
-    switch (pathname) {
-      case "/":
-        setPanelContent(
-          `<div class="panel-con center">
+    if (pathname.startsWith("/lab")) {
+      setPanelContent(
+        `<div class="panel-con">
+          <div class="text">Lab</div>
+        </div>`
+      );
+    } else {
+      switch (pathname) {
+        case "/":
+          setPanelContent(
+            `<div class="panel-con center">
             <div class="panel-svg">
               <svg viewBox="0 0 201 192" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M106.652 2.8111L195.939 67.6819C199.518 70.2824 201.016 74.8919 199.649 79.0996L165.544 184.063C164.177 188.27 160.256 191.119 155.832 191.119H45.467C41.0428 191.119 37.1217 188.27 35.7546 184.063L1.64997 79.0996C0.282806 74.8919 1.78052 70.2824 5.35981 67.6819L94.6468 2.81109C98.2261 0.210591 103.073 0.210594 106.652 2.8111Z" 
@@ -42,11 +49,11 @@ export default function RootLayout({ children }) {
             </div>
             <div class="text">About us</div>
           </div>`,
-        );
-        break;
-      case "/about":
-        setPanelContent(
-          `<div class="panel-con">
+          );
+          break;
+        case "/about":
+          setPanelContent(
+            `<div class="panel-con">
             <div class="panel-svg">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
                 <path d="M0.55 15.42L0.55 100C0.55 154.92 45.09 199.45 100 199.45C154.92 199.45 199.45 154.92 199.45 100C199.45 45.09 154.92 0.55 100 0.55L15.42 0.55C7.24 0.55 0.55 7.24 0.55 15.42Z" strokeWidth="1" class="" stroke="#cccccc"></path>
@@ -55,11 +62,11 @@ export default function RootLayout({ children }) {
             </div>
             <div class="text">Portfolio</div>
           </div>`,
-        );
-        break;
-      case "/portfolio":
-        setPanelContent(
-          `<div class="panel-con">
+          );
+          break;
+        case "/portfolio":
+          setPanelContent(
+            `<div class="panel-con">
             <div class="panel-svg">
               <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="svg-200">
                 <rect
@@ -84,15 +91,23 @@ export default function RootLayout({ children }) {
             </div>
             <div class="text">contact</div>
           </div>`,
-        );
-        break;
-      case "/contact":
-        setPanelContent(`<div class="panel-con"></div>`);
-        break;
-      default:
-        setPanelContent("");
+          );
+          break;
+        case "/lab":
+          setPanelContent(
+            `<div class="panel-con">
+              <div class="text">Lab</div>
+            </div>`,
+          );
+          break;
+        case "/contact":
+          setPanelContent(`<div class="panel-con"></div>`);
+          break;
+        default:
+          setPanelContent("");
+      }
     }
-
+    
     // GSAP 애니메이션 초기화
     setTimeout(() => {
       initializeGsapAnimation();
@@ -157,10 +172,15 @@ export default function RootLayout({ children }) {
     }
   }, [pathname]);
   useEffect(() => {
-    setTimeout(() => {
+    if (pathname.startsWith("/lab")) {
       window.scrollTo(0, 0);
       handlePageChange();
-    }, 1600);
+    } else {
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        handlePageChange();
+      }, 1600);
+    }
   }, [pathname]);
 
   const panelRef = useRef(null); // 현재 표시되는 panel만 참조

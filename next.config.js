@@ -1,5 +1,12 @@
 module.exports = {
   // reactStrictMode: true,
   reactStrictMode: false,
-  images: {},
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+      },
+    ],
+  },
 };

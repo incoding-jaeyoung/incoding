@@ -16,7 +16,7 @@ const PageTransition = ({ children, onExitComplete, disableScroll }) => {
   const scrollTriggerRef = useRef(null);
 
   useEffect(() => {
-    if (pathname === "/" || pathname === "/contact") {
+    if (pathname === "/" || pathname === "/contact" || pathname.startsWith("/lab")) {
       return;
     }
 
@@ -87,8 +87,10 @@ const PageTransition = ({ children, onExitComplete, disableScroll }) => {
         }
       }}
       onAnimationComplete={(definition) => {
-        if (definition === "exit" && pathname !== "/contact") {
-          onExitComplete();
+        if (definition === "exit" && pathname !== "/contact" && !pathname.startsWith("/lab")) {
+          if (typeof onExitComplete === "function") {
+            onExitComplete();
+          }
         }
       }}
     >
