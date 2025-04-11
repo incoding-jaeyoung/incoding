@@ -73,7 +73,7 @@ export default function BlogListPage() {
               Our curated collection of GSAP and Three.js-based prototypes, animations, and experiments.
             </p>
 
-            <div className="">
+            <div>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {posts.map((post) => (
                   <div
@@ -99,7 +99,7 @@ export default function BlogListPage() {
                           </span>
                         ))}
                       </div>
-                      <h2 className="text-lg font-semibold leading-snug line-clamp-2">
+                      <h2 className="text-lg font-semibold leading-snug ">
                         {post.title}
                       </h2>
                       <p className="mt-1 text-sm text-gray-400">
