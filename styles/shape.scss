@@ -1,4 +1,6 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css");
+@use "sass:math";
+@use "sass:list";
 
 .shape {
   margin: 0 auto;
@@ -41,20 +43,20 @@ $shape-count: 80; // <== 이 값을 변경하여 도형의 개수를 조정 (예
 
 @for $i from 1 through $shape-count {
   $shape-size: 1.7 +
-    random(
+    math.random(
       10
     ); // <== 이 값을 변경하여 도형의 크기 범위를 조정 (예: random(5)로 하면 작아짐)
 
-  $rotation: random(360);
+  $rotation: math.random(360);
   $speed: 40 +
-    random(
+    math.random(
       20
     ); // <== 이 값을 변경하여 애니메이션 속도를 조정 (예: random(10)로 하면 더 빨라짐)
-  $color-key: random(length($colors));
+  $color-key: math.random(list.length($colors));
   $shape-color: nth($colors, $color-key);
-  $shape-key: random(length($shapes));
+  $shape-key: math.random(list.length($shapes));
   $shape-type: nth($shapes, $shape-key);
-  $text: random(10);
+  $text: math.random(10);
 
   @keyframes shape-#{$i} {
     0% {
