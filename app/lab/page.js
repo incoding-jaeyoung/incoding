@@ -47,14 +47,6 @@ const posts = [
     tags: ["three.js", "shader", "webgl"],
     thumbnail: "https://picsum.photos/500/300?random=2"
   },
-  {
-    slug: "advanced-gsap-timelines",
-    title: "Mastering Advanced GSAP Timelines for Complex Animations",
-    author: "Michael Brown",
-    date: "6 months ago",
-    tags: ["gsap", "animation", "javascript"],
-    thumbnail: "https://picsum.photos/500/300?random=3"
-  },
 ]
 
 export default function BlogListPage() {
