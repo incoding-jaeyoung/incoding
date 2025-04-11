@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const widjetAnimation = () => {
+const WidjetAnimation = () => {
   useEffect(() => {
     setTimeout(() => {
       const iphone = document.querySelector(".iphone");
@@ -211,4 +211,4 @@ const widjetAnimation = () => {
   );
 };
 
-export default widjetAnimation;
+export default WidjetAnimation;
