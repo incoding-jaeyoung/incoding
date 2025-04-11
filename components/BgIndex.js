@@ -90,4 +90,6 @@ const BgIndex = forwardRef((props, ref) => {
   );
 });
 
+BgIndex.displayName = "BgIndex";
+
 export default BgIndex;
