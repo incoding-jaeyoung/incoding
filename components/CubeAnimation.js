@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, forwardRef } from "react";
+import React, { useEffect, useRef, forwardRef, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -28,7 +28,7 @@ const CubeAnimation = forwardRef((props, parentRef) => {
   };
   
 
-  const cubeAnimation = () => {
+  const cubeAnimation = useCallback(() => {
     const timeline = gsap.timeline({
       repeat: -1,
       paused: true, // ScrollTrigger로 제어하기 위해 초기 애니메이션 일시정지
@@ -71,7 +71,7 @@ const CubeAnimation = forwardRef((props, parentRef) => {
         duration: 0.5,
         ease: "none",
       });
-  };
+  }, [parentRef]);
 
   useEffect(() => {
     // generateCircles 완료 후 cubeAnimation 실행
@@ -86,7 +86,7 @@ const CubeAnimation = forwardRef((props, parentRef) => {
       clearTimeout(timeoutRef.current); // timeout 정리
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, [cubeRef, topCircleRefs, bottomCircleRefs]);
+  }, [cubeRef, topCircleRefs, bottomCircleRefs, cubeAnimation]);
 
   return (
     <div className="scene" ref={parentRef}>
@@ -97,5 +97,7 @@ const CubeAnimation = forwardRef((props, parentRef) => {
     </div>
   );
 });
+
+CubeAnimation.displayName = "CubeAnimation";
 
 export default CubeAnimation;
