@@ -39,14 +39,6 @@ const posts = [
     tags: ["three.js", "particles", "webgl"],
     thumbnail: "https://picsum.photos/500/300?random=1"
   },
-  {
-    slug: "shader-materials-intro",
-    title: "Introduction to Shader Materials in Three.js",
-    author: "Emily Johnson",
-    date: "7 months ago",
-    tags: ["three.js", "shader", "webgl"],
-    thumbnail: "https://picsum.photos/500/300?random=2"
-  },
 ]
 
 export default function BlogListPage() {
