@@ -1229,11 +1229,6 @@ const PortfolioPage = () => {
                             • 멀티미디어 콘텐츠 지원: HTML5 Video와 Swiper.js를
                             결합하여 사용자 참여를 유도.
                           </li>
-                          <li>
-                            
-                            • 접근성 향상: "본문 바로가기" 링크 제공과 ARIA
-                            속성을 통해 웹 접근성을 강화.
-                          </li>
                         </ul>
                       </div>
                     </div>
