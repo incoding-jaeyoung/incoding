@@ -26,7 +26,7 @@ export default function BlogListPage() {
           author:  "Incoding",
           tags: post._embedded?.["wp:term"]?.[1]?.map(tag => tag.name) || [],
           thumbnail: post.acf?.thumbnail?.url || post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "/images/portfolio/std1.jpeg",
-          url: post.acf?.url || []
+          url: post.acf?.path_name || []
         }));
         setPosts(formattedPosts);
       });
@@ -43,7 +43,7 @@ export default function BlogListPage() {
       duration: 0.6,
       ease: "power2.in",
       onComplete: () => {
-          router.push(url);
+          router.push(`/lab/${url}`);
       },
     });
   };
