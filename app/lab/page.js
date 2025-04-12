@@ -25,7 +25,8 @@ export default function BlogListPage() {
           date: new Date(post.date).toLocaleDateString(),
           author:  "Incoding",
           tags: post._embedded?.["wp:term"]?.[1]?.map(tag => tag.name) || [],
-          thumbnail: post.acf?.thumbnail?.url || post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "/images/portfolio/std1.jpeg"
+          thumbnail: post.acf?.thumbnail?.url || post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "/images/portfolio/std1.jpeg",
+          url: post.acf?.url || []
         }));
         setPosts(formattedPosts);
       });
@@ -34,7 +35,7 @@ export default function BlogListPage() {
     setIsMounted(true);
   }, []);
 
-  const handlePageTransition = (slug) => {
+  const handlePageTransition = (url) => {
     if (!isMounted) return;
 
     gsap.to(containerRef.current, {
@@ -42,7 +43,7 @@ export default function BlogListPage() {
       duration: 0.6,
       ease: "power2.in",
       onComplete: () => {
-          router.push(`/lab/${slug}`);
+          router.push(url);
       },
     });
   };
@@ -63,7 +64,7 @@ export default function BlogListPage() {
               {posts.map((post) => (
                 <div
                   key={post.slug}
-                  onClick={() => handlePageTransition(post.slug)}
+                  onClick={() => handlePageTransition(post.url)}
                   className="overflow-hidden transition border border-gray-200 cursor-pointer rounded-xl hover:shadow-lg"
                 >
                   <Image
