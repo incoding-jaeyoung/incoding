@@ -107,7 +107,7 @@ const AudioEQ = () => {
   }, []);
 
   useEffect(() => {
-    if (audioRef.current && pathname.startsWith("/lab")) {
+    if (audioRef.current && pathname.startsWith("/lab") || pathname.startsWith("/recommend")) {
       audioRef.current.pause();
       setIsAnimating(false);
       setIsPlaying(false);

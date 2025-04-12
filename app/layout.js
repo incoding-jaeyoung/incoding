@@ -38,6 +38,12 @@ export default function RootLayout({ children }) {
           <div class="text">Lab</div>
         </div>`
       );
+    } else if (pathname.startsWith("/recommend")) {
+      setPanelContent(
+        `<div class="panel-con">
+          <div class="text">Recommend</div>
+        </div>`
+      );
     } else {
       switch (pathname) {
         case "/":
@@ -181,7 +187,7 @@ export default function RootLayout({ children }) {
     }
   }, [pathname]);
   useEffect(() => {
-    if (pathname.startsWith("/lab")) {
+    if (pathname.startsWith("/lab") || pathname.startsWith("/recommend")) {
       window.scrollTo(0, 0);
       handlePageChange();
     } else {

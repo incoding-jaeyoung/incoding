@@ -8,24 +8,27 @@ import Link from "next/link";
 import gsap from "gsap";
 import Header from "../../components/Header";
 
-
-
-export default function BlogListPage() {
+export default function RecommendPage() {
   const router = useRouter();
   const containerRef = useRef(null);
   const [isMounted, setIsMounted] = useState(false);
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch("https://incodingco.mycafe24.com/wp-json/wp/v2/posts?categories=2&_embed")
+    fetch("https://incodingco.mycafe24.com/wp-json/wp/v2/posts?categories=6&_embed")
       .then(res => res.json())
       .then(data => {
         const formattedPosts = data.map(post => ({
           slug: post.slug,
           title: post.title.rendered,
           date: new Date(post.date).toLocaleDateString(),
-          author:  "Incoding",
+          author: "Incoding",
           tags: post._embedded?.["wp:term"]?.[1]?.map(tag => tag.name) || [],
-          thumbnail: post.acf?.thumbnail?.url || post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "/images/portfolio/std1.jpeg"
+          thumbnail:
+            post.acf?.site_image?.url ||
+            post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+            "/images/portfolio/std1.jpeg",
+          sub_title: post.acf?.site_title,
+          url: post.acf?.site_url
         }));
         setPosts(formattedPosts);
       });
@@ -42,7 +45,7 @@ export default function BlogListPage() {
       duration: 0.6,
       ease: "power2.in",
       onComplete: () => {
-          router.push(`/lab/${slug}`);
+          router.push(`/recommend/${slug}`);
       },
     });
   };
@@ -87,6 +90,8 @@ export default function BlogListPage() {
                     <h2 className="font-semibold leading-snug ">
                       {post.title}
                     </h2>
+                    <p>{post.url}</p>
+                    <p>{post.sub_title}</p>
                     <p className="mt-1 text-gray-400">
                       {post.date} by {post.author}
                     </p>

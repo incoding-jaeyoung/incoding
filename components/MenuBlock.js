@@ -122,6 +122,8 @@ const Menu = () => {
     if (pathname) {
       if (pathname.startsWith("/lab")) {
         setMenuText("Lab");
+      } else if (pathname.startsWith("/recommend")) {
+        setMenuText("Recommend");
       } else {
         switch (pathname) {
           case "/":

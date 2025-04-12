@@ -1,2 +1,2 @@
 .lab-container{min-height: 100dvh; background-color: #f7f7f7;}
-.lab-page-list{max-width: 1420px; margin: 0 auto; padding: 0 10px;}
+.lab-page-list,.lab-page-content{max-width: 1420px; margin: 0 auto; padding: 0 10px;}
