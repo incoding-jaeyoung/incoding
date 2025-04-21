@@ -17,8 +17,8 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@react-spring/three": "^9.7.5",
-    "@react-three/drei": "^9.83.4",
-    "@react-three/fiber": "^8.13.4",
+    "@react-three/drei": "^10.0.6",
+    "@react-three/fiber": "^9.1.2",
     "@studio-freight/lenis": "^1.0.42",
     "@vercel/analytics": "^1.5.0",
     "animejs": "^3.2.2",
@@ -37,14 +37,14 @@
     "maath": "^0.10.8",
     "matter-js": "^0.20.0",
     "multer": "^1.4.5-lts.1",
-    "next": "^15.3.1",
+    "next": "^15.1.4",
     "next-sitemap": "^4.2.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-transition-group": "^4.4.5",
     "sass": "^1.83.1",
     "splitting": "^1.1.0",
-    "three": "^0.150.1"
+    "three": "^0.175.0"
   },
   "devDependencies": {
     "@types/react": "19.1.0",
