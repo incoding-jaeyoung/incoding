@@ -1,7 +1,7 @@
 "use client"
 import React, { Suspense, useRef} from "react";
 import { GlobalCanvas, SmoothScrollbar} from "@14islands/r3f-scroll-rig";
-import { Environment } from "@react-three/drei";
+// import { Environment } from "@react-three/drei";
 import Header from "/components/Header";
 import { BodyCopy, Headline, Subtitle } from "./Text";
 import { Image } from "./Image";
@@ -28,7 +28,7 @@ export default function App() {
         {(globalChildren) => (
           <Lens>
             <Suspense fallback="">
-              <Environment files="/lab/LensRefraction/env/empty_warehouse_01_1k.hdr" />
+              {/* <Environment files="/lab/LensRefraction/env/empty_warehouse_01_1k.hdr" /> */}
               {globalChildren}
             </Suspense>
           </Lens>
