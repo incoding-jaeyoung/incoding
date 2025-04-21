@@ -1,7 +1,7 @@
 "use client"
 import React, { Suspense, useRef} from "react";
 import { GlobalCanvas, SmoothScrollbar} from "@14islands/r3f-scroll-rig";
-// import { Environment } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 import Header from "/components/Header";
 import { BodyCopy, Headline, Subtitle } from "./Text";
 import { Image } from "./Image";
@@ -16,7 +16,7 @@ export default function App() {
   return (
     <div ref={eventSource}>
       <Header />
-      {/* <GlobalCanvas
+      <GlobalCanvas
         debug={false}
         scaleMultiplier={0.01}
         eventSource={eventSource}
@@ -37,7 +37,7 @@ export default function App() {
       <SmoothScrollbar
         enabled={true}
         config={{ syncTouch: true }} // Lenis setting to force smooth scroll on touch devices
-      /> */}
+      />
       
       <article className="lens-wrapper">
         <header className="container">
