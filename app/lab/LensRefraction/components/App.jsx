@@ -16,7 +16,7 @@ export default function App() {
   return (
     <div ref={eventSource}>
       <Header />
-      <GlobalCanvas
+      {/* <GlobalCanvas
         debug={false}
         scaleMultiplier={0.01}
         eventSource={eventSource}
@@ -28,7 +28,7 @@ export default function App() {
         {(globalChildren) => (
           <Lens>
             <Suspense fallback="">
-              {/* <Environment files="/lab/LensRefraction/env/empty_warehouse_01_1k.hdr" /> */}
+              <Environment files="/lab/LensRefraction/env/empty_warehouse_01_1k.hdr" />
               {globalChildren}
             </Suspense>
           </Lens>
@@ -37,7 +37,7 @@ export default function App() {
       <SmoothScrollbar
         enabled={true}
         config={{ syncTouch: true }} // Lenis setting to force smooth scroll on touch devices
-      />
+      /> */}
       
       <article className="lens-wrapper">
         <header className="container">
