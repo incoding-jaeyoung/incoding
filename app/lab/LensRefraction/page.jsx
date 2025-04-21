@@ -8,7 +8,7 @@ export default function LensRefractionPage() {
   return (
     <>
       <link rel="stylesheet" href="/lab/LensRefraction/styles.css" />
-      <App />
+      {/* <App /> */}
       <section className="container contents-wrapper">
         <div className="lens-con">
           <p className='text-center'>
