@@ -16,7 +16,7 @@ const PageTransition = ({ children, onExitComplete, disableScroll }) => {
   const scrollTriggerRef = useRef(null);
 
   useEffect(() => {
-    if (pathname === "/" || pathname === "/contact" || pathname.startsWith("/lab")) {
+    if (pathname === "/" || pathname === "/contact" || pathname.startsWith("/lab") || pathname.startsWith("/recommend")) {
       return;
     }
 

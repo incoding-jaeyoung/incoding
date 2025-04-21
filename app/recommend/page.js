@@ -1,12 +1,12 @@
 "use client"
 import React, { useEffect, useRef, useState } from "react";
-import "../../styles/lab-page.css";
-import LabWrapper from "../../components/LabWrapper";
+import "/styles/lab-page.css";
+import LabWrapper from "/components/LabWrapper";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import gsap from "gsap";
-import Header from "../../components/Header";
+import Header from "/components/Header";
 
 export default function RecommendPage() {
   const router = useRouter();
@@ -51,9 +51,8 @@ export default function RecommendPage() {
   };
 
   return (
-    <LabWrapper>
-      
-      <div id="contents" className="lab-container" ref={containerRef}>
+    // <LabWrapper>
+      <div id="contents" className="lab-container">
         <Header />
         <div className="lab-page-list">
           <h1 className="mb-4font-bold">Demos Hub</h1>
@@ -64,9 +63,9 @@ export default function RecommendPage() {
           <div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {posts.map((post) => (
-                <div
+                <Link
                   key={post.slug}
-                  onClick={() => handlePageTransition(post.slug)}
+                  href={`/recommend/${post.slug}`}
                   className="overflow-hidden transition border border-gray-200 cursor-pointer rounded-xl hover:shadow-lg"
                 >
                   <Image
@@ -96,13 +95,13 @@ export default function RecommendPage() {
                       {post.date} by {post.author}
                     </p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
         </div>
       </div>
-    </LabWrapper>
+    // </LabWrapper>
   )
 }
 

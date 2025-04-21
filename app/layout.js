@@ -263,38 +263,41 @@ export default function RootLayout({ children }) {
         <AnimatePresence mode="wait" initial={false}>
             <LenisProvider ref={lenisRef}>{children}</LenisProvider>
         </AnimatePresence>
-        <CustomCursor />
-        {pathname !== "/" && !pathname.startsWith("/lab") && <Audio />}
+        {!pathname.startsWith("/lab") && !pathname.startsWith("/recommend") && <CustomCursor />}
+        {pathname !== "/" && !pathname.startsWith("/lab") && !pathname.startsWith("/recommend") && <Audio />}
         <Menu />
-        <div className="frontPanel">
-          {pathname === "/" && (
-            <div className="panel" ref={panelRef}>
-              <p>Intro</p>
-            </div>
-          )}
-          {pathname === "/about" && (
-            <div className="panel" ref={panelRef}>
-              <p>About us</p>
-            </div>
-          )}
-          {pathname === "/portfolio" && (
-            <div className="panel" ref={panelRef}>
-              <p>Projects</p>
-            </div>
-          )}
-          {pathname === "/contact" && (
-            <div className="panel" ref={panelRef}>
-              <p>Contact</p>
-            </div>
-          )}
-        </div>
-        <div className="back-panel">
-          <div
-            className="bg-black panel"
+        {!pathname.startsWith("/lab") && !pathname.startsWith("/recommend") && (
+          <div className="frontPanel">
+            {pathname === "/" && (
+              <div className="panel" ref={panelRef}>
+                <p>Intro</p>
+              </div>
+            )}
+            {pathname === "/about" && (
+              <div className="panel" ref={panelRef}>
+                <p>About us</p>
+              </div>
+            )}
+            {pathname === "/portfolio" && (
+              <div className="panel" ref={panelRef}>
+                <p>Projects</p>
+              </div>
+            )}
+            {pathname === "/contact" && (
+              <div className="panel" ref={panelRef}>
+                <p>Contact</p>
+              </div>
+            )}
+          </div>
+        )} 
+        {!pathname.startsWith("/lab") && !pathname.startsWith("/recommend") && (
+          <div className="back-panel">
+            <div
+              className="bg-black panel"
             dangerouslySetInnerHTML={{ __html: panelContent }}
           />
         </div>
-
+        )}
         {/* {isIndexPage && <Footer />} */}
         <svg xmlns="http://www.w3.org/2000/svg" className="hide">
           <defs>
@@ -321,7 +324,7 @@ export default function RootLayout({ children }) {
             </linearGradient>
           </defs>
         </svg>
-        {pathname !== "/" && <Chat />}
+        {pathname !== "/" && !pathname.startsWith("/lab") && !pathname.startsWith("/recommend") && <Chat />}
         <Analytics />
         {showNotice && (
           <div

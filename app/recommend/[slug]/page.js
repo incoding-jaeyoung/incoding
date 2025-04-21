@@ -1,9 +1,9 @@
 "use client"
 import React, { useEffect, useState } from "react"
-import "../../../styles/lab-page.css"
-import LabWrapper from "../../../components/LabWrapper"
+import "/styles/lab-page.css"
+import LabWrapper from "/components/LabWrapper"
 import Image from "next/image"
-import Header from "../../../components/Header"
+import Header from "/components/Header"
 import { useParams } from "next/navigation"
 
 export default function LabDetailPage() {
@@ -37,7 +37,7 @@ export default function LabDetailPage() {
   if (!post) return <div className="p-10 text-center">Loading...</div>
 
   return (
-    <LabWrapper>
+    // <LabWrapper>
       <div id="contents" className="lab-container">
         <Header />
         <div className="lab-page-content">
@@ -73,6 +73,6 @@ export default function LabDetailPage() {
           />
         </div>
       </div>
-    </LabWrapper>
+    // </LabWrapper>
   )
 }

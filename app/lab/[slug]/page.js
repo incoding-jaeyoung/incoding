@@ -1,9 +1,9 @@
 "use client"
 import React, { useEffect, useState } from "react"
-import "../../../styles/lab-page.css"
-import LabWrapper from "../../../components/LabWrapper"
+import "/styles/lab-page.css"
+import LabWrapper from "/components/LabWrapper"
 import Image from "next/image"
-import Header from "../../../components/Header"
+import Header from "/components/Header"
 import { useParams } from "next/navigation"
 
 export default function LabDetailPage() {

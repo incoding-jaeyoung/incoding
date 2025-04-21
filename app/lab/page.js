@@ -1,14 +1,12 @@
 "use client"
 import React, { useEffect, useRef, useState } from "react";
-import "../../styles/lab-page.css";
+import "/styles/lab-page.css";
 import LabWrapper from "../../components/LabWrapper";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import gsap from "gsap";
-import Header from "../../components/Header";
-
-
+import Header from "/components/Header";
 
 export default function BlogListPage() {
   const router = useRouter();
@@ -38,20 +36,45 @@ export default function BlogListPage() {
   const handlePageTransition = (url) => {
     if (!isMounted) return;
 
+    const navigate = () => {
+      router.push(`/lab/${url}`);
+    };
+
+    // If coming from a popstate (back/forward), we won't animate
+    if (performance.getEntriesByType("navigation")[0]?.type === "back_forward") {
+      navigate();
+      return;
+    }
+
     gsap.to(containerRef.current, {
       y: "-100vh",
       duration: 0.6,
       ease: "power2.in",
-      onComplete: () => {
-          router.push(`/lab/${url}`);
-      },
+      onComplete: navigate,
     });
   };
 
+  useEffect(() => {
+    const handlePopState = () => {
+      if (containerRef.current) {
+        gsap.fromTo(
+          containerRef.current,
+          { y: "-100vh" },
+          { y: "0", duration: 0.6, ease: "power2.out" }
+        );
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
+
   return (
-    <LabWrapper>
+    // <LabWrapper>
       
-      <div id="contents" className="lab-container" ref={containerRef}>
+      <div id="contents" className="lab-container">
         <Header />
         <div className="lab-page-list">
           <h1 className="mb-4font-bold">Demos Hub</h1>
@@ -62,9 +85,9 @@ export default function BlogListPage() {
           <div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {posts.map((post) => (
-                <div
+                <Link
                   key={post.slug}
-                  onClick={() => handlePageTransition(post.url)}
+                  href={`/lab/${post.url}`}
                   className="overflow-hidden transition border border-gray-200 cursor-pointer rounded-xl hover:shadow-lg"
                 >
                   <Image
@@ -92,13 +115,13 @@ export default function BlogListPage() {
                       {post.date} by {post.author}
                     </p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
         </div>
       </div>
-    </LabWrapper>
+    // </LabWrapper>
   )
 }
 
