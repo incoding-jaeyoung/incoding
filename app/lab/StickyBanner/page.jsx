@@ -112,7 +112,7 @@ export default function StickyBannerPage() {
       <link rel="stylesheet" href="/lab/StickyBanner/css/base.css" />
       <Header />
       <main className='lab-page-wrap'>
-        <header className="frame frame--header" style={{ backgroundImage: 'url(/lab/StickyBanner/img/10.png)', backgroundSize: '50%', backgroundPosition: 'right' }}>
+        <header className="frame frame--header">
 				<div className="frame__heading">
 					<h2 className="content__title"><i>STICKY</i> BANNER</h2>
 					<p className="text-meta">An exploration of the Synthetic Era.</p>

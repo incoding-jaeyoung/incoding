@@ -111,13 +111,16 @@ a:focus-visible {
 }
 
 .frame--header {
-	height: 100%;
-	z-index: 3000;
+	height: 100dvh;
+	z-index: 30;
 	background-size: auto 80%;
 	background-position: 120% 50%;
 	background-repeat: no-repeat;
-	grid-template-areas: 'title' 'prev' 'back' 'sub' 'sponsor' 'demos' 'heading';
+	background-image: url(/lab/StickyBanner/img/10.png);
+	background-size: 50% auto;
+	background-position: right;
 }
+
 
 .frame--footer {
 	grid-template-areas: 'credits' 'author';
@@ -194,7 +197,6 @@ a:focus-visible {
 	width: min-content;
 	display: flex;
 	flex-direction: column;
-	margin-top: 10vh;
 	color: #333;
 }
 
@@ -338,20 +340,14 @@ i {
 	font-size:4rem;
 	font-weight: 700;
 	margin: 0;
-	color: #38b000;
+	color: #006400;
 }
 .content__title i{
 	font-weight: 400;
 }
 
-.wrap .content__title{
-	color: #004b23;
-}
-.wrap .content__text{
-	color: #006400;
-}
 .text-meta{
-	color: #38b000;
+	color: #006400;
 }
 
 .content__text {
@@ -453,5 +449,31 @@ i {
 	}
 	.content--half {
 		width: 50%;
+	}
+}
+@media screen and (max-width: 768px) {
+	.frame--header {
+		background-size: 90% auto;
+		background-position:50% 80%;
+		padding-bottom: 20%;
+	}
+
+	.frame__heading{
+		width: 100%;
+		text-align: center;
+		gap: 2rem;
+	}
+	.frame__heading .content__title{
+		font-size: 4rem;
+	}
+	.frame__heading .text-meta{
+		font-size: 1.4rem;
+		
+	}
+	.content--card .content__title{
+		font-size: 4rem;
+	}
+	.content--card .content__text{
+		font-size: 2rem;
 	}
 }

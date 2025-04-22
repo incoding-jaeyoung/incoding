@@ -241,12 +241,12 @@ export default function RootLayout({ children }) {
       // 5초 후에 서서히 사라지도록 설정
       const timer = setTimeout(() => {
         setFadeOut(true);
-      }, 4000);
+      }, 3000);
 
       // 6초 후에 완전히 숨김
       const hideTimer = setTimeout(() => {
         setShowNotice(false);
-      }, 5000);
+      },4000);
 
       return () => {
         clearTimeout(timer);
