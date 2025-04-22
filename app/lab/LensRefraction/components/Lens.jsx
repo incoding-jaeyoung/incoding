@@ -15,7 +15,7 @@ export function Lens({ children, damping = 0.14, ...props }) {
   const buffer = useFBO();
   const viewport = useThree((state) => state.viewport);
   const [scene] = useState(() => new THREE.Scene());
-  const defaultScale = Math.min(viewport.width, viewport.height) * 0.14;
+  const defaultScale = Math.min(viewport.width, viewport.height) * 0.18;
 
   useFrame((state, delta) => {
     const viewport = state.viewport.getCurrentViewport(state.camera, [0, 0, 1]);

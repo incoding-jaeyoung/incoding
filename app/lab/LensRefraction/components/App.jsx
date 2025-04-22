@@ -60,7 +60,7 @@ export default function App() {
         <section className="container">
           <div className="lens-con">
             <Image 
-            src="/lab/LensRefraction/images/maxim-berg-1_U2RcHnSjc-unsplash.jpg"
+            src="/lab/LensRefraction/images/img-03.jpg"
             className="ImageLandscape"
             />
           </div>
@@ -97,9 +97,6 @@ export default function App() {
             <Headline as="h3" className="mb-20">
             이 효과는 포트폴리오 사이트, 브랜드 소개 페이지, 캠페인 랜딩 등에서 방문자의 주목을 끌기에 적합합니다.단순한 이미지나 텍스트보다 강력한 인상을 전달할 수 있습니다.
             </Headline>
-            <BodyCopy as="p">- React Three Fiber (Three.js를 React로 선언적으로 사용)</BodyCopy>
-            <BodyCopy as="p">- @14islands/r3f-scroll-rig (WebGL과 스크롤을 동기화)</BodyCopy>
-              <BodyCopy as="p">- gsap/ScrollTrigger (렌즈의 애니메이션 제어)</BodyCopy>
             </div>
             
           </div>

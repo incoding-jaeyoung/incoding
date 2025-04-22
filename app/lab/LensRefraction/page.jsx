@@ -11,15 +11,11 @@ export default function LensRefractionPage() {
       <App />
       <section className="container contents-wrapper">
         <div className="lens-con">
-          <p className='text-center'>
-            <strong>
-              We use CSS to create a responsive layout.
-            </strong>
-             <br />
-            <em>
-                A Canvas on top tracks DOM elements and enhance them with WebGL.
-            </em>
-          </p>
+          <p className="text-center max-w-[400px] mx-auto">
+            <strong>Lens Refraction</strong> <br />
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Necessitatibus praesentium sint, dolor a quisquam dolorem nemo hic culpa enim excepturi mollitia error facere commodi est? Laborum voluptatum minima quasi nemo!
+        </p>
         </div>
       </section>
     </>

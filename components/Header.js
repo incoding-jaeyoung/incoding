@@ -55,7 +55,7 @@ const Header = () => {
               <button onClick={() => handlePageTransition("/recommend")}>INTERACTIVE SITES</button>
             </li>
           </ul>
-          <ul className="flex space-x-4">
+          <ul className="flex sub-gnb">
             <li className="hover:text-gray-500">
               <button onClick={() => handlePageTransition("/about")}>About</button>
             </li>

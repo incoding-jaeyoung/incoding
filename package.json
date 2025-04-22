@@ -22,6 +22,7 @@
     "@studio-freight/lenis": "^1.0.42",
     "@vercel/analytics": "^1.5.0",
     "animejs": "^3.2.2",
+    "autoprefixer": "^10.4.19",
     "better-sqlite3": "^11.6.0",
     "classnames": "^2.5.1",
     "dotenv": "^16.4.7",
@@ -44,9 +45,8 @@
     "react-transition-group": "^4.4.5",
     "sass": "^1.83.1",
     "splitting": "^1.1.0",
-    "three": "^0.175.0",
-    "autoprefixer": "^10.4.19",
-    "tailwindcss": "^3.4.3"
+    "tailwindcss": "^3.4.3",
+    "three": "^0.175.0"
   },
   "devDependencies": {
     "@types/react": "19.1.0",
