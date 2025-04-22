@@ -121,7 +121,7 @@ export default function StickyBannerPage() {
 			<div className="wrap">
 				<div className="content content--sticky content--card bg-1">
 					<img className="content__img content__img--small" src="/lab/StickyBanner/img/11.png" alt="The Algorithm" />
-					<h2 className="content__title"><i>The</i> BANANAGRAM</h2>
+					<h2 className="content__title"><i>The</i> FLOWER</h2>
 					<p className="content__text text-meta">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
 				</div>
 				<div className="content content--sticky content--card bg-2">
