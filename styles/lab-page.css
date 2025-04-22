@@ -5,7 +5,7 @@
 .lab-list-list{display: grid; grid-template-columns: repeat(2, 1fr); gap: 20rem;}
 .lab-list-list a{display: flex; flex-direction: column; border-radius: 10rem; overflow: hidden; background-color: #fff;}
 /* .lab-list-list a img{flex-grow: 1; } */
-.lab-list-list a img{width: 100%; height: auto; aspect-ratio: 3/2;}
+.lab-list-list a img{width: 100%; height: auto; aspect-ratio: 4/3;}
 .list-info{padding:20px; display: flex; flex-direction: column; gap: 15px;}
 .lab-title{font-size:20px; line-height: 100%;}
 .lab-date{font-size: 14px; line-height: 100%; text-align: right;}
