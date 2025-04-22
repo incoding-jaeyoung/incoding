@@ -49,3 +49,23 @@ h2 span {
   padding: ;
 }
 .image-landing{height: 60dvh; width: 100%; object-fit: cover;}
+@media (max-width: 768px) {
+  .container.bottom-lens{min-height: 0; padding-bottom: 20dvh;}
+  .headerLayout h2{font-size: 130rem; padding-right: 20vw;  line-height: 120%; font-weight: 700;}
+  .headerLayout p{font-size: 14px; line-height: 140%; display: none;}
+  .lens-con{
+    flex-direction: column;
+    gap: 20px;
+  }
+  .lens-con.con-reverse{
+    flex-direction: column-reverse;
+  }
+  .lens-con h3{
+    font-size: 14px; margin-bottom: 20rem; line-height: 140%;
+  }
+  .container .lens-con p.lens-con-text{
+    display: none !important;
+  }
+  .container .lens-con p.bottom-text{font-size: 14px; line-height: 140%; padding: 0 10vw;}
+  .lens-wrapper > .container:not(:first-child){height: auto; min-height: 0; padding-bottom: 10dvh;}
+}

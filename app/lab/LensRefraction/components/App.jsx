@@ -71,9 +71,9 @@ export default function App() {
             <Headline as="h3" style={{marginBottom: "20rem"}}>
               사용자의 스크롤 위치에 따라 렌즈는 자연스럽게 등장하고 사라지며,콘텐츠 위를 따라다니며 시선을 유도합니다.
             </Headline>
-            <BodyCopy as="p">- React Three Fiber (Three.js를 React로 선언적으로 사용)</BodyCopy>
-            <BodyCopy as="p">- @14islands/r3f-scroll-rig (WebGL과 스크롤을 동기화)</BodyCopy>
-              <BodyCopy as="p">- gsap/ScrollTrigger (렌즈의 애니메이션 제어)</BodyCopy>
+            <BodyCopy as="p" className="lens-con-text">- React Three Fiber (Three.js를 React로 선언적으로 사용)</BodyCopy>
+            <BodyCopy as="p" className="lens-con-text">- @14islands/r3f-scroll-rig (WebGL과 스크롤을 동기화)</BodyCopy>
+              <BodyCopy as="p" className="lens-con-text">- gsap/ScrollTrigger (렌즈의 애니메이션 제어)</BodyCopy>
             </div>
             <div className="flex overflow-hidden rounded-20">
               <Image 
@@ -85,7 +85,7 @@ export default function App() {
           </div>
         </section>
         <section className="container">
-          <div className="flex justify-between gap-50 lens-con">
+          <div className="flex justify-between gap-50 lens-con con-reverse">
             <div className="flex overflow-hidden rounded-20">
               <Image 
               src="/lab/LensRefraction/images/img-02.png"

@@ -9,9 +9,9 @@ export default function LensRefractionPage() {
     <>
       <link rel="stylesheet" href="/lab/LensRefraction/styles.css" />
       <App />
-      <section className="container contents-wrapper">
+      <section className="container contents-wrapper bottom-lens">
         <div className="lens-con">
-          <p className="text-center max-w-[400px] mx-auto">
+          <p className="text-center max-w-[800px] mx-auto bottom-text">
             <strong>Lens Refraction</strong> <br />
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Necessitatibus praesentium sint, dolor a quisquam dolorem nemo hic culpa enim excepturi mollitia error facere commodi est? Laborum voluptatum minima quasi nemo!
