@@ -41,9 +41,16 @@ p.lab-sub-title{font-size: 16px; line-height: 140%; color: #666; margin-bottom: 
 }
 
 .recommend-list{display: flex; flex-direction: column; gap: 20px;}
-.recommend-list .recommend-item, .lab-list-list a{
+.recommend-list .recommend-item{
   display: grid; 
   grid-template-columns: 2fr 1fr; 
+  border-radius: 10rem; 
+  overflow: hidden; 
+  background-color: #fff; 
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+.lab-list-list a{
   border-radius: 10rem; 
   overflow: hidden; 
   background-color: #fff; 
