@@ -1,108 +1,113 @@
 "use client"
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import "/styles/lab-page.css";
-import LabWrapper from "/components/LabWrapper";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import gsap from "gsap";
 import Header from "/components/Header";
+import RecommendClient from "./RecommendClient.js";
 
 export default function RecommendPage() {
-  const router = useRouter();
-  const containerRef = useRef(null);
-  const [isMounted, setIsMounted] = useState(false);
-  const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch("https://incodingco.mycafe24.com/wp-json/wp/v2/posts?categories=6&_embed")
-      .then(res => res.json())
-      .then(data => {
-        const formattedPosts = data.map(post => ({
-          slug: post.slug,
-          title: post.title.rendered,
-          date: new Date(post.date).toLocaleDateString(),
-          author: "Incoding",
-          tags: post._embedded?.["wp:term"]?.[1]?.map(tag => tag.name) || [],
-          thumbnail:
-            post.acf?.site_image?.url ||
-            post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
-            "/images/portfolio/std1.jpeg",
-          sub_title: post.acf?.site_title,
-          url: post.acf?.site_url
-        }));
-        setPosts(formattedPosts);
+    // 기존 메타 태그 제거 및 새로운 메타 태그 설정
+    const updateMetaTags = () => {
+      // 페이지 제목 설정
+      document.title = "Interactive Sites - 인터랙티브 웹사이트 추천 | 포트폴리오";
+      
+      // 기존 description 메타 태그 찾기 및 업데이트
+      let descriptionMeta = document.querySelector('meta[name="description"]');
+      if (descriptionMeta) {
+        descriptionMeta.setAttribute('content', '인터랙티브한 요소가 포함된 웹사이트들을 소개하고 사용된 기술 스택을 분석합니다. React, Next.js, GSAP 등 최신 웹 기술로 구현된 창의적인 웹사이트들을 만나보세요.');
+      } else {
+        descriptionMeta = document.createElement('meta');
+        descriptionMeta.name = 'description';
+        descriptionMeta.content = '인터랙티브한 요소가 포함된 웹사이트들을 소개하고 사용된 기술 스택을 분석합니다. React, Next.js, GSAP 등 최신 웹 기술로 구현된 창의적인 웹사이트들을 만나보세요.';
+        document.head.appendChild(descriptionMeta);
+      }
+      
+      // keywords 메타 태그
+      let keywordsMeta = document.querySelector('meta[name="keywords"]');
+      if (keywordsMeta) {
+        keywordsMeta.setAttribute('content', '인터랙티브 웹사이트, 웹디자인, React, Next.js, GSAP, 프론트엔드, 기술분석, 포트폴리오, 웹개발');
+      } else {
+        keywordsMeta = document.createElement('meta');
+        keywordsMeta.name = 'keywords';
+        keywordsMeta.content = '인터랙티브 웹사이트, 웹디자인, React, Next.js, GSAP, 프론트엔드, 기술분석, 포트폴리오, 웹개발';
+        document.head.appendChild(keywordsMeta);
+      }
+      
+      // Open Graph 태그들
+      const ogTags = [
+        { property: 'og:title', content: 'Interactive Sites - 인터랙티브 웹사이트 추천' },
+        { property: 'og:description', content: '인터랙티브한 요소가 포함된 웹사이트들을 소개하고 사용된 기술 스택을 분석합니다.' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: 'https://incoding.co.kr/recommend' },
+        { property: 'og:image', content: '/images/og-recommend.jpg' },
+        { property: 'og:site_name', content: '인코딩' },
+        { property: 'og:locale', content: 'ko_KR' }
+      ];
+      
+      ogTags.forEach(tag => {
+        let ogMeta = document.querySelector(`meta[property="${tag.property}"]`);
+        if (ogMeta) {
+          ogMeta.setAttribute('content', tag.content);
+        } else {
+          ogMeta = document.createElement('meta');
+          ogMeta.setAttribute('property', tag.property);
+          ogMeta.setAttribute('content', tag.content);
+          document.head.appendChild(ogMeta);
+        }
       });
+      
+      // Twitter Card 태그들
+      const twitterTags = [
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'Interactive Sites - 인터랙티브 웹사이트 추천' },
+        { name: 'twitter:description', content: '인터랙티브한 요소가 포함된 웹사이트들을 소개하고 사용된 기술 스택을 분석합니다.' },
+        { name: 'twitter:image', content: '/images/twitter-recommend.jpg' }
+      ];
+      
+      twitterTags.forEach(tag => {
+        let twitterMeta = document.querySelector(`meta[name="${tag.name}"]`);
+        if (twitterMeta) {
+          twitterMeta.setAttribute('content', tag.content);
+        } else {
+          twitterMeta = document.createElement('meta');
+          twitterMeta.setAttribute('name', tag.name);
+          twitterMeta.setAttribute('content', tag.content);
+          document.head.appendChild(twitterMeta);
+        }
+      });
+      
+      // canonical link
+      let canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (canonicalLink) {
+        canonicalLink.setAttribute('href', 'https://incoding.co.kr/recommend');
+      } else {
+        canonicalLink = document.createElement('link');
+        canonicalLink.setAttribute('rel', 'canonical');
+        canonicalLink.setAttribute('href', 'https://incoding.co.kr/recommend');
+        document.head.appendChild(canonicalLink);
+      }
+    };
+    
+    updateMetaTags();
+    
+    // 컴포넌트 언마운트 시 정리 (선택사항)
+    return () => {
+      // 필요시 원래 메타 태그로 복원하는 로직 추가 가능
+    };
   }, []);
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  const handlePageTransition = (slug) => {
-    if (!isMounted) return;
-
-    gsap.to(containerRef.current, {
-      y: "-100vh",
-      duration: 0.6,
-      ease: "power2.in",
-      onComplete: () => {
-          router.push(`/recommend/${slug}`);
-      },
-    });
-  };
 
   return (
-    // <LabWrapper>
-      <div id="contents" className="lab-container">
-        <Header />
-        <div className="lab-page-list">
-          <h1 className="mb-4font-bold">Demos Hub</h1>
-          <p className="mb-10 text-gray-500">
-            Our curated collection of GSAP and Three.js-based prototypes, animations, and experiments.
-          </p>
-
-          <div>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {posts.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/recommend/${post.slug}`}
-                  className="overflow-hidden transition border border-gray-200 cursor-pointer rounded-xl hover:shadow-lg"
-                >
-                  <Image
-                    src={post.thumbnail}
-                    alt={post.title}
-                    className="object-cover w-full"
-                    width={500} // Specify width for Image component
-                    height={200} // Specify height for Image component
-                  />
-                  <div className="p-4">
-                    <div className="flex flex-wrap gap-2 mb-2">
-                      {post.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2 py-1 text-gray-700 bg-gray-100 rounded"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h2 className="font-semibold leading-snug ">
-                      {post.title}
-                    </h2>
-                    <p>{post.url}</p>
-                    <p>{post.sub_title}</p>
-                    <p className="mt-1 text-gray-400">
-                      {post.date} by {post.author}
-                    </p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
+    <div id="contents" className="lab-container">
+      <Header />
+      <div className="lab-page-wrap list">
+        <h1 className="lab-title">Interactive Sites</h1>
+        <p className="lab-sub-title">
+          인터랙티브 & 크리에이티브한 웹사이트의 소개 및 사용된 기술 소개 페이지입니다.
+        </p>
+        <RecommendClient />
       </div>
-    // </LabWrapper>
-  )
+    </div>
+  );
 }
 
 // Note: Ensure the line-clamp plugin is included in the Tailwind CSS configuration.

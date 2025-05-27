@@ -12,6 +12,96 @@ export default function BlogListPage() {
   const containerRef = useRef(null);
   const [isMounted, setIsMounted] = useState(false);
   const [posts, setPosts] = useState([]);
+
+  // SEO 메타 태그 설정
+  useEffect(() => {
+    const updateMetaTags = () => {
+      // 페이지 제목 설정
+      document.title = "Interactions - 웹 인터랙션 예제 모음 | 포트폴리오";
+      
+      // 기존 description 메타 태그 찾기 및 업데이트
+      let descriptionMeta = document.querySelector('meta[name="description"]');
+      if (descriptionMeta) {
+        descriptionMeta.setAttribute('content', '웹사이트 제작시 랜딩페이지 및 메인 페이지에 사용할 수 있는 인터랙션 예제들을 모아둔 페이지입니다. GSAP, CSS 애니메이션, JavaScript를 활용한 다양한 웹 인터랙션을 확인해보세요.');
+      } else {
+        descriptionMeta = document.createElement('meta');
+        descriptionMeta.name = 'description';
+        descriptionMeta.content = '웹사이트 제작시 랜딩페이지 및 메인 페이지에 사용할 수 있는 인터랙션 예제들을 모아둔 페이지입니다. GSAP, CSS 애니메이션, JavaScript를 활용한 다양한 웹 인터랙션을 확인해보세요.';
+        document.head.appendChild(descriptionMeta);
+      }
+      
+      // keywords 메타 태그
+      let keywordsMeta = document.querySelector('meta[name="keywords"]');
+      if (keywordsMeta) {
+        keywordsMeta.setAttribute('content', '웹 인터랙션, GSAP, CSS 애니메이션, JavaScript, 웹 애니메이션, 프론트엔드, 웹개발, 인터랙션 디자인, 모션 그래픽');
+      } else {
+        keywordsMeta = document.createElement('meta');
+        keywordsMeta.name = 'keywords';
+        keywordsMeta.content = '웹 인터랙션, GSAP, CSS 애니메이션, JavaScript, 웹 애니메이션, 프론트엔드, 웹개발, 인터랙션 디자인, 모션 그래픽';
+        document.head.appendChild(keywordsMeta);
+      }
+      
+      // Open Graph 태그들
+      const ogTags = [
+        { property: 'og:title', content: 'Interactions - 웹 인터랙션 예제 모음' },
+        { property: 'og:description', content: '웹사이트 제작시 랜딩페이지 및 메인 페이지에 사용할 수 있는 인터랙션 예제들을 모아둔 페이지입니다.' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: 'https://incoding.co.kr/lab' },
+        { property: 'og:image', content: '/images/og-lab.jpg' },
+        { property: 'og:site_name', content: '인코딩' },
+        { property: 'og:locale', content: 'ko_KR' }
+      ];
+      
+      ogTags.forEach(tag => {
+        let ogMeta = document.querySelector(`meta[property="${tag.property}"]`);
+        if (ogMeta) {
+          ogMeta.setAttribute('content', tag.content);
+        } else {
+          ogMeta = document.createElement('meta');
+          ogMeta.setAttribute('property', tag.property);
+          ogMeta.setAttribute('content', tag.content);
+          document.head.appendChild(ogMeta);
+        }
+      });
+      
+      // Twitter Card 태그들
+      const twitterTags = [
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'Interactions - 웹 인터랙션 예제 모음' },
+        { name: 'twitter:description', content: '웹사이트 제작시 랜딩페이지 및 메인 페이지에 사용할 수 있는 인터랙션 예제들을 모아둔 페이지입니다.' },
+        { name: 'twitter:image', content: '/images/twitter-lab.jpg' }
+      ];
+      
+      twitterTags.forEach(tag => {
+        let twitterMeta = document.querySelector(`meta[name="${tag.name}"]`);
+        if (twitterMeta) {
+          twitterMeta.setAttribute('content', tag.content);
+        } else {
+          twitterMeta = document.createElement('meta');
+          twitterMeta.setAttribute('name', tag.name);
+          twitterMeta.setAttribute('content', tag.content);
+          document.head.appendChild(twitterMeta);
+        }
+      });
+      
+      // canonical link
+      let canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (canonicalLink) {
+        canonicalLink.setAttribute('href', 'https://incoding.co.kr/lab');
+      } else {
+        canonicalLink = document.createElement('link');
+        canonicalLink.setAttribute('rel', 'canonical');
+        canonicalLink.setAttribute('href', 'https://incoding.co.kr/lab');
+        document.head.appendChild(canonicalLink);
+      }
+    };
+    
+    updateMetaTags();
+    
+    return () => {
+      // 컴포넌트 언마운트 시 정리 (선택사항)
+    };
+  }, []);
   useEffect(() => {
     fetch("https://incodingco.mycafe24.com/wp-json/wp/v2/posts?categories=2&_embed")
       .then(res => res.json())
