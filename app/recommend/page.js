@@ -9,7 +9,7 @@ export default function RecommendPage() {
     // 기존 메타 태그 제거 및 새로운 메타 태그 설정
     const updateMetaTags = () => {
       // 페이지 제목 설정
-      document.title = "인터랙티브 웹사이트 추천 및 벤치마킹 | 포트폴리오";
+      document.title = "인터랙티브 웹사이트 분석 및 추천";
       
       // 기존 description 메타 태그 찾기 및 업데이트
       let descriptionMeta = document.querySelector('meta[name="description"]');
@@ -35,7 +35,7 @@ export default function RecommendPage() {
       
       // Open Graph 태그들
       const ogTags = [
-        { property: 'og:title', content: 'Interactive Sites - 인터랙티브 웹사이트 추천 및 벤치마킹' },
+        { property: 'og:title', content: '인터랙티브 웹사이트 분석 및 추천' },
         { property: 'og:description', content: '인터랙티브 웹사이트 및 랜딩페이지 소개 분석 페이지입니다. 사용된 인터랙션 요소들을 참고하고 벤치마킹 할 수 있습니다.' },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://incoding.co.kr/recommend' },
@@ -59,7 +59,7 @@ export default function RecommendPage() {
       // Twitter Card 태그들
       const twitterTags = [
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'Interactive Sites - 인터랙티브 웹사이트 추천' },
+        { name: 'twitter:title', content: 'Interactive Sites - 인터랙티브 웹사이트 분석 및 추천' },
         { name: 'twitter:description', content: '인터랙티브한 요소가 포함된 웹사이트들을 소개하고 사용된 기술 스택을 분석합니다.' },
         { name: 'twitter:image', content: '/images/twitter-recommend.jpg' }
       ];

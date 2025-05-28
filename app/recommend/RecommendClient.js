@@ -65,14 +65,18 @@ export default function RecommendClient() {
   };
 
   // 지역 분류 함수
-  const getRegion = (url, stack) => {
+  const getRegion = (url, stack, siteTitle) => {
+    // 1. site_title 우선 체크
+    if (siteTitle === '국내') return '국내';
+    if (siteTitle === '해외') return '해외';
+    
     if (!url) return '기타';
     
-    // 1. 한국 도메인 체크
+    // 2. 한국 도메인 체크
     const koreanDomains = ['.co.kr', '.kr', '.or.kr', '.go.kr', '.ac.kr', '.re.kr', '.pe.kr', '.ne.kr'];
     const isKoreanDomain = koreanDomains.some(domain => url.toLowerCase().includes(domain));
     
-    // 2. 기술 스택에서 한국 서비스 체크 (대소문자 구분 없이)
+    // 3. 기술 스택에서 한국 서비스 체크 (대소문자 구분 없이)
     const stackLower = stack ? stack.toLowerCase() : '';
     const hasKoreanService = stackLower.includes('naver') || stackLower.includes('kakao');
     
@@ -85,21 +89,16 @@ export default function RecommendClient() {
     if (!stackText) return [];
     
     const categories = [];
-    const lines = stackText.split('\n').map(line => line.trim()).filter(line => line);
+    
+    // 텍스트 전처리: Google Analytics 관련 통합
+    let processedText = stackText
+      .replace(/GA4/g, 'Google Analytics')
+      .replace(/Google Analytics\s*\n\s*Google Analytics/g, 'Google Analytics');
+    
+    const lines = processedText.split('\n').map(line => line.trim()).filter(line => line);
     
     let currentCategory = null;
     let currentItems = [];
-    
-         // 알려진 기술명들 (이것들은 카테고리가 아님)
-     const knownTechNames = [
-       'React', 'GSAP', 'Next.js', 'Font Awesome', 'Webpack', 'Open Graph',
-       'Lenis', 'Framer Motion', 'Tailwind CSS', 'Priority Hints', 'Naver Analytics',
-       'Google Analytics', 'Google Font API', 'Kakao', 'Apache HTTP Server', 'PHP',
-       'Cloudflare', 'Unpkg', 'cdnjs', 'DoubleClick Floodlight', 'Google Tag Manager',
-       'core-js', 'Swiper', 'jQuery UI', 'jQuery', 'GA4', 'HSTS', 'PWA', 'HTTP/3',
-       'Theatre.js', 'Firebase', 'Goober', 'Stitches', 'Vue.js', 'Nuxt.js', 'Three.js',
-       'Pinia', 'Vercel', 'HeroUI'
-     ];
     
     lines.forEach((line, index) => {
       // 버전 번호가 단독으로 있는 경우 (예: "15.3.1", "1.0.42")
@@ -112,30 +111,24 @@ export default function RecommendClient() {
         return;
       }
       
-      // 알려진 기술명인 경우 아이템으로 처리
-      if (knownTechNames.some(tech => line.includes(tech))) {
-        if (currentCategory) {
-          currentItems.push(line);
-        }
-        return;
-      }
+      // 카테고리 판단: 다음 줄이 있고, 특정 패턴을 만족하는 경우
+      const nextLine = lines[index + 1];
       
-             // 카테고리 판단: 다음 줄이 알려진 기술명이거나, 특정 패턴을 만족하는 경우
-       const nextLine = lines[index + 1];
-       
-       // 추가 카테고리 키워드들
-       const categoryKeywords = [
-         '분석', '프레임워크', '라이브러리', '스크립트', '서버', '생성기', '기타',
-         'Performance', 'CDN', '광고', '태그 관리자', '프로그래밍 언어', 'UI',
-         '보안', '데이터베이스', '개발', 'JavaScript 그래픽', 'PaaS'
-       ];
-       
-       const isCategory = nextLine && (
-         knownTechNames.some(tech => nextLine.includes(tech)) ||
-         categoryKeywords.some(keyword => line.includes(keyword)) ||
-         nextLine.match(/^[A-Z]/) || // 대문자로 시작
-         !nextLine.match(/^\d/) // 숫자로 시작하지 않음
-       );
+      // 카테고리 키워드들
+      const categoryKeywords = [
+        '분석', '프레임워크', '라이브러리', '스크립트', '서버', '생성기', '기타',
+        'Performance', 'CDN', '광고', '태그 관리자', '프로그래밍 언어', 'UI',
+        '보안', '데이터베이스', '개발', 'JavaScript 그래픽', 'PaaS', '비디오 플레이어'
+      ];
+      
+      const isCategory = nextLine && (
+        categoryKeywords.some(keyword => line.includes(keyword)) ||
+        line === 'JavaScript 프레임워크' ||
+        line === 'JavaScript 라이브러리' ||
+        line === 'UI 프레임워크' ||
+        line === '폰트 스크립트' ||
+        line === '비디오 플레이어'
+      );
       
       if (isCategory) {
         // 이전 카테고리 저장
@@ -183,22 +176,23 @@ export default function RecommendClient() {
         'UI 프레임워크': 6,
         '폰트 스크립트': 7,
         'Performance': 8,
+        '비디오 플레이어': 9,
         
         // 백엔드
-        '웹 프레임워크': 9,
-        '웹 서버': 10,
-        '정적 사이트 생성기': 11,
-        '프로그래밍 언어': 12,
-        'CDN': 13,
+        '웹 프레임워크': 10,
+        '웹 서버': 11,
+        '정적 사이트 생성기': 12,
+        '프로그래밍 언어': 13,
+        'CDN': 14,
         
         // 데이터베이스 및 개발
-        '데이터베이스': 14,
-        '개발': 15,
-        'PaaS': 16,
+        '데이터베이스': 15,
+        '개발': 16,
+        'PaaS': 17,
         
         // 광고 및 애널리틱스
-        '광고': 17,
-        '태그 관리자': 18,
+        '광고': 18,
+        '태그 관리자': 19,
         
         // 기타 (맨 마지막)
         '기타': 999
@@ -231,7 +225,7 @@ export default function RecommendClient() {
           sub_title: post.acf?.site_title,
           url: post.acf?.site_url,
           stack: post.acf?.site_stack,
-          region: getRegion(post.acf?.site_url, post.acf?.site_stack)
+          region: getRegion(post.acf?.site_url, post.acf?.site_stack, post.acf?.site_title)
         }));
         setPosts(formattedPosts);
       });
