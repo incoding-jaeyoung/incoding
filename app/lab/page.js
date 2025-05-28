@@ -189,7 +189,8 @@ export default function BlogListPage() {
             {currentItems.map((post) => (
               <Link
                 key={post.slug}
-                href={`/lab/${post.url}`}
+                // href={`/lab/${post.url}`}
+                href={`/${post.url}`}
                 className="overflow-hidden transition border border-gray-200 cursor-pointer rounded-xl hover:shadow-lg"
               >
                 <Image
