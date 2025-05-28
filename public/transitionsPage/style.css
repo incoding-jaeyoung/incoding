@@ -72,10 +72,14 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
+  display: flex;
+  align-items: center;
 }
 
 .nav-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   margin-right: 2rem;
   text-decoration: none;
   color: #555;

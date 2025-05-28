@@ -1,16 +1,109 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>홈 - View Transitions 데모</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 기본 SEO 메타 태그 -->
+    <title>View Transitions API - CSS 만으로 페이지 전환 애니메이션 구현하기 | 인코딩</title>
+    <meta name="description" content="CSS 만으로 페이지 전환 애니메이션 구현하기">
+    <meta name="keywords" content="View Transitions API 소개, 브라우저 네이티브, 성능 최적화, 간단한 구현, 접근성 지원, SEO 친화적, 웹 표준">
+    <meta name="author" content="인코딩 (Incoding)">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph 메타 태그 (소셜 미디어) -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="View Transitions API - CSS 만으로 페이지 전환 애니메이션 구현하기">
+    <meta property="og:description" content="CSS 만으로 페이지 전환 애니메이션 구현하기">
+    <meta property="og:url" content="https://incoding.co.kr/transitionsPage/about.html">
+    <meta property="og:site_name" content="인코딩 - View Transitions 데모">
+    <meta property="og:image" content="https://incoding.co.kr/transitionsPage/og-about.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="View Transitions API 소개 - 특징과 장점">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="article:author" content="인코딩">
+    <meta property="article:section" content="웹 개발">
+    <meta property="article:tag" content="View Transitions API">
+    <meta property="article:tag" content="웹 애니메이션">
+    <meta property="article:tag" content="브라우저 네이티브">
+    
+    <!-- Twitter Card 메타 태그 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="View Transitions API - CSS 만으로 페이지 전환 애니메이션 구현하기">
+    <meta name="twitter:description" content="CSS 만으로 페이지 전환 애니메이션 구현하기">
+    <meta name="twitter:image" content="https://incoding.co.kr/transitionsPage/twitter-about.jpg">
+    <meta name="twitter:image:alt" content="View Transitions API 소개">
+    <meta name="twitter:site" content="@incoding_kr">
+    <meta name="twitter:creator" content="@incoding_kr">
+    
+    <!-- 추가 SEO 메타 태그 -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="msapplication-TileColor" content="#667eea">
+    <meta name="application-name" content="View Transitions 데모">
+    
+    <!-- 구조화된 데이터 (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "View Transitions API - CSS 만으로 페이지 전환 애니메이션 구현하기",
+      "description": "CSS 만으로 페이지 전환 애니메이션 구현하기",
+      "url": "https://incoding.co.kr/transitionsPage/about.html",
+      "inLanguage": "ko-KR",
+      "author": {
+        "@type": "Organization",
+        "name": "인코딩",
+        "url": "https://incoding.co.kr"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "인코딩",
+        "url": "https://incoding.co.kr"
+      },
+      "datePublished": "2024-12-28",
+      "dateModified": "2024-12-28",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://incoding.co.kr/transitionsPage/about.html"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "View Transitions API",
+          "description": "CSS 만으로 페이지 전환 애니메이션 구현하기"
+        },
+        {
+          "@type": "Thing",
+          "name": "웹 애니메이션",
+          "description": "CSS 만으로 페이지 전환 애니메이션 구현하기"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://incoding.co.kr/transitionsPage/about.html">
+    
+    <!-- 파비콘 -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  </head>
 <body>
   <nav>
-    <a href="index.html" class="nav-link active">🏠 홈</a>
+    <a href="/lab" class="nav-link"><img src="/images/img-logo.svg" alt="incoding" width="20"> Back toLab</a>
+    <a href="index.html" class="nav-link active">🏠 메인</a>
     <a href="about.html" class="nav-link">👤 소개</a>
-    <a href="gallery.html" class="nav-link">🖼️ 갤러리</a>
+    <a href="gallery.html" class="nav-link">🖼️ 갤러리</a> 
   </nav>
   
   <main>
