@@ -80,7 +80,7 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-right: 2rem;
+  margin-right: 1rem;
   text-decoration: none;
   color: #555;
   font-weight: 500;
@@ -88,6 +88,7 @@ nav {
   border-radius: 8px;
   transition: all 0.3s ease;
   position: relative;
+  font-size: 14px;
 }
 
 .nav-link:hover {
