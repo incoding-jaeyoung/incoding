@@ -9,34 +9,34 @@ export default function RecommendPage() {
     // 기존 메타 태그 제거 및 새로운 메타 태그 설정
     const updateMetaTags = () => {
       // 페이지 제목 설정
-      document.title = "Interactive Sites - 인터랙티브 웹사이트 추천 | 포트폴리오";
+      document.title = "인터랙티브 웹사이트 추천 및 벤치마킹 | 포트폴리오";
       
       // 기존 description 메타 태그 찾기 및 업데이트
       let descriptionMeta = document.querySelector('meta[name="description"]');
       if (descriptionMeta) {
-        descriptionMeta.setAttribute('content', '인터랙티브한 요소가 포함된 웹사이트들을 소개하고 사용된 기술 스택을 분석합니다. React, Next.js, GSAP 등 최신 웹 기술로 구현된 창의적인 웹사이트들을 만나보세요.');
+        descriptionMeta.setAttribute('content', '인터랙티브 웹사이트 및 랜딩페이지 소개 분석 페이지입니다. 사용된 인터랙션 요소들을 참고하고 벤치마킹 할 수 있습니다.');
       } else {
         descriptionMeta = document.createElement('meta');
         descriptionMeta.name = 'description';
-        descriptionMeta.content = '인터랙티브 웹사이트 및 랜딩페이지 소개 분석 페이지입니다. React, Next.js, GSAP 등 최신 웹 기술로 구현된 창의적인 웹사이트들을 만나보세요.';
+        descriptionMeta.content = '인터랙티브 웹사이트 및 랜딩페이지 소개 분석 페이지입니다. 사용된 인터랙션 요소들을 참고하고 벤치마킹 할 수 있습니다.';
         document.head.appendChild(descriptionMeta);
       }
       
       // keywords 메타 태그
       let keywordsMeta = document.querySelector('meta[name="keywords"]');
       if (keywordsMeta) {
-        keywordsMeta.setAttribute('content', '인터랙티브 웹사이트, 웹디자인, React, Next.js, GSAP, 프론트엔드, 기술분석, 포트폴리오, 웹개발');
+        keywordsMeta.setAttribute('content', '인터랙티브 웹사이트, 웹디자인, React, Next.js, GSAP, 프론트엔드, 기술분석, 포트폴리오, 웹개발, 벤치마킹');
       } else {
         keywordsMeta = document.createElement('meta');
         keywordsMeta.name = 'keywords';
-        keywordsMeta.content = '인터랙티브 웹사이트, 웹디자인, React, Next.js, GSAP, 프론트엔드, 기술분석, 포트폴리오, 웹개발';
+        keywordsMeta.content = '인터랙티브 웹사이트, 웹디자인, React, Next.js, GSAP, 프론트엔드, 기술분석, 포트폴리오, 웹개발, 벤치마킹';
         document.head.appendChild(keywordsMeta);
       }
       
       // Open Graph 태그들
       const ogTags = [
-        { property: 'og:title', content: 'Interactive Sites - 인터랙티브 웹사이트 추천' },
-        { property: 'og:description', content: '인터랙티브한 요소가 포함된 웹사이트들을 소개하고 사용된 기술 스택을 분석합니다.' },
+        { property: 'og:title', content: 'Interactive Sites - 인터랙티브 웹사이트 추천 및 벤치마킹' },
+        { property: 'og:description', content: '인터랙티브 웹사이트 및 랜딩페이지 소개 분석 페이지입니다. 사용된 인터랙션 요소들을 참고하고 벤치마킹 할 수 있습니다.' },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://incoding.co.kr/recommend' },
         { property: 'og:image', content: '/images/og-recommend.jpg' },
