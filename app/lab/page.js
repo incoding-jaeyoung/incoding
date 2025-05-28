@@ -12,6 +12,8 @@ export default function BlogListPage() {
   const containerRef = useRef(null);
   const [isMounted, setIsMounted] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   // SEO 메타 태그 설정
   useEffect(() => {
@@ -122,6 +124,19 @@ export default function BlogListPage() {
     setIsMounted(true);
   }, []);
 
+  // 페이징 계산
+  const totalPages = Math.ceil(posts.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = posts.slice(indexOfFirstItem, indexOfLastItem);
+
+  // 페이지 변경 함수
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    // 페이지 변경 시 스크롤을 맨 위로
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handlePageTransition = (url) => {
     if (!isMounted) return;
 
@@ -171,7 +186,7 @@ export default function BlogListPage() {
             웹사이트 제작시 랜딩페이지 및 메인 페이지에 사용할 수 있는 인터랙션 예제들을 모아둔 페이지입니다.
           </p>
           <div className="lab-list-list">
-            {posts.map((post) => (
+            {currentItems.map((post) => (
               <Link
                 key={post.slug}
                 href={`/lab/${post.url}`}
@@ -202,6 +217,19 @@ export default function BlogListPage() {
                   </p>
                 </div>
               </Link>
+            ))}
+          </div>
+
+          {/* 페이지네이션 */}
+          <div className="pagination">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index + 1}
+                onClick={() => handlePageChange(index + 1)}
+                className={currentPage === index + 1 ? 'active' : ''}
+              >
+                {index + 1}
+              </button>
             ))}
           </div>
         </div>

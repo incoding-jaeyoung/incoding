@@ -148,3 +148,55 @@ p.lab-sub-title{font-size: 16px; line-height: 140%; color: #666; margin-bottom: 
   }
 }
 .recommend-info{display: flex; flex-direction: column;}
+
+/* 페이지네이션 스타일 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+  padding: 20px 0;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  color: #666;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-width: 40px;
+}
+
+.pagination button:hover {
+  background-color: #f5f5f5;
+  border-color: #ccc;
+}
+
+.pagination button.active {
+  background-color: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .pagination {
+    margin-top: 30px;
+    gap: 4px;
+  }
+  
+  .pagination button {
+    padding: 6px 10px;
+    font-size: 12px;
+    min-width: 32px;
+  }
+}

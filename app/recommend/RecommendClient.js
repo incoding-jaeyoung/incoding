@@ -11,6 +11,8 @@ export default function RecommendClient() {
   const [isMounted, setIsMounted] = useState(false);
   const [posts, setPosts] = useState([]);
   const [activeTab, setActiveTab] = useState('전체');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   // 이미지 URL에서 사이즈 파라미터 제거하여 원본 이미지 URL 생성
   const getOriginalImageUrl = (url) => {
@@ -254,6 +256,27 @@ export default function RecommendClient() {
     return post.region === activeTab;
   });
 
+  // 페이징 계산
+  const totalPages = Math.ceil(filteredPosts.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredPosts.slice(indexOfFirstItem, indexOfLastItem);
+
+  // 페이지 변경 함수
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    // 페이지 변경 시 스크롤을 맨 위로
+    if (containerRef.current) {
+      containerRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // 탭 변경 시 첫 페이지로 리셋
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    setCurrentPage(1);
+  };
+
   // 각 탭별 개수 계산
   const tabCounts = {
     '전체': posts.length,
@@ -276,7 +299,7 @@ export default function RecommendClient() {
           {['전체', '국내', '해외'].map((tab) => (
             <button
               key={tab}
-              onClick={() => setActiveTab(tab)}
+              onClick={() => handleTabChange(tab)}
               style={{
                 padding: '12px 24px',
                 border: 'none',
@@ -307,7 +330,7 @@ export default function RecommendClient() {
 
       {/* 포스트 리스트 */}
       <div className="recommend-list">
-        {filteredPosts.map((post) => (
+        {currentItems.map((post) => (
         <div className="recommend-item" key={post.slug}>
           <Link
             href={`${post.url}`} target="_blank"
@@ -362,6 +385,19 @@ export default function RecommendClient() {
             </div>
           </div>
         </div>
+        ))}
+      </div>
+
+      {/* 페이지네이션 */}
+      <div className="pagination">
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index + 1}
+            onClick={() => handlePageChange(index + 1)}
+            className={currentPage === index + 1 ? 'active' : ''}
+          >
+            {index + 1}
+          </button>
         ))}
       </div>
     </div>
