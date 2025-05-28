@@ -18,7 +18,7 @@ export default function RecommendPage() {
       } else {
         descriptionMeta = document.createElement('meta');
         descriptionMeta.name = 'description';
-        descriptionMeta.content = '인터랙티브한 웹사이트 및 랜딩페이지 소개 분석 페이지입니다. React, Next.js, GSAP 등 최신 웹 기술로 구현된 창의적인 웹사이트들을 만나보세요.';
+        descriptionMeta.content = '인터랙티브 웹사이트 및 랜딩페이지 소개 분석 페이지입니다. React, Next.js, GSAP 등 최신 웹 기술로 구현된 창의적인 웹사이트들을 만나보세요.';
         document.head.appendChild(descriptionMeta);
       }
       
