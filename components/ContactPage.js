@@ -40,10 +40,10 @@ const ContactPage = () => {
                   </dd>
                 </dl>
               </div>
-              <dl className="contact-info">
+              {/* <dl className="contact-info">
                 <dt>Contact us</dt>
                 <dd>contact@incoding.co.kr</dd>
-              </dl>
+              </dl> */}
             </div>
           </div>
         </div>
