@@ -53,18 +53,18 @@ const SvgDraw = () => {
         svgElement.style.mixBlendMode = ['multiply', 'screen', 'overlay'][Math.floor(Math.random() * 3)];
       }
 
-      let scaleRange;
+      let baseSize = 150;
       if (isLarge) {
-        scaleRange = [0.7, 0.9];
+        baseSize = 300;
       } else if (isNormal) {
-        scaleRange = [0.5, 0.7];
+        baseSize = 220;
       } else if (isSmall) {
-        scaleRange = [0.3, 0.5];
+        baseSize = 150;
       } else if (isXsmall) {
-        scaleRange = [0.2, 0.3];
+        baseSize = 80;
       }
-      
-      const randomScale = scaleRange[0] + Math.random() * (scaleRange[1] - scaleRange[0]);
+
+      const pulseScale = 0.96 + Math.random() * 0.08;
       const randomRotation = Math.random() * 360;
       
       const moveRangeX = 40 + Math.random() * 30;
@@ -77,7 +77,9 @@ const SvgDraw = () => {
       
       // 초기 설정
       gsap.set(element, {
-        scale: randomScale,
+        width: `${baseSize}px`,
+        maxWidth: "300px",
+        scale: 1,
         rotation: randomRotation,
         x: initialX * 10,
         y: initialY * 10,
@@ -101,7 +103,7 @@ const SvgDraw = () => {
       });
       
       gsap.to(element, {
-        scale: randomScale * (0.85 + Math.random() * 0.3),
+        scale: pulseScale,
         duration: 10 + Math.random() * 8,
         repeat: -1,
         yoyo: true,
@@ -111,7 +113,7 @@ const SvgDraw = () => {
 
     // 모든 요소에 애니메이션 적용
     const elements = document.querySelectorAll('.svg-box');
-    elements.forEach(animateElement);
+    elements.forEach((element) => animateElement(element));
 
     return svg; // 클린업을 위해 svg 요소 반환
   };

@@ -14,7 +14,4 @@ module.exports = {
     ],
   },
   transpilePackages: ['three', '@react-three/fiber', '@react-three/drei', '@14islands/r3f-scroll-rig'],
-  experimental: {
-    esmExternals: 'loose',
-  }
 };

@@ -230,8 +230,29 @@ svg{ fill: none; overflow: visible; }
 
 svg path{will-change: stroke-dashoffset; transform: translate3d(0, 0, 0);}
 .svg-background{position: relative; height: 300dvh; z-index: 10;  display:grid; grid-template-columns: repeat(4, 1fr);  margin-top: -100lvh; overflow: hidden;}
-.svg-box{display: inline-flex; width: 100%; transform-origin: center center; justify-content: center; transform-style: preserve-3d; will-change: transform;  position: relative; z-index: 10; height: 100%;}
-.svg-box svg{ stroke: #777; stroke-dashoffset:2000px; stroke-dasharray: 2000px; will-change: stroke-dashoffset; }
+.svg-box{
+  display: inline-flex;
+  width: var(--svg-size, 180px);
+  max-width: 300px;
+  transform-origin: center center;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  will-change: transform;
+  position: relative;
+  z-index: 10;
+  height: auto;
+}
+.svg-box svg{
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 300px;
+  stroke: #777;
+  stroke-dashoffset:2000px;
+  stroke-dasharray: 2000px;
+  will-change: stroke-dashoffset;
+}
 .svg-gradient{position: absolute; top: 0; left: 0; opacity: 0; pointer-events: none;}
 .svg-box svg path,
 .svg-box svg rect,
@@ -241,14 +262,14 @@ svg path{will-change: stroke-dashoffset; transform: translate3d(0, 0, 0);}
  
 }
 .svg-box.svg-round{border-radius: 50%; backdrop-filter: blur(8px); aspect-ratio: 1/1 !important;}
-.svg-box.svg-round-square{border-radius:30rem; backdrop-filter: blur(8px);height: 100%; width: 100%;aspect-ratio: 1/1.2 !important;}
+.svg-box.svg-round-square{border-radius:30rem; backdrop-filter: blur(8px); aspect-ratio: 1/1.2 !important;}
 .svg-box.svg-round-1{border-radius:10% 50% 50% 50%; backdrop-filter: blur(8px); aspect-ratio: 1/1 !important;}
-.svg-box.svg-round-4{width: 370%; backdrop-filter: blur(8px); border-radius:500rem; z-index: 50 !important;}
+.svg-box.svg-round-4{backdrop-filter: blur(8px); border-radius:500rem; z-index: 50 !important;}
 
-.svg-box.svg-xs{ z-index: 20;}
-.svg-box.svg-sm{ z-index: 30;}
-.svg-box.svg-md{ z-index: 40;}
-.svg-box.svg-lg{ z-index: 50;}
+.svg-box.svg-xs{ --svg-size: 80px; z-index: 20;}
+.svg-box.svg-sm{ --svg-size: 150px; z-index: 30;}
+.svg-box.svg-md{ --svg-size: 220px; z-index: 40;}
+.svg-box.svg-lg{ --svg-size: 300px; z-index: 50;}
 
 .svg-background canvas {
   position: absolute;

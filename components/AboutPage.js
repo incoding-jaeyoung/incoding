@@ -206,7 +206,7 @@ const AboutPage = () => {
               </h2>
             )}
             <p
-              className="content-title sub-title "
+              className="text-center content-title sub-title"
               data-splitting
               data-title-main-sub
             >
@@ -225,7 +225,7 @@ const AboutPage = () => {
           <SvgDraw />
         </div>
         <div className="section section-type-02">
-          <div className="section-con mix-blend-difference sticky-block">
+          <div className="mix-blend-difference section-con sticky-block">
              <h2
                 className="text-white content-title section-title-sm"
                 data-splitting
@@ -234,7 +234,7 @@ const AboutPage = () => {
               Every Movement <br /> Tells a Story<span className="font-thin">...</span>
             </h2>
             <p
-              className="text-white content-title sub-title "
+              className="text-white content-title sub-title"
               data-splitting
               data-section02-sub
             >
@@ -259,7 +259,7 @@ const AboutPage = () => {
         
         <div className="z-10 section section-type-03">
           <SvgAnimation />
-          <div className="section-con mix-blend-difference">
+          <div className="mix-blend-difference section-con">
             <h2
                 className="text-white content-title section-title-sm"
                 data-splitting
@@ -321,7 +321,7 @@ const AboutPage = () => {
           <NumberSlide />
           <div className="section-con sticky-block mt-100">
             <h2
-                className="text-white content-title section-title-sm "
+                className="text-white content-title section-title-sm"
                 data-splitting
                 data-section05
             >
@@ -345,14 +345,14 @@ const AboutPage = () => {
             </p>
           </div>
         </div>
-        <div className="section section-black section-type-06">
+        {/* <div className="section section-black section-type-06">
           <ScrollGrid
             animationType="type3"
             images={imagesSet1}
           />
           <div className="section-con sticky-block">
             <h2
-                className="text-white content-title section-title-sm "
+                className="text-white content-title section-title-sm"
                 data-splitting
                 data-effect19
             >
@@ -375,7 +375,7 @@ const AboutPage = () => {
               함께 만들어가는 모든 과정에서 사용자의 열정과 기대감을 현실로 이루어 드립니다.
             </p>
           </div>
-        </div>
+        </div> */}
         <div
           className="section section-bottom"
           ref={lastSectionRef}
